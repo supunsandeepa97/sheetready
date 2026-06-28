@@ -38,7 +38,8 @@
 <meta name="twitter:description" content="Simple Excel & Google Sheets templates for small business & personal finance. Start free — no accounting needed."/>
 <meta name="twitter:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='7' y='9' width='18' height='14' rx='2' fill='none' stroke='%23F2B705' stroke-width='2'/%3E%3Cline x1='7' y1='14' x2='25' y2='14' stroke='%23F2B705' stroke-width='2'/%3E%3Cline x1='13' y1='14' x2='13' y2='23' stroke='%23F2B705' stroke-width='2'/%3E%3C/svg%3E"/>
+<!-- Favicon: "The Ready Cell" glyph — navy tile, gold 2x2 grid, solid gold bottom-right cell w/ navy check + handle dot -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
 
 <!-- JSON-LD: Organization + ItemList of 10 Products -->
 <script type="application/ld+json">
@@ -87,16 +88,18 @@
     --navy:#1B3A6B;
     --navy-deep:#102544;
     --navy-ink:#0E1A33;
-    --gold:#E0A209;          /* AA-safe accent on white */
-    --gold-on-navy:#F2B705;  /* brighter gold for dark surfaces */
+    --tile:#102544;            /* ONE consistent logo tile fill (header + footer + 404) */
+    --gold:#E0A209;            /* AA-safe accent on white / text-on-light */
+    --gold-on-navy:#F2B705;    /* brighter gold for dark surfaces only */
     --gold-soft:#FFF6E1;
-    --emerald:#11825A;
+    --emerald:#0F7A52;         /* AA-safe emerald text on white (>=4.5:1) */
+    --emerald-deep:#0c6e4b;
     --emerald-soft:#E6F4EE;
 
     --ink:#0E1A33;
     --muted:#566480;
     --muted-on-navy:#A9BAD8;
-    --faint-on-navy:#7E92BC;
+    --faint-on-navy:#92A6CC;
 
     --bg:#FBFCFE;
     --surface:#F2F5FB;
@@ -107,28 +110,47 @@
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
 
+    /* ---- modular type scale (~1.2 ratio), clamp()-fluid ---- */
+    --fs-micro:clamp(11px,.7vw,12.5px);
+    --fs-small:14px;
+    --fs-body:16px;
+    --fs-lead:clamp(16px,1.6vw,19px);
+    --fs-h3:clamp(18px,1.4vw,20px);
+    --fs-h2:clamp(28px,3.4vw,40px);
+    --fs-display:clamp(40px,5.2vw,60px);
+
+    /* ---- 8px spacing tokens ---- */
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --s7:48px; --s8:64px; --s9:96px;
+
     --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
-    --sh-1:0 1px 2px rgba(16,37,68,.04),0 4px 14px rgba(16,37,68,.05);
+
+    /* layered ambient + key shadows */
+    --sh-1:0 1px 2px rgba(16,37,68,.05),0 4px 14px rgba(16,37,68,.05);
     --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
-    --sh-pop:0 24px 60px rgba(16,37,68,.18);
+    --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
     --maxw:1180px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
   body{
     margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
-    line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
   a{color:var(--navy)}
-  img{max-width:100%;display:block}
+  img,svg{max-width:100%}
   h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
   p{margin:0}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
 
   .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
     padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
   .skip:focus{left:0}
   :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+  /* standardized icon: 24x24 viewBox, stroke 2, currentColor */
+  .ic{width:24px;height:24px;flex:0 0 auto;stroke-width:2}
 
   /* mono utility label */
   .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
@@ -144,19 +166,25 @@
   .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
   .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
     color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
-  .brand .mark{width:30px;height:30px;flex:0 0 auto}
+  .brand .mark{width:32px;height:32px;flex:0 0 auto}
   .brand .g{color:var(--gold)}
   .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
-  .nav a{color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 13px;
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 13px;
     border-radius:9px;transition:color .15s ease,background .15s ease}
   .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  /* scroll-spy active state: gold underline dot */
+  .nav a[aria-current="true"]{color:var(--navy-ink)}
+  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+    background:var(--gold);border-radius:2px}
   .nav .cta{background:var(--navy-ink);color:#fff;padding:10px 18px;margin-left:6px}
   .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
+  .nav .cta[aria-current="true"]::after{display:none}
   .navtoggle{display:none}
+  .nav-backdrop{display:none}
 
   /* ---------- Buttons ---------- */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
-    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;min-height:48px;
     font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
   .btn .arr{transition:transform .15s ease}
   .btn:hover .arr{transform:translateX(4px)}
@@ -166,41 +194,52 @@
   .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
   .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
   .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
-  .btn-ghost-d{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
-  .btn-ghost-d:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.12)}
 
   /* ---------- Hero ---------- */
   .hero{position:relative;overflow:hidden;
     background:
-      radial-gradient(680px 380px at 78% 6%,rgba(224,162,9,.10),transparent 62%),
-      radial-gradient(720px 520px at 14% -8%,rgba(27,58,107,.07),transparent 60%);}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:60px;
+      radial-gradient(680px 420px at 82% 4%,rgba(242,183,5,.13),transparent 60%),
+      radial-gradient(720px 560px at 10% -10%,rgba(27,58,107,.09),transparent 60%),
+      radial-gradient(520px 520px at 60% 110%,rgba(15,122,82,.06),transparent 62%);}
+  /* faint masked CSS grid behind the hero dashboard side */
+  .hero::after{content:"";position:absolute;top:0;right:0;width:55%;height:100%;pointer-events:none;
+    background-image:linear-gradient(rgba(27,58,107,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(27,58,107,.05) 1px,transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(70% 70% at 70% 35%,#000,transparent 72%);
+    -webkit-mask-image:radial-gradient(70% 70% at 70% 35%,#000,transparent 72%)}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.04fr .96fr;gap:60px;
     align-items:center;padding-top:84px;padding-bottom:92px}
   .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
   .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
-    border-radius:999px;padding:7px 14px 7px 11px;font-size:13px;font-weight:600;color:#3a4865;box-shadow:var(--sh-1)}
+    border-radius:999px;padding:7px 14px 7px 11px;font-size:13px;font-weight:600;color:#3a4865;
+    box-shadow:var(--sh-1),var(--glass-edge)}
   .badge .d{width:7px;height:7px;border-radius:50%;background:var(--emerald)}
-  .hero h1{font-size:clamp(38px,5.4vw,62px);color:var(--navy-ink);max-width:13ch}
+  .hero h1{font-size:var(--fs-display);color:var(--navy-ink);max-width:13ch}
   .hero h1 .hl{position:relative;color:var(--navy);white-space:nowrap}
   .hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.34em;
     background:linear-gradient(180deg,transparent 55%,rgba(224,162,9,.42) 55%);z-index:-1;border-radius:3px}
-  .hero .sub{margin-top:22px;font-size:clamp(16px,1.7vw,19px);color:var(--muted);max-width:48ch}
+  .hero .sub{margin-top:22px;font-size:var(--fs-lead);color:var(--muted);max-width:48ch}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
   .hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:var(--muted)}
   .hero-meta span{display:inline-flex;align-items:center;gap:9px}
-  .hero-meta .ic{color:var(--emerald)}
+  .hero-meta .ic{color:var(--emerald);width:17px;height:17px;stroke-width:2.4}
   .hero-meta b{color:var(--navy-ink);font-weight:700}
 
   /* ---------- Dashboard preview (signature element) ---------- */
   .dash{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);
-    box-shadow:var(--sh-pop);overflow:hidden}
-  .dash-bar{display:flex;align-items:center;gap:9px;padding:13px 18px;border-bottom:1px solid var(--line-soft);
+    box-shadow:var(--sh-pop),var(--glass-edge);overflow:hidden}
+  .dash-bar{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-soft);
     background:linear-gradient(180deg,#fff,#fafbfe)}
   .dash-bar .dots{display:flex;gap:6px}
   .dash-bar .dots i{width:10px;height:10px;border-radius:50%;background:#dde4f0;display:block}
   .dash-bar .dots i:first-child{background:#f5c9c0}
   .dash-bar .dots i:nth-child(2){background:#f6e3b6}
   .dash-bar .dots i:nth-child(3){background:#cfe7cf}
+  .dash-bar .cellref{font-family:var(--mono);font-size:11px;color:#6c7c9c;background:var(--surface);
+    border:1px solid var(--line-soft);padding:3px 8px;border-radius:6px;font-weight:600}
+  .dash-bar .formula{font-family:var(--mono);font-size:11px;color:var(--navy);background:var(--gold-soft);
+    border:1px solid #f4e6bd;padding:3px 9px;border-radius:6px;font-weight:600}
   .dash-bar .tag{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8a99b8;
     background:var(--surface);padding:4px 10px;border-radius:7px}
   .dash-body{padding:20px}
@@ -212,24 +251,34 @@
   .kpi .chg{font-size:11px;font-weight:700;margin-top:3px;color:var(--emerald)}
   .kpi.accent{background:var(--gold-soft);border-color:#f4e6bd}
   .kpi.accent .val{color:#7a5a02}
-  .panel{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--r-md);padding:15px 16px 17px;background:#fff}
+  .panel{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--r-md);padding:15px 16px 17px;
+    background:#fff;position:relative;overflow:hidden}
+  /* faint gridlines behind the chart */
+  .panel::before{content:"";position:absolute;left:16px;right:16px;top:40px;bottom:34px;pointer-events:none;
+    background-image:linear-gradient(rgba(27,58,107,.06) 1px,transparent 1px);background-size:100% 25%}
   .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
   .panel-head .t{font-size:12.5px;font-weight:700;color:var(--navy-ink)}
   .panel-head .leg{font-family:var(--mono);font-size:10.5px;color:#8a99b8}
-  .chart{display:flex;align-items:flex-end;gap:10px;height:96px}
+  .chart{display:flex;align-items:flex-end;gap:10px;height:96px;position:relative}
   .chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:100%}
-  .chart .col .b{border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#2f5b9e,var(--navy))}
+  .chart .col .b{border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#2f5b9e,var(--navy));
+    transform-origin:bottom;transform:scaleY(1)}
   .chart .col .b.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
-  .chart .x{font-family:var(--mono);font-size:9px;color:#9aa8c4;text-align:center;margin-top:6px}
+  /* CLS-safe entrance: bars start collapsed, grow on reveal via transform only */
+  .dash.anim .chart .col .b{transform:scaleY(0);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+  .dash.anim.in .chart .col .b{transform:scaleY(1)}
+  .dash.anim.in .chart .col:nth-child(2) .b{transition-delay:.06s}
+  .dash.anim.in .chart .col:nth-child(3) .b{transition-delay:.12s}
+  .dash.anim.in .chart .col:nth-child(4) .b{transition-delay:.18s}
+  .dash.anim.in .chart .col:nth-child(5) .b{transition-delay:.24s}
+  .dash.anim.in .chart .col:nth-child(6) .b{transition-delay:.30s}
   .dash-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;
     padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
   .dash-foot b{color:var(--emerald)}
-  /* floating mini-stat chip */
   .float-chip{position:absolute;left:-18px;bottom:46px;background:#fff;border:1px solid var(--line);
-    border-radius:14px;box-shadow:var(--sh-2);padding:12px 15px;display:flex;align-items:center;gap:11px}
+    border-radius:14px;box-shadow:var(--sh-2),var(--glass-edge);padding:12px 15px;display:flex;align-items:center;gap:11px}
   .float-chip .ring{width:34px;height:34px;border-radius:50%;flex:0 0 auto;
-    background:conic-gradient(var(--emerald) 0 76%,var(--emerald-soft) 76% 100%);
-    display:grid;place-items:center}
+    background:conic-gradient(var(--emerald) 0 76%,var(--emerald-soft) 76% 100%);display:grid;place-items:center}
   .float-chip .ring i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}
   .float-chip .m .a{font-size:11px;color:var(--muted);font-weight:600}
   .float-chip .m .b{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--navy-ink)}
@@ -239,36 +288,45 @@
   .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
   .proof .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 40px;padding:20px 24px}
   .proof span{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#3a4865;font-weight:600}
-  .proof .ic{color:var(--gold);flex:0 0 auto}
+  .proof .ic{color:var(--gold);width:20px;height:20px}
 
   /* ---------- Section scaffold ---------- */
-  .section{padding:84px 0}
+  .section{padding:var(--s9) 0}
   .sec-head{max-width:620px;margin-bottom:44px}
   .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .sec-head h2{font-size:clamp(28px,3.6vw,42px);color:var(--navy-ink);margin-top:14px}
+  .sec-head h2{font-size:var(--fs-h2);color:var(--navy-ink);margin-top:14px}
   .sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
-  /* AEO answer capsule: plain-text section intro for AI Overviews */
   .answer-capsule{max-width:680px;margin:0 0 36px;color:var(--muted);font-size:17px;line-height:1.6}
   .faq .answer-capsule{margin-left:auto;margin-right:auto;text-align:center}
 
-  /* ---------- Topics chips ---------- */
-  .topics{padding:56px 0 8px;text-align:center}
-  .topics .h{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--muted);font-weight:600;line-height:1.6;margin:0 0 20px}
-  .chips{list-style:none;margin:0 auto;padding:0;max-width:940px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .chips a{display:inline-block;text-decoration:none;font-size:14px;font-weight:600;color:var(--navy-ink);
-    background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 17px;
-    transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease}
-  .chips a:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--navy);box-shadow:var(--sh-1)}
+  /* ---------- Filter + search toolbar ---------- */
+  .toolbar{margin-bottom:28px}
+  .searchbox{position:relative;max-width:420px;margin:0 0 18px}
+  .searchbox label{display:block;font-size:13px;font-weight:600;color:var(--navy-ink);margin-bottom:7px}
+  .searchbox .field{position:relative}
+  .searchbox .field .ic{position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    color:var(--muted);width:18px;height:18px;pointer-events:none}
+  .searchbox input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+    padding:13px 14px 13px 40px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
+    box-shadow:var(--sh-1);transition:border-color .15s ease}
+  .searchbox input:focus{outline:none;border-color:var(--gold)}
+  .searchbox input::placeholder{color:#9aa8c4}
+  .filters{display:flex;flex-wrap:wrap;gap:9px}
+  .filters .pill{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--navy-ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:10px 17px;min-height:40px;cursor:pointer;
+    transition:transform .15s ease,border-color .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}
+  .filters .pill:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:var(--sh-1)}
+  .filters .pill[aria-pressed="true"]{background:var(--navy-ink);color:#fff;border-color:var(--navy-ink)}
+  .filters .pill[aria-pressed="true"]:hover{color:#fff}
 
   /* ---------- Templates grid ---------- */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
-    display:flex;flex-direction:column;box-shadow:var(--sh-1);
+    display:flex;flex-direction:column;box-shadow:var(--sh-1),var(--glass-edge);
     transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-  .card:hover{transform:translateY(-5px);box-shadow:var(--sh-2);border-color:#d3def1}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--sh-2),var(--glass-edge);border-color:#d3def1}
+  .card.is-hidden{display:none}
 
-  /* mini dashboard preview that tops every card */
   .preview{position:relative;padding:18px;background:
       radial-gradient(420px 200px at 80% -20%,rgba(27,58,107,.06),transparent 70%),
       linear-gradient(170deg,#f6f8fd,#eef2fb);border-bottom:1px solid var(--line-soft)}
@@ -287,20 +345,16 @@
   .pv-stats .s.gold .v{color:#7a5a02}
   .pv-stats .s.em{background:var(--emerald-soft)}
   .pv-stats .s.em .v{color:var(--emerald)}
-  /* bar variant */
   .pv-bars{display:flex;align-items:flex-end;gap:6px;height:54px}
   .pv-bars span{flex:1;border-radius:3px 3px 1px 1px;background:linear-gradient(180deg,#3a66a8,var(--navy));opacity:.92}
   .pv-bars span.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
-  /* line variant */
   .pv-line{height:54px;width:100%;display:block}
-  /* rows variant */
   .pv-rows{display:flex;flex-direction:column;gap:7px}
   .pv-rows .r{display:flex;align-items:center;gap:9px}
   .pv-rows .r .bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--navy),#5e83bf)}
   .pv-rows .r .bar.g{background:linear-gradient(90deg,var(--gold),#f3cd5d)}
   .pv-rows .r .bar.e{background:linear-gradient(90deg,var(--emerald),#4fb389)}
   .pv-rows .r .tk{font-family:var(--mono);font-size:9px;color:#9aa8c4;width:34px;text-align:right;flex:0 0 auto}
-  /* donut variant */
   .pv-donut{display:flex;align-items:center;gap:14px}
   .pv-donut .ring{width:62px;height:62px;border-radius:50%;flex:0 0 auto}
   .pv-donut .leg{display:flex;flex-direction:column;gap:5px}
@@ -308,26 +362,35 @@
   .pv-donut .leg .sw{width:9px;height:9px;border-radius:3px;display:inline-block}
 
   .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
-  .card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-  .card h3{font-size:18px;line-height:1.25;letter-spacing:-.01em;margin-top:8px;color:var(--navy-ink)}
+  .card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600}
+  .card h3{font-size:var(--fs-h3);line-height:1.25;letter-spacing:-.01em;margin-top:8px;color:var(--navy-ink)}
   .card .desc{margin-top:9px;font-size:14px;color:var(--muted);flex:1}
   .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;
     padding-top:16px;border-top:1px solid var(--line-soft)}
   .price{font-family:var(--mono);font-weight:700;font-size:19px;color:var(--navy-ink);font-variant-numeric:tabular-nums}
   .price.free{color:var(--emerald)}
-  /* .gumroad-button beats Gumroad's injected stylesheet via the shared selector */
   a.gumroad-button.buy{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:700;font-size:14px;
-    padding:11px 17px;border-radius:11px;background:var(--navy-ink);color:#fff;white-space:nowrap;line-height:1.2;
+    padding:11px 17px;border-radius:11px;background:var(--navy-ink);color:#fff;white-space:nowrap;line-height:1.2;min-height:44px;
     transition:background .15s ease,transform .15s ease,box-shadow .15s ease}
   a.gumroad-button.buy:hover{background:var(--navy);color:#fff;transform:translateY(-1px);box-shadow:var(--sh-1)}
   a.gumroad-button.buy .arr{transition:transform .15s ease}
   a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
   a.gumroad-button.buy.free{background:var(--emerald);color:#fff}
-  a.gumroad-button.buy.free:hover{background:#0c6e4b;color:#fff}
+  a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:#fff}
+
+  /* empty state for search/filter */
+  .empty-state{display:none;text-align:center;padding:48px 24px;background:var(--surface);
+    border:1px dashed var(--line);border-radius:var(--r-lg);color:var(--muted)}
+  .empty-state.show{display:block}
+  .empty-state p{font-size:16px;margin-bottom:16px;color:var(--navy-ink);font-weight:600}
+  .empty-state button{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--navy-ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 20px;min-height:44px;cursor:pointer}
+  .empty-state button:hover{border-color:var(--gold)}
 
   /* featured FREE card spans full width */
   .card.featured{grid-column:1 / -1;flex-direction:row;border:1.5px solid #f0d99a;
-    box-shadow:0 18px 50px rgba(224,162,9,.14);background:
+    box-shadow:0 18px 50px rgba(224,162,9,.14),var(--glass-edge);background:
       linear-gradient(120deg,#fff 56%,#fffaef 100%)}
   .card.featured .preview{flex:0 0 360px;border-bottom:0;border-right:1px solid var(--line-soft);
     display:flex;align-items:center}
@@ -345,11 +408,40 @@
 
   /* ---------- "How it works" steps ---------- */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;box-shadow:var(--sh-1)}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;
+    box-shadow:var(--sh-1),var(--glass-edge)}
   .step .n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold);
     width:42px;height:42px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:18px}
-  .step h3{font-size:18px;color:var(--navy-ink)}
+  .step h3{font-size:var(--fs-h3);color:var(--navy-ink)}
   .step p{margin-top:9px;color:var(--muted);font-size:15px}
+
+  /* ---------- "What you get" + about ---------- */
+  .valuegrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
+  .about{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px 32px 30px;box-shadow:var(--sh-1),var(--glass-edge)}
+  .about .who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .about .who .av{width:48px;height:48px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--tile);box-shadow:var(--sh-1)}
+  .about .who .nm{font-weight:700;font-size:16px;color:var(--navy-ink)}
+  .about .who .rl{font-size:13px;color:var(--muted)}
+  .about p{color:var(--ink);font-size:15.5px;line-height:1.65}
+  .about p + p{margin-top:14px}
+  .about .links{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;font-weight:600}
+  .about .links a{color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+  .about .links a:hover{color:var(--gold)}
+  .wyg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .wyg li{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:16px 16px;box-shadow:var(--sh-1),var(--glass-edge)}
+  .wyg li .ic{color:var(--emerald);width:22px;height:22px;margin-top:1px}
+  .wyg li .t{font-weight:700;font-size:14.5px;color:var(--navy-ink);display:block}
+  .wyg li .d{font-size:13px;color:var(--muted);margin-top:2px;display:block}
+
+  /* ---------- Reviews placeholder ---------- */
+  .reviews-note{max-width:680px;margin:0 auto;text-align:center;background:var(--surface);
+    border:1px dashed var(--line);border-radius:var(--r-lg);padding:36px 28px;color:var(--muted)}
+  .reviews-note .star{color:var(--gold);display:inline-flex;gap:3px;margin-bottom:12px}
+  .reviews-note p{font-size:16px;color:var(--navy-ink);font-weight:600}
+  .reviews-note .sm{font-size:14px;color:var(--muted);font-weight:400;margin-top:8px}
 
   /* ---------- Email capture ---------- */
   .capture{background:
@@ -362,17 +454,16 @@
     -webkit-mask-image:radial-gradient(80% 80% at 20% 10%,#000,transparent 75%);pointer-events:none}
   .capture .inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:78px 24px;
     display:grid;grid-template-columns:1.06fr .94fr;gap:52px;align-items:center}
-  .capture h2{font-size:clamp(28px,3.6vw,42px);color:#fff;max-width:15ch;margin-top:14px}
+  .capture h2{font-size:var(--fs-h2);color:#fff;max-width:15ch;margin-top:14px}
   .capture h2 em{font-style:normal;color:var(--gold-on-navy)}
   .capture p{margin-top:16px;color:var(--muted-on-navy);max-width:44ch;font-size:16.5px}
-  .capture .bullets{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+  .capture .bullets{margin-top:22px;display:flex;flex-direction:column;gap:11px;padding:0}
   .capture .bullets li{list-style:none;display:flex;align-items:center;gap:11px;color:#dbe4f6;font-size:15px}
-  .capture .bullets .ic{color:var(--gold-on-navy);flex:0 0 auto}
+  .capture .bullets .ic{color:var(--gold-on-navy);width:19px;height:19px;stroke-width:2.4}
   .signup-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
     border-radius:var(--r-lg);padding:24px;box-shadow:0 24px 60px rgba(8,16,36,.4);backdrop-filter:blur(4px)}
   .signup-card .sc-h{font-weight:700;font-size:18px;color:#fff;letter-spacing:-.01em}
   .signup-card .sc-p{font-size:13.5px;color:var(--muted-on-navy);margin-top:6px;margin-bottom:18px}
-  /* keep MailerLite embed readable on the dark card */
   .signup-card .ml-embedded{min-height:50px}
   .signup-card .ml-embedded input[type=email],
   .signup-card .ml-embedded input[type=text]{font-family:var(--sans)}
@@ -381,10 +472,10 @@
   /* ---------- FAQ ---------- */
   .faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
   .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
-    box-shadow:var(--sh-1);overflow:hidden;transition:border-color .15s ease}
+    box-shadow:var(--sh-1),var(--glass-edge);overflow:hidden;transition:border-color .15s ease}
   .faq details[open]{border-color:#cfdaef}
   .faq summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;
-    justify-content:space-between;gap:16px;font-weight:700;font-size:17px;color:var(--navy-ink)}
+    justify-content:space-between;gap:16px;font-weight:700;font-size:17px;color:var(--navy-ink);min-height:48px}
   .faq summary::-webkit-details-marker{display:none}
   .faq summary .pm{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--surface);
     display:grid;place-items:center;color:var(--navy);transition:transform .2s ease,background .15s ease}
@@ -396,13 +487,26 @@
   footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
   footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
   footer .fbrand .g{color:var(--gold-on-navy)}
-  footer .fbrand .mark{width:30px;height:30px}
+  footer .fbrand .mark{width:32px;height:32px}
   footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
   footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
-  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:4px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:6px;min-height:24px}
   footer .flinks a:hover{color:var(--gold-on-navy)}
   footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
     font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Mobile sticky free-tracker bar ---------- */
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:120;display:none;align-items:center;gap:12px;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(16,37,68,.97);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);
+    box-shadow:0 -8px 30px rgba(8,16,36,.3);transform:translateY(100%);transition:transform .3s ease}
+  .mbar.show{transform:translateY(0)}
+  .mbar .txt{flex:1;color:#fff;font-size:14px;font-weight:600;line-height:1.3}
+  .mbar a{flex:0 0 auto;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-weight:700;
+    font-size:14px;padding:12px 16px;border-radius:11px;min-height:44px;display:inline-flex;align-items:center}
+  .mbar .close{flex:0 0 auto;width:36px;height:36px;border-radius:9px;border:1px solid rgba(255,255,255,.2);
+    background:transparent;color:#cdd9f0;cursor:pointer;display:grid;place-items:center}
+  .mbar .close svg{width:18px;height:18px}
 
   /* ---------- Scroll reveal ---------- */
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
@@ -411,31 +515,55 @@
   /* ---------- Responsive ---------- */
   @media (max-width:960px){
     .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:56px;padding-bottom:60px}
+    .hero::after{width:100%;mask-image:radial-gradient(80% 50% at 70% 80%,#000,transparent 72%);
+      -webkit-mask-image:radial-gradient(80% 50% at 70% 80%,#000,transparent 72%)}
     .float-chip{left:auto;right:14px;bottom:-14px}
     .capture .inner{grid-template-columns:1fr;gap:32px}
     .grid,.steps{grid-template-columns:repeat(2,1fr)}
+    .valuegrid{grid-template-columns:1fr;gap:32px}
     .card.featured{flex-direction:column}
     .card.featured .preview{flex:0 0 auto;border-right:0;border-bottom:1px solid var(--line-soft)}
     .section{padding:64px 0}
   }
   @media (max-width:760px){
     .nav{display:none}
-    .nav.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;
-      align-items:stretch;gap:4px;background:#fff;padding:14px 18px 18px;border-bottom:1px solid var(--line);box-shadow:var(--sh-2)}
-    .nav.open a{padding:13px}
-    .nav.open .cta{margin-left:0;text-align:center}
+    .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:6px;background:#fff;padding:16px 18px 22px;border-bottom:1px solid var(--line);
+      box-shadow:var(--sh-2);z-index:110;
+      opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
+    .nav.open.in{opacity:1;transform:translateY(0)}
+    .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
+    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open .cta{margin-left:0;justify-content:center}
+    .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
+      opacity:0;transition:opacity .22s ease}
+    .nav-backdrop.in{opacity:1}
     .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
-      width:44px;height:44px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+      width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
     .navtoggle svg{width:22px;height:22px}
+    .section{padding:48px 0}
+    /* horizontally-scrollable filter pills */
+    .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+      padding-bottom:6px;scrollbar-width:none}
+    .filters::-webkit-scrollbar{display:none}
+    .filters .pill{flex:0 0 auto;white-space:nowrap}
+    .wyg{grid-template-columns:1fr}
+    .mbar{display:flex}
   }
   @media (max-width:560px){
     .grid,.steps{grid-template-columns:1fr}
     .btn{width:100%}
     .cta-row .btn{flex:1}
+    a.gumroad-button.buy{width:100%;justify-content:center}
+    .card .row{flex-wrap:wrap}
+    .card .row .price{width:100%}
   }
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
     .reveal{opacity:1;transform:none}
+    .dash.anim .chart .col .b{transform:scaleY(1)}
+    .mbar{transition:none}
+    .nav.open{opacity:1;transform:none}
   }
 </style>
 <!-- MailerLite Universal -->
@@ -455,15 +583,25 @@
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="SheetReady home">
-      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#102544"/><rect x="7" y="9" width="18" height="14" rx="2" fill="none" stroke="#F2B705" stroke-width="2"/><line x1="7" y1="14" x2="25" y2="14" stroke="#F2B705" stroke-width="2"/><line x1="13" y1="14" x2="13" y2="23" stroke="#F2B705" stroke-width="2"/></svg>
+      <!-- "The Ready Cell" logo (light surface) -->
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#102544"/>
+        <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+        <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+        <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+        <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+      </svg>
       <span>Sheet<span class="g">Ready</span></span>
     </a>
-    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg id="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
     <nav class="nav" id="primary-nav" aria-label="Primary">
       <a href="#templates">Templates</a>
       <a href="#how">How it works</a>
+      <a href="#about">About</a>
       <a href="#faq">FAQ</a>
       <a class="cta" href="#free">Get free tracker</a>
     </nav>
@@ -473,7 +611,7 @@
 <main id="top">
 
   <!-- ============ HERO (LCP = headline text, no hero image) ============ -->
-  <section class="hero" aria-labelledby="hero-h">
+  <section class="hero" id="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div>
         <div class="badge-row">
@@ -487,17 +625,19 @@
           <a class="btn btn-ghost" href="#templates">Browse all templates</a>
         </div>
         <div class="hero-meta">
-          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Pay once, no subscription</span>
-          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Instant download</span>
-          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Beginner-friendly</span>
+          <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Pay once, no subscription</span>
+          <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Instant download</span>
+          <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Beginner-friendly</span>
         </div>
       </div>
 
       <!-- Signature: a CSS dashboard preview (decorative; numbers illustrative) -->
       <div class="dash-host">
-        <div class="dash" role="img" aria-label="Illustration of the money tracker dashboard showing income, expenses and savings rate">
+        <div class="dash anim reveal" role="img" aria-label="Illustration of the money tracker dashboard showing income, expenses and savings rate">
           <div class="dash-bar">
             <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="cellref" aria-hidden="true">A1</span>
+            <span class="formula" aria-hidden="true">=SUM(B2:B7)</span>
             <span class="tag" aria-hidden="true">MoneyTracker.xlsx</span>
           </div>
           <div class="dash-body">
@@ -531,31 +671,12 @@
   <!-- proof strip -->
   <div class="proof">
     <div class="wrap">
-      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg> Secure Gumroad checkout</span>
-      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg> Works in Excel &amp; Google Sheets</span>
-      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg> 30-day refund policy</span>
-      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> Download in seconds</span>
+      <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg> Secure Gumroad checkout</span>
+      <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg> Works in Excel &amp; Google Sheets</span>
+      <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg> 30-day refund policy</span>
+      <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> Download in seconds</span>
     </div>
   </div>
-
-  <!-- ============ TOPICS STRIP ============ -->
-  <section class="topics" aria-label="What our spreadsheet templates help with">
-    <div class="wrap">
-      <h2 class="h">Spreadsheet templates for every money job</h2>
-      <ul class="chips">
-        <li><a href="#templates">Budgeting</a></li>
-        <li><a href="#templates">Cash flow</a></li>
-        <li><a href="#templates">Invoicing</a></li>
-        <li><a href="#templates">Debt payoff</a></li>
-        <li><a href="#templates">Expense &amp; tax tracking</a></li>
-        <li><a href="#templates">Inventory</a></li>
-        <li><a href="#templates">Freelancer income &amp; tax</a></li>
-        <li><a href="#templates">Sales &amp; CRM</a></li>
-        <li><a href="#templates">Profit &amp; loss</a></li>
-        <li><a href="#templates">Net worth &amp; savings</a></li>
-      </ul>
-    </div>
-  </section>
 
   <!-- ============ TEMPLATES GRID ============ -->
   <section id="templates" class="section" aria-labelledby="tpl-h">
@@ -568,10 +689,30 @@
 
       <p class="answer-capsule">SheetReady offers ten pre-built Excel and Google Sheets templates covering personal budgeting, small-business cash flow, invoicing, freelancer tax, inventory, and sales tracking. Every template has the formulas and a visual dashboard already wired up — open the file, type your numbers, and it works.</p>
 
-      <div class="grid">
+      <!-- Filter + search toolbar (progressive enhancement: all cards visible if JS off) -->
+      <div class="toolbar reveal">
+        <div class="searchbox">
+          <label for="tplSearch">Search templates</label>
+          <div class="field">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+            <input type="search" id="tplSearch" name="tplSearch" placeholder="Try “invoice”, “budget”, “tax”…" autocomplete="off" aria-describedby="tplCount"/>
+          </div>
+        </div>
+        <div class="filters" role="group" aria-label="Filter templates by category">
+          <button type="button" class="pill" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="pill" data-filter="personal" aria-pressed="false">Personal</button>
+          <button type="button" class="pill" data-filter="business" aria-pressed="false">Business</button>
+          <button type="button" class="pill" data-filter="freelance" aria-pressed="false">Freelance</button>
+          <button type="button" class="pill" data-filter="sales" aria-pressed="false">Sales</button>
+          <button type="button" class="pill" data-filter="creators" aria-pressed="false">Creators</button>
+        </div>
+        <p id="tplCount" class="visually-hidden" aria-live="polite" style="position:absolute;left:-9999px"></p>
+      </div>
+
+      <div class="grid" id="tplGrid">
 
         <!-- FEATURED FREE card -->
-        <article class="card featured reveal">
+        <article class="card featured reveal" data-cat="personal" data-title="Simple Monthly Money Tracker" data-desc="free monthly income and expense tracker balance savings rate first template">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Money Tracker</span></div>
@@ -604,7 +745,7 @@
         </article>
 
         <!-- 2 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="business" data-title="Small Business Cash Flow & Profit Dashboard" data-desc="cash in cash out real profit dashboard business stands">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Cash Flow</span></div>
@@ -634,7 +775,7 @@
         </article>
 
         <!-- 3 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="business" data-title="Invoice Tracker & Generator" data-desc="create clean invoices track paid due overdue who owes you">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Invoices</span></div>
@@ -660,7 +801,7 @@
         </article>
 
         <!-- 4 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="freelance" data-title="Freelancer Income & Tax Estimator" data-desc="log freelance income set aside tax bill self employed">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Freelance Tax</span></div>
@@ -690,7 +831,7 @@
         </article>
 
         <!-- 5 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="business" data-title="Business Expense & Tax Deduction Tracker" data-desc="categorise business expense capture deductions tax time">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Expenses</span></div>
@@ -716,7 +857,7 @@
         </article>
 
         <!-- 6 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="business" data-title="Inventory & Reorder Manager" data-desc="track stock levels reorder signal bestsellers run out">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Inventory</span></div>
@@ -746,7 +887,7 @@
         </article>
 
         <!-- 7 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="sales" data-title="Client CRM & Sales Pipeline" data-desc="keep leads clients one place move deals visual pipeline">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Pipeline</span></div>
@@ -772,7 +913,7 @@
         </article>
 
         <!-- 8 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="creators" data-title="Digital Product Sales Tracker" data-desc="track sales refunds revenue digital products what sells creators">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Sales</span></div>
@@ -802,7 +943,7 @@
         </article>
 
         <!-- 9 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="business" data-title="13-Week Cash Flow Forecast" data-desc="project cash 13 weeks spot shortfall before problem forecast">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">13-Week Forecast</span></div>
@@ -828,7 +969,7 @@
         </article>
 
         <!-- 10 -->
-        <article class="card reveal">
+        <article class="card reveal" data-cat="personal" data-title="Monthly Personal Budget Planner" data-desc="plan income bills savings month where money goes budget">
           <div class="preview" aria-hidden="true">
             <div class="mini">
               <div class="mtop"><i></i><i></i><i></i><span class="nm">Budget</span></div>
@@ -855,6 +996,12 @@
           </div>
         </article>
 
+      </div>
+
+      <!-- focusable empty state for the filter/search -->
+      <div class="empty-state" id="emptyState" tabindex="-1" role="status">
+        <p>No matches — try a different word or category.</p>
+        <button type="button" id="clearFilters">Clear filters</button>
       </div>
     </div>
   </section>
@@ -887,6 +1034,100 @@
     </div>
   </section>
 
+  <!-- ============ ABOUT + WHAT YOU GET ============ -->
+  <section id="about" class="section" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">Why SheetReady</span>
+        <h2 id="about-h">Hand-built finance templates, tested before they ship</h2>
+      </div>
+      <div class="valuegrid">
+        <div class="about reveal">
+          <div class="who">
+            <span class="av" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 32 32"><rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/><path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g><rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/><circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/></svg>
+            </span>
+            <span>
+              <span class="nm">Supun — founder, SheetReady</span>
+              <span class="rl">Finance background, spreadsheet builder</span>
+            </span>
+          </div>
+          <p>Hi, I'm Supun. I come from a finance background, and I build every SheetReady template by hand because I was tired of bloated apps and subscriptions for jobs a clean spreadsheet does better. I open each file in both Excel and Google Sheets and run real numbers through it before it goes on sale — if a formula or dashboard doesn't behave, it doesn't ship.</p>
+          <p>The goal is simple: tools you actually own, that work the moment you open them, with no accounting knowledge required. Start with the free money tracker and see if my style fits how you think.</p>
+          <div class="links">
+            <a href="https://supunsandeep.gumroad.com" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px"><path d="M5 7h14l-1 12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+              SheetReady on Gumroad
+            </a>
+            <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px"><circle cx="12" cy="12" r="9"/><path d="M9.5 19c-.4-1.5 0-3 .5-5 .3-1.2.8-3 .8-3s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.8 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3-2.3 3-5 0-2-1.4-3.6-3.9-3.6-2.8 0-4.6 2.1-4.6 4.4 0 .8.2 1.4.6 1.8" /></svg>
+              SheetReady on Pinterest
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <ul class="wyg reveal">
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg>
+              <span><span class="t">Secure Gumroad checkout</span><span class="d">Payment handled by Gumroad — your card details never touch this site.</span></span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              <span><span class="t">Instant download</span><span class="d">The file arrives on screen and by email the moment payment clears.</span></span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg>
+              <span><span class="t">30-day refund</span><span class="d">Not what you expected? Reply to your receipt within 30 days.</span></span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+              <span><span class="t">Excel &amp; Google Sheets</span><span class="d">Open in Excel or import into Google Sheets — use whatever you have.</span></span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.5 1.5c0 1.7-2.5 2-2.5 3.5"/><line x1="12" y1="17" x2="12" y2="17"/></svg>
+              <span><span class="t">No accounting needed</span><span class="d">Type your numbers into labelled cells — the formulas do the rest.</span></span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><span class="t">Pay once, no subscription</span><span class="d">Buy it, keep it, reuse it across your own projects — no recurring fee.</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS (honest placeholder — NO rating schema) ============ -->
+  <section id="reviews" class="section" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)" aria-labelledby="rev-h">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="kicker" style="justify-content:center">Reviews</span>
+        <h2 id="rev-h">What buyers say</h2>
+      </div>
+      <div class="reviews-note reveal">
+        <span class="star" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.8L12 17.8 5.9 20.8 7.1 14l-5-4.8 6.9-.9L12 2Z"/></svg>
+        </span>
+        <p>Reviews from verified Gumroad buyers will appear here — be the first.</p>
+        <p class="sm">Bought a template? Leave a rating on its Gumroad page and we'll feature genuine buyer feedback here.</p>
+      </div>
+
+      <!-- =========================================================================
+           REAL REVIEWS ONLY — do not fabricate.
+           When a verified Gumroad buyer leaves real feedback, paste it using this
+           template (one block per review). Remove the .reviews-note above once
+           at least one real review is live. NO star-rating schema / AggregateRating
+           until genuine ratings exist.
+
+           <div class="review-card">
+             <p class="quote">"[exact buyer words]"</p>
+             <p class="who">[Buyer first name] · [Template purchased] · verified Gumroad buyer</p>
+           </div>
+      ========================================================================== -->
+    </div>
+  </section>
+
   <!-- ============ EMAIL CAPTURE ============ -->
   <section id="free" class="capture" aria-labelledby="cap-h">
     <div class="inner">
@@ -895,9 +1136,9 @@
         <h2 id="cap-h">Get the free tracker <em>+ occasional money tips</em></h2>
         <p>Download the Simple Monthly Money Tracker and we'll send the occasional practical tip on using spreadsheets to stay on top of your finances. No spam, unsubscribe anytime.</p>
         <ul class="bullets">
-          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Delivered instantly to your inbox</li>
-          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Works in Excel &amp; Google Sheets</li>
-          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No spam — unsubscribe anytime</li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Delivered instantly to your inbox</li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Works in Excel &amp; Google Sheets</li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No spam — unsubscribe anytime</li>
         </ul>
       </div>
 
@@ -959,7 +1200,15 @@
     <div class="top">
       <div>
         <div class="fbrand">
-          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#16315c"/><rect x="7" y="9" width="18" height="14" rx="2" fill="none" stroke="#F2B705" stroke-width="2"/><line x1="7" y1="14" x2="25" y2="14" stroke="#F2B705" stroke-width="2"/><line x1="13" y1="14" x2="13" y2="23" stroke="#F2B705" stroke-width="2"/></svg>
+          <!-- "The Ready Cell" logo (dark surface) -->
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#102544"/>
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
           <span>Sheet<span class="g">Ready</span></span>
         </div>
         <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
@@ -967,6 +1216,7 @@
       <nav class="flinks" aria-label="Footer">
         <a href="#templates">Templates</a>
         <a href="#how">How it works</a>
+        <a href="#about">About</a>
         <a href="#free">Free tracker</a>
         <a href="#faq">FAQ</a>
         <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
@@ -977,23 +1227,64 @@
   </div>
 </footer>
 
-<!-- Mobile nav toggle + scroll reveal (tiny, no dependency) -->
+<!-- ============ MOBILE STICKY FREE-TRACKER BAR ============ -->
+<div class="mbar" id="mbar" role="region" aria-label="Get the free tracker" hidden>
+  <span class="txt">Get the free Money Tracker</span>
+  <a href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get it free</a>
+  <button type="button" class="close" id="mbarClose" aria-label="Dismiss free tracker bar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+</div>
+
+<!-- Site interactions: nav, scroll-spy, reveal, filter/search, mobile bar (vanilla, no deps) -->
 <script>
   (function(){
-    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav');
-    if(btn&&nav){
-      btn.addEventListener('click',function(){
-        var open=nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded',open?'true':'false');
-      });
-      nav.addEventListener('click',function(e){
-        if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
-      });
-    }
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- dynamic year ---- */
     var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
 
-    // scroll reveal (respects reduced-motion: skipped if not supported / disabled)
-    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* ---- mobile nav: slide/fade + focus-trap + Esc ---- */
+    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
+        backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
+    var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+    var xHTML='<line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>';
+    var navOpen=false;
+    function focusables(){return nav.querySelectorAll('a[href],button');}
+    function openNav(){
+      navOpen=true;nav.classList.add('open');backdrop.hidden=false;
+      requestAnimationFrame(function(){nav.classList.add('in');backdrop.classList.add('in');});
+      btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Close menu');
+      navIcon.innerHTML=xHTML;
+      var f=focusables(); if(f.length){f[0].focus();}
+    }
+    function closeNav(returnFocus){
+      navOpen=false;nav.classList.remove('in');backdrop.classList.remove('in');
+      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+      navIcon.innerHTML=menuHTML;
+      var done=function(){nav.classList.remove('open');backdrop.hidden=true;};
+      if(reduce){done();}else{setTimeout(done,220);}
+      if(returnFocus){btn.focus();}
+    }
+    if(btn&&nav){
+      btn.addEventListener('click',function(){navOpen?closeNav(true):openNav();});
+      backdrop.addEventListener('click',function(){closeNav(false);});
+      nav.addEventListener('click',function(e){if(e.target.closest('a')){closeNav(false);}});
+      document.addEventListener('keydown',function(e){
+        if(!navOpen)return;
+        if(e.key==='Escape'){closeNav(true);}
+        else if(e.key==='Tab'){
+          var f=focusables();if(!f.length)return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      /* close menu if resized back to desktop */
+      window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+
+    /* ---- scroll reveal + CLS-safe dashboard bar animation ---- */
     var items=document.querySelectorAll('.reveal');
     if(reduce||!('IntersectionObserver'in window)){
       items.forEach(function(el){el.classList.add('in');});
@@ -1002,6 +1293,94 @@
         entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       items.forEach(function(el){io.observe(el);});
+    }
+
+    /* ---- scroll-spy: aria-current on active nav link ---- */
+    var navLinks=Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var sections=navLinks.map(function(a){var id=a.getAttribute('href').slice(1);return document.getElementById(id);})
+                         .filter(Boolean);
+    if('IntersectionObserver'in window && sections.length){
+      var spy=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            navLinks.forEach(function(a){a.removeAttribute('aria-current');});
+            var active=nav.querySelector('a[href="#'+en.target.id+'"]');
+            if(active){active.setAttribute('aria-current','true');}
+          }
+        });
+      },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+      sections.forEach(function(s){spy.observe(s);});
+    }
+
+    /* ---- templates filter + search ---- */
+    var grid=document.getElementById('tplGrid'),
+        cards=Array.prototype.slice.call(grid.querySelectorAll('.card')),
+        pills=Array.prototype.slice.call(document.querySelectorAll('.filters .pill')),
+        search=document.getElementById('tplSearch'),
+        empty=document.getElementById('emptyState'),
+        clearBtn=document.getElementById('clearFilters'),
+        count=document.getElementById('tplCount');
+    var activeCat='all',query='';
+    function apply(){
+      var q=query.trim().toLowerCase(),visible=0;
+      cards.forEach(function(c){
+        var cat=c.getAttribute('data-cat')||'';
+        var hay=((c.getAttribute('data-title')||'')+' '+(c.getAttribute('data-desc')||'')+' '+cat).toLowerCase();
+        var catOk=(activeCat==='all'||cat===activeCat);
+        var qOk=(!q||hay.indexOf(q)!==-1);
+        var show=catOk&&qOk;
+        c.classList.toggle('is-hidden',!show);
+        if(show)visible++;
+      });
+      if(empty){empty.classList.toggle('show',visible===0);}
+      if(count){count.textContent=visible+' template'+(visible===1?'':'s')+' shown';}
+      if(visible===0&&empty){empty.focus();}
+    }
+    pills.forEach(function(p){
+      p.addEventListener('click',function(){
+        pills.forEach(function(o){o.setAttribute('aria-pressed','false');});
+        p.setAttribute('aria-pressed','true');
+        activeCat=p.getAttribute('data-filter');
+        apply();
+      });
+    });
+    var t;
+    if(search){
+      search.addEventListener('input',function(){
+        clearTimeout(t);
+        t=setTimeout(function(){query=search.value;apply();},180);
+      });
+    }
+    function clearAll(){
+      query='';if(search){search.value='';}
+      activeCat='all';
+      pills.forEach(function(o){o.setAttribute('aria-pressed',o.getAttribute('data-filter')==='all'?'true':'false');});
+      apply();
+      if(search){search.focus();}
+    }
+    if(clearBtn){clearBtn.addEventListener('click',clearAll);}
+
+    /* ---- mobile sticky free-tracker bar (after hero scrolls out) ---- */
+    var mbar=document.getElementById('mbar'),mbarClose=document.getElementById('mbarClose'),
+        hero=document.getElementById('hero');
+    var dismissed=false;
+    try{dismissed=sessionStorage.getItem('sr_mbar_dismissed')==='1';}catch(e){}
+    if(mbar&&hero&&!dismissed&&'IntersectionObserver'in window){
+      mbar.hidden=false;
+      var hObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){mbar.classList.remove('show');}
+          else{mbar.classList.add('show');}
+        });
+      },{threshold:0});
+      hObs.observe(hero);
+    }
+    if(mbarClose){
+      mbarClose.addEventListener('click',function(){
+        mbar.classList.remove('show');
+        setTimeout(function(){mbar.hidden=true;},reduce?0:300);
+        try{sessionStorage.setItem('sr_mbar_dismissed','1');}catch(e){}
+      });
     }
   })();
 </script>
