@@ -312,6 +312,15 @@
     *{scroll-behavior:auto !important;transition:none !important}
   }
 </style>
+<!-- MailerLite Universal -->
+<script>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2476370');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 <body>
 <a class="skip" href="#templates">Skip to templates</a>
@@ -584,27 +593,11 @@
         <p class="note">// Delivered instantly &middot; Excel &amp; Google Sheets</p>
       </div>
 
-      <!-- ============================================================
-           MAILERLITE EMBED FORM GOES HERE
-           Replace the entire <form> below with the MailerLite embed
-           snippet. The styling above (.signup ...) matches MailerLite's
-           field/button structure, so it can be restyled with minimal
-           changes. For NOW this form points users to the free Gumroad
-           product, which captures their email on download.
-           ============================================================ -->
-      <form class="signup" action="https://supunsandeep.gumroad.com/l/jvtmti" method="get"
-            aria-labelledby="cap-h">
-        <div class="fld">
-          <label for="ml-name">First name</label>
-          <input id="ml-name" name="name" type="text" autocomplete="given-name" placeholder="Your first name"/>
-        </div>
-        <div class="fld">
-          <label for="ml-email">Email address</label>
-          <input id="ml-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-required="true"/>
-        </div>
-        <button class="submit" type="submit">Send me the free tracker →</button>
-        <p class="fine">You'll be taken to Gumroad to download it free.</p>
-      </form>
+      <!-- MailerLite embedded form (account 2476370, form J3MzPf).
+           Renders via the MailerLite Universal script in <head>. Subscribers
+           land in the "Free Tracker Subscribers" group with double opt-in;
+           the welcome automation delivers the free tracker. -->
+      <div class="ml-embedded" data-form="J3MzPf"></div>
     </div>
   </section>
 
