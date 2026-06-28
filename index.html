@@ -169,14 +169,14 @@
   .brand .mark{width:32px;height:32px;flex:0 0 auto}
   .brand .g{color:var(--gold)}
   .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
-  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 13px;
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
     border-radius:9px;transition:color .15s ease,background .15s ease}
   .nav a:hover{color:var(--navy-ink);background:var(--surface)}
   /* scroll-spy active state: gold underline dot */
   .nav a[aria-current="true"]{color:var(--navy-ink)}
   .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
     background:var(--gold);border-radius:2px}
-  .nav .cta{background:var(--navy-ink);color:#fff;padding:10px 18px;margin-left:6px}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
   .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
   .nav .cta[aria-current="true"]::after{display:none}
   .navtoggle{display:none}
@@ -313,7 +313,7 @@
   .searchbox input::placeholder{color:#9aa8c4}
   .filters{display:flex;flex-wrap:wrap;gap:9px}
   .filters .pill{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--navy-ink);
-    background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:10px 17px;min-height:40px;cursor:pointer;
+    background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:12px 17px;min-height:44px;cursor:pointer;
     transition:transform .15s ease,border-color .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}
   .filters .pill:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:var(--sh-1)}
   .filters .pill[aria-pressed="true"]{background:var(--navy-ink);color:#fff;border-color:var(--navy-ink)}
@@ -424,6 +424,7 @@
     background:var(--tile);box-shadow:var(--sh-1)}
   .about .who .nm{font-weight:700;font-size:16px;color:var(--navy-ink)}
   .about .who .rl{font-size:13px;color:var(--muted)}
+  .about h3{font-size:var(--fs-h3);color:var(--navy-ink);margin-bottom:12px}
   .about p{color:var(--ink);font-size:15.5px;line-height:1.65}
   .about p + p{margin-top:14px}
   .about .links{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;font-weight:600}
@@ -621,7 +622,7 @@
         <h1 id="hero-h">Know exactly where your <span class="hl">money</span> goes.</h1>
         <p class="sub">Plug-and-play spreadsheet templates for small business and personal finance. Fill in the cells, read the dashboard — no formulas to build, no accounting to learn.</p>
         <div class="cta-row">
-          <a class="btn btn-gold" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get the free money tracker <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-gold gumroad-button" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get the free money tracker <span class="arr" aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="#templates">Browse all templates</a>
         </div>
         <div class="hero-meta">
@@ -687,7 +688,7 @@
         <p>Every template is pre-built with the formulas and a clean dashboard already wired up. Start with the free tracker, upgrade when you need more.</p>
       </div>
 
-      <p class="answer-capsule">SheetReady offers ten pre-built Excel and Google Sheets templates covering personal budgeting, small-business cash flow, invoicing, freelancer tax, inventory, and sales tracking. Every template has the formulas and a visual dashboard already wired up — open the file, type your numbers, and it works.</p>
+      <p class="answer-capsule">SheetReady offers ten pre-built Excel and Google Sheets templates covering personal budgeting, small-business cash flow, invoicing, expense tracking, freelancer tax, inventory, and sales tracking. Every template has the formulas and a visual dashboard already wired up — open the file, type your numbers, and it works.</p>
 
       <!-- Filter + search toolbar (progressive enhancement: all cards visible if JS off) -->
       <div class="toolbar reveal">
@@ -739,7 +740,7 @@
             <p class="desc">The easiest way to see where your money goes. Log income and expenses, and your balance and savings rate update on their own — the perfect first SheetReady template.</p>
             <div class="row">
               <span class="price free">FREE</span>
-              <a class="gumroad-button buy free" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get it free <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy free" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get it free <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -769,7 +770,7 @@
             <p class="desc">See cash in, cash out and real profit on one dashboard, so you always know where the business stands.</p>
             <div class="row">
               <span class="price">$19</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/khtvuw" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/khtvuw" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -795,7 +796,7 @@
             <p class="desc">Create clean invoices and track which ones are paid, due or overdue — never lose sight of who owes you.</p>
             <div class="row">
               <span class="price">$24</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/jwehbb" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/jwehbb" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -822,10 +823,10 @@
           <div class="body">
             <span class="cat">Freelance</span>
             <h3>Freelancer Income &amp; Tax Estimator</h3>
-            <p class="desc">Log freelance income and set aside the right amount for tax, so the bill never catches you off guard.</p>
+            <p class="desc">For freelancers and self-employed workers — log income and set aside the right amount for tax, so the bill never catches you off guard.</p>
             <div class="row">
               <span class="price">$24</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/mzwow" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/mzwow" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -851,7 +852,7 @@
             <p class="desc">Categorise every business expense and capture deductions all year, ready for tax time.</p>
             <div class="row">
               <span class="price">$19</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/ybnibo" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/ybnibo" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -881,7 +882,7 @@
             <p class="desc">Track stock levels and get a clear reorder signal before your bestsellers run out.</p>
             <div class="row">
               <span class="price">$24</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/hzcos" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/hzcos" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -907,7 +908,7 @@
             <p class="desc">Keep every lead and client in one place and move deals through a simple visual pipeline.</p>
             <div class="row">
               <span class="price">$24</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/syqunq" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/syqunq" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -937,7 +938,7 @@
             <p class="desc">Track sales, refunds and revenue across your digital products and see what actually sells.</p>
             <div class="row">
               <span class="price">$19</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/zxjrf" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/zxjrf" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -963,7 +964,7 @@
             <p class="desc">Project cash for the next 13 weeks so you can spot a shortfall before it becomes a problem.</p>
             <div class="row">
               <span class="price">$24</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/xfitf" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/xfitf" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -991,7 +992,7 @@
             <p class="desc">Plan income, bills and savings each month and see exactly where your money goes.</p>
             <div class="row">
               <span class="price">$19</span>
-              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/kbpell" rel="noopener">Get it <span class="arr" aria-hidden="true">→</span></a>
+              <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/kbpell" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">→</span></a>
             </div>
           </div>
         </article>
@@ -1052,6 +1053,7 @@
               <span class="rl">Finance background, spreadsheet builder</span>
             </span>
           </div>
+          <h3>Who builds SheetReady templates?</h3>
           <p>Hi, I'm Supun. I come from a finance background, and I build every SheetReady template by hand because I was tired of bloated apps and subscriptions for jobs a clean spreadsheet does better. I open each file in both Excel and Google Sheets and run real numbers through it before it goes on sale — if a formula or dashboard doesn't behave, it doesn't ship.</p>
           <p>The goal is simple: tools you actually own, that work the moment you open them, with no accounting knowledge required. Start with the free money tracker and see if my style fits how you think.</p>
           <div class="links">
@@ -1230,7 +1232,7 @@
 <!-- ============ MOBILE STICKY FREE-TRACKER BAR ============ -->
 <div class="mbar" id="mbar" role="region" aria-label="Get the free tracker" hidden>
   <span class="txt">Get the free Money Tracker</span>
-  <a href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get it free</a>
+  <a class="gumroad-button" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get it free</a>
   <button type="button" class="close" id="mbarClose" aria-label="Dismiss free tracker bar">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
   </button>
