@@ -18,7 +18,7 @@
 <meta name="description" content="Simple Excel & Google Sheets templates for small business & personal finance — money tracker, cash flow, invoicing, budgets & more. No accounting needed."/>
 
 <link rel="canonical" href="https://sheetready.vercel.app/"/>
-<meta name="theme-color" content="#1F3864"/>
+<meta name="theme-color" content="#102544"/>
 <meta name="robots" content="index,follow"/>
 
 <!-- Open Graph -->
@@ -38,7 +38,7 @@
 <meta name="twitter:description" content="Simple Excel & Google Sheets templates for small business & personal finance. Start free — no accounting needed."/>
 <meta name="twitter:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F3864'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='%23F2B705'%3ES%3C/text%3E%3C/svg%3E"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='7' y='9' width='18' height='14' rx='2' fill='none' stroke='%23F2B705' stroke-width='2'/%3E%3Cline x1='7' y1='14' x2='25' y2='14' stroke='%23F2B705' stroke-width='2'/%3E%3Cline x1='13' y1='14' x2='13' y2='23' stroke='%23F2B705' stroke-width='2'/%3E%3C/svg%3E"/>
 
 <!-- JSON-LD: Organization + ItemList of 10 Products -->
 <script type="application/ld+json">
@@ -78,239 +78,361 @@
 </script>
 
 <style>
-  /* ---- Critical CSS, inlined. All system fonts -> no render-blocking. ---- */
+  /* =========================================================
+     SheetReady — "Ledger Light" clean premium / SaaS theme.
+     System fonts only (zero render-blocking, zero CLS).
+     ========================================================= */
   :root{
-    --navy-deep:#14254a;
-    --navy:#1F3864;
-    --gold:#F2B705;
-    --blue:#2E75B6;
-    --green:#3f7d2e;
-    --ink:#1b2430;
-    --muted:#5b6675;
-    --muted-on-navy:#aebbd6;
-    --bg:#f5f7fb;
-    --line:#dbe2f0;
-    --card:#ffffff;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Impact,var(--sans);
-    --mono:ui-monospace,"Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
-    --shadow:0 1px 3px rgba(20,30,50,.06),0 8px 24px rgba(20,30,50,.06);
-    --shadow-lg:0 12px 40px rgba(20,30,50,.16);
-    --maxw:1140px;
+    /* refined navy + gold palette */
+    --navy:#1B3A6B;
+    --navy-deep:#102544;
+    --navy-ink:#0E1A33;
+    --gold:#E0A209;          /* AA-safe accent on white */
+    --gold-on-navy:#F2B705;  /* brighter gold for dark surfaces */
+    --gold-soft:#FFF6E1;
+    --emerald:#11825A;
+    --emerald-soft:#E6F4EE;
+
+    --ink:#0E1A33;
+    --muted:#566480;
+    --muted-on-navy:#A9BAD8;
+    --faint-on-navy:#7E92BC;
+
+    --bg:#FBFCFE;
+    --surface:#F2F5FB;
+    --card:#FFFFFF;
+    --line:#E6EAF2;
+    --line-soft:#EFF2F8;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+    --sh-1:0 1px 2px rgba(16,37,68,.04),0 4px 14px rgba(16,37,68,.05);
+    --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
+    --sh-pop:0 24px 60px rgba(16,37,68,.18);
+    --maxw:1180px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
-    margin:0;font-family:var(--sans);color:var(--ink);
-    background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;
-    /* faint spreadsheet column ruling, the signature device */
-    background-image:linear-gradient(90deg,rgba(31,56,100,.035) 1px,transparent 1px);
-    background-size:60px 100%;
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
-  a{color:var(--blue)}
-  img{max-width:100%}
-  h1,h2,h3{font-family:var(--cond);line-height:1.02;letter-spacing:-.01em}
-
+  a{color:var(--navy)}
+  img{max-width:100%;display:block}
+  h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  p{margin:0}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
   .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
-    padding:10px 16px;font-weight:700;border-radius:0 0 8px 0;z-index:200}
+    padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
   .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
 
-  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+  /* mono utility label */
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
+  .kicker.dark{color:var(--gold-on-navy)}
+  .kicker.dark::before{background:var(--gold-on-navy)}
 
-  /* cell-reference eyebrow */
-  .eyebrow{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:10px}
-  .eyebrow .ref{background:var(--gold);color:var(--navy-deep);padding:2px 7px;border-radius:4px;letter-spacing:.05em}
-  .eyebrow.on-navy{color:var(--gold)}
-
-  /* ---------- Header / nav ---------- */
-  .topbar{position:sticky;top:0;z-index:100;background:rgba(20,37,74,.96);
-    backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(255,255,255,.08)}
-  .topbar .wrap{display:flex;align-items:center;gap:24px;height:64px}
-  .brand{font-family:var(--cond);font-weight:700;font-size:26px;color:#fff;text-decoration:none;
-    letter-spacing:-.01em;white-space:nowrap}
+  /* ---------- Header ---------- */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(251,252,254,.82);
+    backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
+    color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+  .brand .mark{width:30px;height:30px;flex:0 0 auto}
   .brand .g{color:var(--gold)}
-  .nav{margin-left:auto;display:flex;align-items:center;gap:8px}
-  .nav a{color:#d8e0f1;text-decoration:none;font-size:14.5px;font-weight:600;padding:8px 12px;border-radius:8px}
-  .nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
-  .nav .ghost{border:1px solid rgba(242,183,5,.55);color:var(--gold)}
-  .nav .ghost:hover{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+  .nav a{color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 13px;
+    border-radius:9px;transition:color .15s ease,background .15s ease}
+  .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:10px 18px;margin-left:6px}
+  .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
   .navtoggle{display:none}
 
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;
+    font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn .arr{transition:transform .15s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 26px rgba(224,162,9,.30)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36)}
+  .btn-navy{background:var(--navy-ink);color:#fff;box-shadow:var(--sh-1)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
+  .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
+  .btn-ghost-d{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+  .btn-ghost-d:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.12)}
+
   /* ---------- Hero ---------- */
-  .hero{background:
-      radial-gradient(900px 500px at 88% -10%,rgba(46,117,182,.30),transparent 60%),
-      linear-gradient(180deg,var(--navy-deep),var(--navy));
-    color:#fff;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;
-    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-    background-size:60px 60px;mask-image:linear-gradient(180deg,#000,transparent 75%);
-    -webkit-mask-image:linear-gradient(180deg,#000,transparent 75%);pointer-events:none}
-  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;
-    gap:56px;align-items:center;padding-top:72px;padding-bottom:84px}
-  .hero h1{font-size:clamp(44px,6.4vw,80px);color:#fff;margin:18px 0 0;max-width:11ch}
-  .hero h1 em{font-style:normal;color:var(--gold)}
-  .hero .sub{margin:20px 0 0;font-size:clamp(16px,1.7vw,19px);color:var(--muted-on-navy);
-    max-width:46ch;line-height:1.6}
+  .hero{position:relative;overflow:hidden;
+    background:
+      radial-gradient(680px 380px at 78% 6%,rgba(224,162,9,.10),transparent 62%),
+      radial-gradient(720px 520px at 14% -8%,rgba(27,58,107,.07),transparent 60%);}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:60px;
+    align-items:center;padding-top:84px;padding-bottom:92px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:7px 14px 7px 11px;font-size:13px;font-weight:600;color:#3a4865;box-shadow:var(--sh-1)}
+  .badge .d{width:7px;height:7px;border-radius:50%;background:var(--emerald)}
+  .hero h1{font-size:clamp(38px,5.4vw,62px);color:var(--navy-ink);max-width:13ch}
+  .hero h1 .hl{position:relative;color:var(--navy);white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.34em;
+    background:linear-gradient(180deg,transparent 55%,rgba(224,162,9,.42) 55%);z-index:-1;border-radius:3px}
+  .hero .sub{margin-top:22px;font-size:clamp(16px,1.7vw,19px);color:var(--muted);max-width:48ch}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
-  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;text-decoration:none;
-    padding:15px 24px;border-radius:11px;font-size:16px;transition:transform .12s ease,box-shadow .12s ease;line-height:1}
-  .btn .arr{transition:transform .12s ease}
-  .btn:hover .arr{transform:translateX(3px)}
-  .btn-primary{background:var(--gold);color:var(--navy-deep);box-shadow:0 8px 24px rgba(242,183,5,.32)}
-  .btn-primary:hover{transform:translateY(-2px)}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.32)}
-  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
-  .hero-meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;
-    font-family:var(--mono);font-size:13px;color:var(--muted-on-navy)}
-  .hero-meta b{color:#fff;font-weight:700}
-  .hero-meta .dot{color:var(--gold)}
+  .hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:var(--muted)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:9px}
+  .hero-meta .ic{color:var(--emerald)}
+  .hero-meta b{color:var(--navy-ink);font-weight:700}
 
-  /* hero "live sheet" card — the signature, CSS-only so no LCP image */
-  .sheetcard{background:#192d57;border:1px solid rgba(255,255,255,.12);border-radius:18px;
-    box-shadow:0 30px 60px rgba(8,16,36,.5);overflow:hidden}
-  .sheetcard .sc-head{display:flex;align-items:center;gap:8px;padding:13px 18px;
-    background:#13254c;border-bottom:1px solid rgba(255,255,255,.08)}
-  .sheetcard .sc-head .tab{font-family:var(--mono);font-size:12px;color:var(--muted-on-navy)}
-  .sheetcard .sc-head .tab.active{color:#fff;font-weight:700}
-  .sheetcard .sc-dots{display:flex;gap:5px;margin-right:6px}
-  .sheetcard .sc-dots i{width:9px;height:9px;border-radius:50%;display:block;background:rgba(255,255,255,.22)}
-  .sc-body{padding:18px}
-  .sc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .sc-stat{background:#21376a;border-radius:10px;padding:12px 12px 11px;border-top:3px solid var(--blue)}
-  .sc-stat.g{border-top-color:var(--green)} .sc-stat.y{border-top-color:var(--gold)}
-  .sc-stat .v{font-family:var(--mono);font-weight:700;font-size:19px;color:#fff}
-  .sc-stat .l{font-size:11.5px;color:var(--muted-on-navy);margin-top:2px}
-  .sc-chart{margin-top:16px}
-  .sc-chart .ct{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-  .bars{display:flex;align-items:flex-end;gap:9px;height:84px;margin-top:10px}
-  .bars span{flex:1;border-radius:5px 5px 0 0;background:var(--blue)}
-  .bars span:nth-child(odd){background:var(--green)}
-  .sc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;
-    padding-top:13px;border-top:1px dashed rgba(255,255,255,.14);font-family:var(--mono);font-size:12px;color:var(--muted-on-navy)}
-  .sc-foot b{color:var(--green)}
+  /* ---------- Dashboard preview (signature element) ---------- */
+  .dash{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);
+    box-shadow:var(--sh-pop);overflow:hidden}
+  .dash-bar{display:flex;align-items:center;gap:9px;padding:13px 18px;border-bottom:1px solid var(--line-soft);
+    background:linear-gradient(180deg,#fff,#fafbfe)}
+  .dash-bar .dots{display:flex;gap:6px}
+  .dash-bar .dots i{width:10px;height:10px;border-radius:50%;background:#dde4f0;display:block}
+  .dash-bar .dots i:first-child{background:#f5c9c0}
+  .dash-bar .dots i:nth-child(2){background:#f6e3b6}
+  .dash-bar .dots i:nth-child(3){background:#cfe7cf}
+  .dash-bar .tag{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8a99b8;
+    background:var(--surface);padding:4px 10px;border-radius:7px}
+  .dash-body{padding:20px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r-md);padding:14px 14px 13px}
+  .kpi .lab{font-size:11.5px;color:var(--muted);font-weight:600}
+  .kpi .val{font-family:var(--mono);font-weight:600;font-size:21px;color:var(--navy-ink);
+    margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .kpi .chg{font-size:11px;font-weight:700;margin-top:3px;color:var(--emerald)}
+  .kpi.accent{background:var(--gold-soft);border-color:#f4e6bd}
+  .kpi.accent .val{color:#7a5a02}
+  .panel{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--r-md);padding:15px 16px 17px;background:#fff}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .panel-head .t{font-size:12.5px;font-weight:700;color:var(--navy-ink)}
+  .panel-head .leg{font-family:var(--mono);font-size:10.5px;color:#8a99b8}
+  .chart{display:flex;align-items:flex-end;gap:10px;height:96px}
+  .chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:100%}
+  .chart .col .b{border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#2f5b9e,var(--navy))}
+  .chart .col .b.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
+  .chart .x{font-family:var(--mono);font-size:9px;color:#9aa8c4;text-align:center;margin-top:6px}
+  .dash-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;
+    padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .dash-foot b{color:var(--emerald)}
+  /* floating mini-stat chip */
+  .float-chip{position:absolute;left:-18px;bottom:46px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;box-shadow:var(--sh-2);padding:12px 15px;display:flex;align-items:center;gap:11px}
+  .float-chip .ring{width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+    background:conic-gradient(var(--emerald) 0 76%,var(--emerald-soft) 76% 100%);
+    display:grid;place-items:center}
+  .float-chip .ring i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}
+  .float-chip .m .a{font-size:11px;color:var(--muted);font-weight:600}
+  .float-chip .m .b{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--navy-ink)}
+  .dash-host{position:relative}
 
-  /* trust strip */
-  .trust{background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.08)}
-  .trust .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;padding:16px 24px;
-    font-size:14px;color:#d8e0f1}
-  .trust span{display:inline-flex;align-items:center;gap:9px}
-  .trust .ck{color:var(--gold);font-weight:700}
+  /* ---------- Logo / proof strip ---------- */
+  .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+  .proof .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 40px;padding:20px 24px}
+  .proof span{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#3a4865;font-weight:600}
+  .proof .ic{color:var(--gold);flex:0 0 auto}
 
-  /* ---------- Section scaffolding ---------- */
-  section{padding:74px 0}
-  .sec-head{max-width:640px;margin-bottom:38px}
-  .sec-head h2{font-size:clamp(30px,3.6vw,44px);margin:14px 0 0;color:var(--navy)}
-  .sec-head p{margin:12px 0 0;color:var(--muted);font-size:17px}
+  /* ---------- Section scaffold ---------- */
+  .section{padding:84px 0}
+  .sec-head{max-width:620px;margin-bottom:44px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(28px,3.6vw,42px);color:var(--navy-ink);margin-top:14px}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
+
+  /* ---------- Topics chips ---------- */
+  .topics{padding:56px 0 8px;text-align:center}
+  .topics .h{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;margin-bottom:20px}
+  .chips{list-style:none;margin:0 auto;padding:0;max-width:940px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chips a{display:inline-block;text-decoration:none;font-size:14px;font-weight:600;color:var(--navy-ink);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 17px;
+    transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease,color .15s ease}
+  .chips a:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--navy);box-shadow:var(--sh-1)}
 
   /* ---------- Templates grid ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
-    display:flex;flex-direction:column;box-shadow:var(--shadow);
-    transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease}
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#c6d2ec}
-  .card .thumb{position:relative;display:block;background:#eef2fa;aspect-ratio:1000/1500;overflow:hidden}
-  .card .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
-  .card .cref{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.1em;text-transform:uppercase}
-  .card h3{font-family:var(--sans);font-weight:700;font-size:17px;letter-spacing:0;line-height:1.25;margin:7px 0 0;color:var(--ink)}
-  .card .desc{margin:8px 0 0;font-size:14px;color:var(--muted);flex:1}
-  .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
-  .price{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--navy)}
-  .price.free{color:var(--green)}
-  .pill{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-    padding:3px 8px;border-radius:999px;background:rgba(63,125,46,.12);color:var(--green)}
-  .buy{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:700;font-size:14px;
-    padding:10px 16px;border-radius:10px;background:var(--navy);color:#fff;white-space:nowrap;
-    transition:background .12s ease,transform .12s ease}
-  .buy:hover{background:var(--navy-deep);transform:translateY(-1px)}
-  .buy .arr{transition:transform .12s ease}
-  .buy:hover .arr{transform:translateX(3px)}
-  .buy.free{background:var(--green)}
-  .buy.free:hover{background:#356a26}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:var(--sh-1);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--sh-2);border-color:#d3def1}
+
+  /* mini dashboard preview that tops every card */
+  .preview{position:relative;padding:18px;background:
+      radial-gradient(420px 200px at 80% -20%,rgba(27,58,107,.06),transparent 70%),
+      linear-gradient(170deg,#f6f8fd,#eef2fb);border-bottom:1px solid var(--line-soft)}
+  .preview .mini{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:0 8px 22px rgba(16,37,68,.07);overflow:hidden}
+  .preview .mtop{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line-soft)}
+  .preview .mtop i{width:7px;height:7px;border-radius:50%;background:#dde4f0;display:block}
+  .preview .mtop .nm{margin-left:6px;font-family:var(--mono);font-size:10px;color:#8a99b8}
+  .preview .mbody{padding:13px}
+  .pv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:11px}
+  .pv-stats .s{background:var(--surface);border-radius:8px;padding:8px 8px 7px}
+  .pv-stats .s .l{font-size:9px;color:var(--muted);font-weight:600}
+  .pv-stats .s .v{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--navy-ink);
+    margin-top:2px;font-variant-numeric:tabular-nums}
+  .pv-stats .s.gold{background:var(--gold-soft)}
+  .pv-stats .s.gold .v{color:#7a5a02}
+  .pv-stats .s.em{background:var(--emerald-soft)}
+  .pv-stats .s.em .v{color:var(--emerald)}
+  /* bar variant */
+  .pv-bars{display:flex;align-items:flex-end;gap:6px;height:54px}
+  .pv-bars span{flex:1;border-radius:3px 3px 1px 1px;background:linear-gradient(180deg,#3a66a8,var(--navy));opacity:.92}
+  .pv-bars span.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
+  /* line variant */
+  .pv-line{height:54px;width:100%;display:block}
+  /* rows variant */
+  .pv-rows{display:flex;flex-direction:column;gap:7px}
+  .pv-rows .r{display:flex;align-items:center;gap:9px}
+  .pv-rows .r .bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--navy),#5e83bf)}
+  .pv-rows .r .bar.g{background:linear-gradient(90deg,var(--gold),#f3cd5d)}
+  .pv-rows .r .bar.e{background:linear-gradient(90deg,var(--emerald),#4fb389)}
+  .pv-rows .r .tk{font-family:var(--mono);font-size:9px;color:#9aa8c4;width:34px;text-align:right;flex:0 0 auto}
+  /* donut variant */
+  .pv-donut{display:flex;align-items:center;gap:14px}
+  .pv-donut .ring{width:62px;height:62px;border-radius:50%;flex:0 0 auto}
+  .pv-donut .leg{display:flex;flex-direction:column;gap:5px}
+  .pv-donut .leg span{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted);font-weight:600}
+  .pv-donut .leg .sw{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+  .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+  .card h3{font-size:18px;line-height:1.25;letter-spacing:-.01em;margin-top:8px;color:var(--navy-ink)}
+  .card .desc{margin-top:9px;font-size:14px;color:var(--muted);flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;
+    padding-top:16px;border-top:1px solid var(--line-soft)}
+  .price{font-family:var(--mono);font-weight:700;font-size:19px;color:var(--navy-ink);font-variant-numeric:tabular-nums}
+  .price.free{color:var(--emerald)}
+  /* .gumroad-button beats Gumroad's injected stylesheet via the shared selector */
+  a.gumroad-button.buy{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:700;font-size:14px;
+    padding:11px 17px;border-radius:11px;background:var(--navy-ink);color:#fff;white-space:nowrap;line-height:1.2;
+    transition:background .15s ease,transform .15s ease,box-shadow .15s ease}
+  a.gumroad-button.buy:hover{background:var(--navy);color:#fff;transform:translateY(-1px);box-shadow:var(--sh-1)}
+  a.gumroad-button.buy .arr{transition:transform .15s ease}
+  a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
+  a.gumroad-button.buy.free{background:var(--emerald);color:#fff}
+  a.gumroad-button.buy.free:hover{background:#0c6e4b;color:#fff}
 
   /* featured FREE card spans full width */
-  .card.featured{grid-column:1 / -1;flex-direction:row;border:1.5px solid var(--gold);
-    box-shadow:0 12px 40px rgba(242,183,5,.14)}
-  .card.featured .thumb{flex:0 0 280px;aspect-ratio:auto}
-  .card.featured .thumb img{height:100%;aspect-ratio:auto}
-  .card.featured .body{padding:30px 34px;justify-content:center}
-  .card.featured h3{font-family:var(--cond);font-weight:700;font-size:clamp(26px,3vw,38px);letter-spacing:-.01em;color:var(--navy)}
-  .card.featured .desc{font-size:16px;max-width:52ch;flex:0}
-  .card.featured .row{margin-top:22px;justify-content:flex-start;gap:18px}
-  .card.featured .price.free{font-size:24px}
-  .card.featured .buy{padding:14px 24px;font-size:16px}
-  .feat-tag{align-self:flex-start;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--navy-deep);background:var(--gold);padding:4px 10px;border-radius:6px;margin-bottom:6px}
+  .card.featured{grid-column:1 / -1;flex-direction:row;border:1.5px solid #f0d99a;
+    box-shadow:0 18px 50px rgba(224,162,9,.14);background:
+      linear-gradient(120deg,#fff 56%,#fffaef 100%)}
+  .card.featured .preview{flex:0 0 360px;border-bottom:0;border-right:1px solid var(--line-soft);
+    display:flex;align-items:center}
+  .card.featured .preview .mini{width:100%}
+  .card.featured .body{padding:36px 40px;justify-content:center}
+  .card.featured .tagrow{display:flex;gap:8px;margin-bottom:10px}
+  .feat-tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy-deep);background:var(--gold);padding:5px 11px;border-radius:7px}
+  .feat-tag.alt{background:var(--emerald-soft);color:var(--emerald)}
+  .card.featured h3{font-size:clamp(24px,3vw,33px);letter-spacing:-.02em}
+  .card.featured .desc{font-size:16px;max-width:50ch;flex:0;margin-top:12px}
+  .card.featured .row{margin-top:24px;justify-content:flex-start;gap:20px;border-top:0;padding-top:0}
+  .card.featured .price.free{font-size:25px}
+  .card.featured .buy{padding:15px 26px;font-size:16px}
+
+  /* ---------- "How it works" steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;box-shadow:var(--sh-1)}
+  .step .n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold);
+    width:42px;height:42px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:18px}
+  .step h3{font-size:18px;color:var(--navy-ink)}
+  .step p{margin-top:9px;color:var(--muted);font-size:15px}
 
   /* ---------- Email capture ---------- */
-  .capture{background:linear-gradient(180deg,var(--navy),var(--navy-deep));color:#fff;border-radius:0}
-  .capture .inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;
-    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-  .capture h2{font-size:clamp(28px,3.4vw,42px);color:#fff;margin:14px 0 0;max-width:15ch}
-  .capture h2 em{font-style:normal;color:var(--gold)}
-  .capture p{margin:14px 0 0;color:var(--muted-on-navy);max-width:42ch;font-size:16px}
-  .capture .note{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--muted-on-navy)}
-  /* styled placeholder form — visually ready for the MailerLite swap */
-  .signup{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
-    border-radius:16px;padding:26px}
-  .signup .fld{margin-bottom:14px}
-  .signup label{display:block;font-size:13px;font-weight:600;color:#e4ebf8;margin-bottom:6px}
-  .signup input{width:100%;padding:13px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.95);color:var(--ink);font-size:15px;font-family:var(--sans)}
-  .signup input::placeholder{color:#8893a6}
-  .signup .submit{width:100%;border:0;cursor:pointer;background:var(--gold);color:var(--navy-deep);
-    font-weight:700;font-size:16px;padding:15px;border-radius:11px;font-family:var(--sans);
-    transition:transform .12s ease}
-  .signup .submit:hover{transform:translateY(-2px)}
-  .signup .fine{margin-top:12px;font-size:12px;color:var(--muted-on-navy);text-align:center}
+  .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.16),transparent 60%),
+      linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;position:relative;overflow:hidden}
+  .capture::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:46px 46px;mask-image:radial-gradient(80% 80% at 20% 10%,#000,transparent 75%);
+    -webkit-mask-image:radial-gradient(80% 80% at 20% 10%,#000,transparent 75%);pointer-events:none}
+  .capture .inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:78px 24px;
+    display:grid;grid-template-columns:1.06fr .94fr;gap:52px;align-items:center}
+  .capture h2{font-size:clamp(28px,3.6vw,42px);color:#fff;max-width:15ch;margin-top:14px}
+  .capture h2 em{font-style:normal;color:var(--gold-on-navy)}
+  .capture p{margin-top:16px;color:var(--muted-on-navy);max-width:44ch;font-size:16.5px}
+  .capture .bullets{margin-top:22px;display:flex;flex-direction:column;gap:11px}
+  .capture .bullets li{list-style:none;display:flex;align-items:center;gap:11px;color:#dbe4f6;font-size:15px}
+  .capture .bullets .ic{color:var(--gold-on-navy);flex:0 0 auto}
+  .signup-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--r-lg);padding:24px;box-shadow:0 24px 60px rgba(8,16,36,.4);backdrop-filter:blur(4px)}
+  .signup-card .sc-h{font-weight:700;font-size:18px;color:#fff;letter-spacing:-.01em}
+  .signup-card .sc-p{font-size:13.5px;color:var(--muted-on-navy);margin-top:6px;margin-bottom:18px}
+  /* keep MailerLite embed readable on the dark card */
+  .signup-card .ml-embedded{min-height:50px}
+  .signup-card .ml-embedded input[type=email],
+  .signup-card .ml-embedded input[type=text]{font-family:var(--sans)}
+  .sc-fine{margin-top:14px;font-size:12px;color:var(--faint-on-navy);text-align:center}
 
   /* ---------- FAQ ---------- */
-  .faq{max-width:820px;margin:0 auto}
-  .faq .qa{border-bottom:1px solid var(--line);padding:24px 0}
-  .faq .qa:first-of-type{border-top:1px solid var(--line)}
-  .faq h3{font-family:var(--sans);font-weight:700;font-size:19px;color:var(--navy);letter-spacing:0;line-height:1.3}
-  .faq p{margin:10px 0 0;color:var(--muted);font-size:15.5px}
+  .faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:var(--sh-1);overflow:hidden;transition:border-color .15s ease}
+  .faq details[open]{border-color:#cfdaef}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;font-weight:700;font-size:17px;color:var(--navy-ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--surface);
+    display:grid;place-items:center;color:var(--navy);transition:transform .2s ease,background .15s ease}
+  .faq details[open] summary .pm{transform:rotate(45deg);background:var(--gold-soft);color:var(--gold)}
+  .faq .ans{padding:0 22px 22px;color:var(--muted);font-size:15.5px}
 
   /* ---------- Footer ---------- */
-  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:48px 0 40px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
-  footer .fbrand{font-family:var(--cond);font-weight:700;font-size:24px;color:#fff}
-  footer .fbrand .g{color:var(--gold)}
-  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px}
-  footer a{color:var(--gold);text-decoration:none}
-  footer a:hover{text-decoration:underline}
-  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:8px;
-    font-size:13px;color:#8595b8;font-family:var(--mono)}
+  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
+  footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+  footer .fbrand .g{color:var(--gold-on-navy)}
+  footer .fbrand .mark{width:30px;height:30px}
+  footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none}
+  footer .flinks a:hover{color:var(--gold-on-navy)}
+  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
+    font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
 
   /* ---------- Responsive ---------- */
-  @media (max-width:900px){
-    .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:52px;padding-bottom:56px}
-    .capture .inner{grid-template-columns:1fr;gap:30px}
-    .grid{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:960px){
+    .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:56px;padding-bottom:60px}
+    .float-chip{left:auto;right:14px;bottom:-14px}
+    .capture .inner{grid-template-columns:1fr;gap:32px}
+    .grid,.steps{grid-template-columns:repeat(2,1fr)}
+    .card.featured{flex-direction:column}
+    .card.featured .preview{flex:0 0 auto;border-right:0;border-bottom:1px solid var(--line-soft)}
+    .section{padding:64px 0}
   }
   @media (max-width:760px){
     .nav{display:none}
-    .nav.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
-      align-items:stretch;gap:4px;background:var(--navy-deep);padding:12px 16px 16px;
-      border-bottom:1px solid rgba(255,255,255,.1)}
-    .nav.open a{padding:12px}
+    .nav.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:4px;background:#fff;padding:14px 18px 18px;border-bottom:1px solid var(--line);box-shadow:var(--sh-2)}
+    .nav.open a{padding:13px}
+    .nav.open .cta{margin-left:0;text-align:center}
     .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
-      width:42px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
-      background:transparent;color:#fff;cursor:pointer;font-size:20px}
-    .card.featured{flex-direction:column}
-    .card.featured .thumb{flex:0 0 auto;width:100%;max-height:240px}
-    .card.featured .thumb img{width:100%;height:auto;object-fit:cover}
-    section{padding:54px 0}
+      width:44px;height:44px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+    .navtoggle svg{width:22px;height:22px}
   }
-  @media (max-width:540px){
-    .grid{grid-template-columns:1fr}
+  @media (max-width:560px){
+    .grid,.steps{grid-template-columns:1fr}
+    .btn{width:100%}
+    .cta-row .btn{flex:1}
   }
   @media (prefers-reduced-motion:reduce){
-    *{scroll-behavior:auto !important;transition:none !important}
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    .reveal{opacity:1;transform:none}
   }
 </style>
 <!-- MailerLite Universal -->
@@ -329,13 +451,18 @@
 <!-- ============ HEADER / NAV ============ -->
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#top">Sheet<span class="g">Ready</span></a>
-    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">☰</button>
+    <a class="brand" href="#top" aria-label="SheetReady home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="8" fill="#102544"/><rect x="7" y="9" width="18" height="14" rx="2" fill="none" stroke="#F2B705" stroke-width="2"/><line x1="7" y1="14" x2="25" y2="14" stroke="#F2B705" stroke-width="2"/><line x1="13" y1="14" x2="13" y2="23" stroke="#F2B705" stroke-width="2"/></svg>
+      <span>Sheet<span class="g">Ready</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
     <nav class="nav" id="primary-nav" aria-label="Primary">
       <a href="#templates">Templates</a>
-      <a href="#free">Free tracker</a>
+      <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
-      <a class="ghost" href="https://supunsandeep.gumroad.com" rel="noopener">Browse on Gumroad</a>
+      <a class="cta" href="#free">Get free tracker</a>
     </nav>
   </div>
 </header>
@@ -346,71 +473,72 @@
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div>
-        <span class="eyebrow on-navy"><span class="ref">A1</span> Excel &amp; Google Sheets</span>
-        <h1 id="hero-h">Stop guessing where your <em>money</em> goes.</h1>
+        <div class="badge-row">
+          <span class="badge"><span class="d" aria-hidden="true"></span>10 finance templates</span>
+          <span class="badge">Excel &amp; Google Sheets</span>
+        </div>
+        <h1 id="hero-h">Know exactly where your <span class="hl">money</span> goes.</h1>
         <p class="sub">Plug-and-play spreadsheet templates for small business and personal finance. Fill in the cells, read the dashboard — no formulas to build, no accounting to learn.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get the FREE Money Tracker <span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="#templates">See all templates</a>
+          <a class="btn btn-gold" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get the free money tracker <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#templates">Browse all templates</a>
         </div>
         <div class="hero-meta">
-          <span><b>10</b> templates</span>
-          <span class="dot" aria-hidden="true">•</span>
-          <span>Works in <b>Excel</b> &amp; <b>Google Sheets</b></span>
-          <span class="dot" aria-hidden="true">•</span>
-          <span>Instant download</span>
+          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Pay once, no subscription</span>
+          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Instant download</span>
+          <span><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Beginner-friendly</span>
         </div>
       </div>
 
-      <!-- Signature: a CSS "live sheet" card (decorative; numbers are illustrative) -->
-      <div class="sheetcard" role="img" aria-label="Illustration of the money tracker dashboard showing income, expenses and savings">
-        <div class="sc-head">
-          <span class="sc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="tab active">Dashboard</span>
-          <span class="tab">Income</span>
-          <span class="tab">Expenses</span>
-        </div>
-        <div class="sc-body">
-          <div class="sc-stats">
-            <div class="sc-stat g"><div class="v">$3,200</div><div class="l">Income</div></div>
-            <div class="sc-stat"><div class="v">$2,100</div><div class="l">Expenses</div></div>
-            <div class="sc-stat y"><div class="v">34%</div><div class="l">Saved</div></div>
+      <!-- Signature: a CSS dashboard preview (decorative; numbers illustrative) -->
+      <div class="dash-host">
+        <div class="dash" role="img" aria-label="Illustration of the money tracker dashboard showing income, expenses and savings rate">
+          <div class="dash-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="tag" aria-hidden="true">MoneyTracker.xlsx</span>
           </div>
-          <div class="sc-chart">
-            <div class="ct">Monthly trend</div>
-            <div class="bars" aria-hidden="true">
-              <span style="height:52%"></span><span style="height:70%"></span>
-              <span style="height:46%"></span><span style="height:86%"></span>
-              <span style="height:62%"></span><span style="height:96%"></span>
+          <div class="dash-body">
+            <div class="kpis">
+              <div class="kpi"><div class="lab">Income</div><div class="val">$8,420</div><div class="chg">+12%</div></div>
+              <div class="kpi"><div class="lab">Expenses</div><div class="val">$5,180</div><div class="chg" style="color:var(--muted)">−4%</div></div>
+              <div class="kpi accent"><div class="lab">Saved</div><div class="val">38%</div><div class="chg" style="color:#9a7307">on track</div></div>
             </div>
+            <div class="panel">
+              <div class="panel-head"><span class="t">Cash flow · last 6 months</span><span class="leg" aria-hidden="true">in / out</span></div>
+              <div class="chart" aria-hidden="true">
+                <div class="col"><span class="b" style="height:54%"></span><span class="b g" style="height:30%"></span></div>
+                <div class="col"><span class="b" style="height:62%"></span><span class="b g" style="height:34%"></span></div>
+                <div class="col"><span class="b" style="height:48%"></span><span class="b g" style="height:40%"></span></div>
+                <div class="col"><span class="b" style="height:74%"></span><span class="b g" style="height:36%"></span></div>
+                <div class="col"><span class="b" style="height:66%"></span><span class="b g" style="height:30%"></span></div>
+                <div class="col"><span class="b" style="height:88%"></span><span class="b g" style="height:42%"></span></div>
+              </div>
+            </div>
+            <div class="dash-foot"><span aria-hidden="true">=Income − Expenses</span><span><b>+$3,240</b> this month</span></div>
           </div>
-          <div class="sc-foot"><span>=SUM(Income−Expenses)</span><span><b>+$1,100</b> this month</span></div>
+        </div>
+        <div class="float-chip" aria-hidden="true">
+          <span class="ring"><i></i></span>
+          <span class="m"><span class="a">Savings goal</span><span class="b">76% complete</span></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- trust strip -->
-  <div class="trust">
+  <!-- proof strip -->
+  <div class="proof">
     <div class="wrap">
-      <span><span class="ck" aria-hidden="true">✓</span> No subscription — pay once</span>
-      <span><span class="ck" aria-hidden="true">✓</span> Beginner-friendly, pre-built</span>
-      <span><span class="ck" aria-hidden="true">✓</span> Delivered instantly via Gumroad</span>
+      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg> Secure Gumroad checkout</span>
+      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg> Works in Excel &amp; Google Sheets</span>
+      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg> 30-day refund policy</span>
+      <span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> Download in seconds</span>
     </div>
   </div>
 
-  <!-- ============ TOPICS STRIP (scannability + SEO topic signals) ============ -->
-  <style>
-    .topics{padding:42px 20px 6px;text-align:center}
-    .topics .topics-h{font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 18px}
-    .chips{list-style:none;margin:0 auto;padding:0;max-width:920px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-    .chips a{display:inline-block;text-decoration:none;font-size:14px;font-weight:600;color:var(--navy);background:#fff;border:1px solid #e3e8f1;border-radius:999px;padding:8px 16px;transition:transform .12s,border-color .12s,box-shadow .12s}
-    .chips a:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 4px 12px rgba(20,30,50,.08)}
-    .chips a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-  </style>
+  <!-- ============ TOPICS STRIP ============ -->
   <section class="topics" aria-label="What our spreadsheet templates help with">
     <div class="wrap">
-      <h2 class="topics-h">Spreadsheet templates for every money job</h2>
+      <p class="h">Spreadsheet templates for every money job</p>
       <ul class="chips">
         <li><a href="#templates">Budgeting</a></li>
         <li><a href="#templates">Cash flow</a></li>
@@ -427,10 +555,10 @@
   </section>
 
   <!-- ============ TEMPLATES GRID ============ -->
-  <section id="templates" aria-labelledby="tpl-h">
+  <section id="templates" class="section" aria-labelledby="tpl-h">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow"><span class="ref">B2</span> The templates</span>
+      <div class="sec-head reveal">
+        <span class="kicker">The templates</span>
         <h2 id="tpl-h">Ten spreadsheets that do the thinking for you</h2>
         <p>Every template is pre-built with the formulas and a clean dashboard already wired up. Start with the free tracker, upgrade when you need more.</p>
       </div>
@@ -438,15 +566,31 @@
       <div class="grid">
 
         <!-- FEATURED FREE card -->
-        <article class="card featured">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener" aria-label="Get the free Simple Monthly Money Tracker">
-            <img src="webpins/pin-simple-money-tracker.png" width="1000" height="1500"
-                 alt="Simple Monthly Money Tracker — free Excel and Google Sheets template" fetchpriority="high" decoding="async"/>
-          </a>
+        <article class="card featured reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Money Tracker</span></div>
+              <div class="mbody">
+                <div class="pv-stats">
+                  <div class="s em"><div class="l">Income</div><div class="v">$3,200</div></div>
+                  <div class="s"><div class="l">Spent</div><div class="v">$2,100</div></div>
+                  <div class="s gold"><div class="l">Saved</div><div class="v">34%</div></div>
+                </div>
+                <div class="pv-bars">
+                  <span style="height:52%"></span><span class="g" style="height:70%"></span>
+                  <span style="height:46%"></span><span class="g" style="height:86%"></span>
+                  <span style="height:62%"></span><span class="g" style="height:96%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="feat-tag">Start here · free</span>
+            <div class="tagrow">
+              <span class="feat-tag">Start here</span>
+              <span class="feat-tag alt">Free forever</span>
+            </div>
             <h3>Simple Monthly Money Tracker</h3>
-            <p class="desc">The easiest way to see where your money goes. Log income and expenses, and your balance and savings rate update on their own. The perfect first SheetReady template.</p>
+            <p class="desc">The easiest way to see where your money goes. Log income and expenses, and your balance and savings rate update on their own — the perfect first SheetReady template.</p>
             <div class="row">
               <span class="price free">FREE</span>
               <a class="gumroad-button buy free" href="https://supunsandeep.gumroad.com/l/jvtmti" rel="noopener">Get it free <span class="arr" aria-hidden="true">→</span></a>
@@ -455,13 +599,26 @@
         </article>
 
         <!-- 2 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/khtvuw" rel="noopener" aria-label="View Small Business Cash Flow & Profit Dashboard on Gumroad">
-            <img src="webpins/pin-small-business-dashboard.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Small Business Cash Flow & Profit Dashboard spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Cash Flow</span></div>
+              <div class="mbody">
+                <div class="pv-stats">
+                  <div class="s em"><div class="l">Cash in</div><div class="v">$42k</div></div>
+                  <div class="s"><div class="l">Cash out</div><div class="v">$31k</div></div>
+                  <div class="s gold"><div class="l">Profit</div><div class="v">$11k</div></div>
+                </div>
+                <div class="pv-bars">
+                  <span style="height:60%"></span><span class="g" style="height:72%"></span>
+                  <span style="height:54%"></span><span class="g" style="height:84%"></span>
+                  <span style="height:70%"></span><span class="g" style="height:92%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C3</span>
+            <span class="cat">Business</span>
             <h3>Small Business Cash Flow &amp; Profit Dashboard</h3>
             <p class="desc">See cash in, cash out and real profit on one dashboard, so you always know where the business stands.</p>
             <div class="row">
@@ -472,13 +629,22 @@
         </article>
 
         <!-- 3 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/jwehbb" rel="noopener" aria-label="View Invoice Tracker & Generator on Gumroad">
-            <img src="webpins/pin-invoice-tracker.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Invoice Tracker & Generator spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Invoices</span></div>
+              <div class="mbody">
+                <div class="pv-rows">
+                  <div class="r"><span class="bar e" style="width:78%"></span><span class="tk">Paid</span></div>
+                  <div class="r"><span class="bar g" style="width:52%"></span><span class="tk">Due</span></div>
+                  <div class="r"><span class="bar" style="width:34%"></span><span class="tk">Sent</span></div>
+                  <div class="r"><span class="bar" style="width:20%;background:linear-gradient(90deg,#c0392b,#e07b6e)"></span><span class="tk">Late</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C4</span>
+            <span class="cat">Business</span>
             <h3>Invoice Tracker &amp; Generator</h3>
             <p class="desc">Create clean invoices and track which ones are paid, due or overdue — never lose sight of who owes you.</p>
             <div class="row">
@@ -489,13 +655,26 @@
         </article>
 
         <!-- 4 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/mzwow" rel="noopener" aria-label="View Freelancer Income & Tax Estimator on Gumroad">
-            <img src="webpins/pin-freelancer-tax.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Freelancer Income & Tax Estimator spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Freelance Tax</span></div>
+              <div class="mbody">
+                <div class="pv-stats">
+                  <div class="s em"><div class="l">Earned</div><div class="v">$5,600</div></div>
+                  <div class="s gold"><div class="l">Set aside</div><div class="v">$1,400</div></div>
+                  <div class="s"><div class="l">Tax rate</div><div class="v">25%</div></div>
+                </div>
+                <div class="pv-bars">
+                  <span style="height:40%"></span><span style="height:58%"></span>
+                  <span style="height:50%"></span><span style="height:72%"></span>
+                  <span style="height:64%"></span><span class="g" style="height:90%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C5</span>
+            <span class="cat">Freelance</span>
             <h3>Freelancer Income &amp; Tax Estimator</h3>
             <p class="desc">Log freelance income and set aside the right amount for tax, so the bill never catches you off guard.</p>
             <div class="row">
@@ -506,13 +685,22 @@
         </article>
 
         <!-- 5 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/ybnibo" rel="noopener" aria-label="View Business Expense & Tax Deduction Tracker on Gumroad">
-            <img src="webpins/pin-expense-deduction.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Business Expense & Tax Deduction Tracker spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Expenses</span></div>
+              <div class="mbody">
+                <div class="pv-rows">
+                  <div class="r"><span class="bar" style="width:82%"></span><span class="tk">Office</span></div>
+                  <div class="r"><span class="bar g" style="width:60%"></span><span class="tk">Travel</span></div>
+                  <div class="r"><span class="bar e" style="width:44%"></span><span class="tk">Tools</span></div>
+                  <div class="r"><span class="bar" style="width:28%"></span><span class="tk">Meals</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C6</span>
+            <span class="cat">Business</span>
             <h3>Business Expense &amp; Tax Deduction Tracker</h3>
             <p class="desc">Categorise every business expense and capture deductions all year, ready for tax time.</p>
             <div class="row">
@@ -523,13 +711,26 @@
         </article>
 
         <!-- 6 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/hzcos" rel="noopener" aria-label="View Inventory & Reorder Manager on Gumroad">
-            <img src="webpins/pin-inventory-reorder.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Inventory & Reorder Manager spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Inventory</span></div>
+              <div class="mbody">
+                <div class="pv-stats">
+                  <div class="s"><div class="l">SKUs</div><div class="v">148</div></div>
+                  <div class="s gold"><div class="l">Reorder</div><div class="v">12</div></div>
+                  <div class="s em"><div class="l">In stock</div><div class="v">94%</div></div>
+                </div>
+                <div class="pv-bars">
+                  <span style="height:80%"></span><span style="height:66%"></span>
+                  <span class="g" style="height:24%"></span><span style="height:72%"></span>
+                  <span class="g" style="height:30%"></span><span style="height:58%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C7</span>
+            <span class="cat">Business</span>
             <h3>Inventory &amp; Reorder Manager</h3>
             <p class="desc">Track stock levels and get a clear reorder signal before your bestsellers run out.</p>
             <div class="row">
@@ -540,13 +741,22 @@
         </article>
 
         <!-- 7 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/syqunq" rel="noopener" aria-label="View Client CRM & Sales Pipeline on Gumroad">
-            <img src="webpins/pin-client-crm.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Client CRM & Sales Pipeline spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Pipeline</span></div>
+              <div class="mbody">
+                <div class="pv-rows">
+                  <div class="r"><span class="bar" style="width:90%"></span><span class="tk">Leads</span></div>
+                  <div class="r"><span class="bar" style="width:64%"></span><span class="tk">Talking</span></div>
+                  <div class="r"><span class="bar g" style="width:42%"></span><span class="tk">Quoted</span></div>
+                  <div class="r"><span class="bar e" style="width:26%"></span><span class="tk">Won</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C8</span>
+            <span class="cat">Sales</span>
             <h3>Client CRM &amp; Sales Pipeline</h3>
             <p class="desc">Keep every lead and client in one place and move deals through a simple visual pipeline.</p>
             <div class="row">
@@ -557,13 +767,26 @@
         </article>
 
         <!-- 8 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/zxjrf" rel="noopener" aria-label="View Digital Product Sales Tracker on Gumroad">
-            <img src="webpins/pin-digital-sales.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Digital Product Sales Tracker spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Sales</span></div>
+              <div class="mbody">
+                <div class="pv-stats">
+                  <div class="s em"><div class="l">Revenue</div><div class="v">$9.2k</div></div>
+                  <div class="s"><div class="l">Orders</div><div class="v">412</div></div>
+                  <div class="s gold"><div class="l">Refunds</div><div class="v">2.1%</div></div>
+                </div>
+                <div class="pv-bars">
+                  <span style="height:44%"></span><span style="height:56%"></span>
+                  <span class="g" style="height:68%"></span><span style="height:60%"></span>
+                  <span class="g" style="height:82%"></span><span class="g" style="height:96%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C9</span>
+            <span class="cat">Creators</span>
             <h3>Digital Product Sales Tracker</h3>
             <p class="desc">Track sales, refunds and revenue across your digital products and see what actually sells.</p>
             <div class="row">
@@ -574,13 +797,22 @@
         </article>
 
         <!-- 9 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/xfitf" rel="noopener" aria-label="View 13-Week Cash Flow Forecast on Gumroad">
-            <img src="webpins/pin-cashflow-13week.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="13-Week Cash Flow Forecast spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">13-Week Forecast</span></div>
+              <div class="mbody">
+                <svg class="pv-line" viewBox="0 0 200 54" preserveAspectRatio="none" role="presentation">
+                  <defs><linearGradient id="lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(27,58,107,.18)"/><stop offset="1" stop-color="rgba(27,58,107,0)"/></linearGradient></defs>
+                  <path d="M0,40 L26,34 L52,38 L78,24 L104,30 L130,16 L156,22 L182,10 L200,14 L200,54 L0,54 Z" fill="url(#lf)"/>
+                  <polyline points="0,40 26,34 52,38 78,24 104,30 130,16 156,22 182,10 200,14" fill="none" stroke="#1B3A6B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="182" cy="10" r="3.4" fill="#E0A209"/>
+                </svg>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C10</span>
+            <span class="cat">Business</span>
             <h3>13-Week Cash Flow Forecast</h3>
             <p class="desc">Project cash for the next 13 weeks so you can spot a shortfall before it becomes a problem.</p>
             <div class="row">
@@ -591,13 +823,24 @@
         </article>
 
         <!-- 10 -->
-        <article class="card">
-          <a class="thumb" href="https://supunsandeep.gumroad.com/l/kbpell" rel="noopener" aria-label="View Monthly Personal Budget Planner on Gumroad">
-            <img src="webpins/pin-budget-planner.png" width="1000" height="1500" loading="lazy" decoding="async"
-                 alt="Monthly Personal Budget Planner spreadsheet template"/>
-          </a>
+        <article class="card reveal">
+          <div class="preview" aria-hidden="true">
+            <div class="mini">
+              <div class="mtop"><i></i><i></i><i></i><span class="nm">Budget</span></div>
+              <div class="mbody">
+                <div class="pv-donut">
+                  <span class="ring" style="background:conic-gradient(var(--navy) 0 46%,var(--gold) 46% 72%,var(--emerald) 72% 100%)"></span>
+                  <span class="leg">
+                    <span><span class="sw" style="background:var(--navy)"></span>Bills 46%</span>
+                    <span><span class="sw" style="background:var(--gold)"></span>Living 26%</span>
+                    <span><span class="sw" style="background:var(--emerald)"></span>Savings 28%</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body">
-            <span class="cref">C11</span>
+            <span class="cat">Personal</span>
             <h3>Monthly Personal Budget Planner</h3>
             <p class="desc">Plan income, bills and savings each month and see exactly where your money goes.</p>
             <div class="row">
@@ -611,56 +854,93 @@
     </div>
   </section>
 
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how" class="section" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="kicker" style="justify-content:center">How it works</span>
+        <h2>Up and running in three steps</h2>
+        <p>No setup, no learning curve. Open the file and start typing your numbers.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="n">01</span>
+          <h3>Download instantly</h3>
+          <p>Buy through secure Gumroad checkout and your spreadsheet arrives by email and on-screen the moment payment clears.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">02</span>
+          <h3>Type in your numbers</h3>
+          <p>Open it in Excel or Google Sheets and fill the labelled cells. The formulas, categories and dashboard are already built.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">03</span>
+          <h3>Read your dashboard</h3>
+          <p>Totals, charts and summaries update on their own — so you can see exactly where you stand at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EMAIL CAPTURE ============ -->
   <section id="free" class="capture" aria-labelledby="cap-h">
     <div class="inner">
       <div>
-        <span class="eyebrow on-navy"><span class="ref">D1</span> Free download</span>
+        <span class="kicker dark">Free download</span>
         <h2 id="cap-h">Get the free tracker <em>+ occasional money tips</em></h2>
         <p>Download the Simple Monthly Money Tracker and we'll send the occasional practical tip on using spreadsheets to stay on top of your finances. No spam, unsubscribe anytime.</p>
-        <p class="note">// Delivered instantly &middot; Excel &amp; Google Sheets</p>
+        <ul class="bullets">
+          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Delivered instantly to your inbox</li>
+          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Works in Excel &amp; Google Sheets</li>
+          <li><svg class="ic" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> No spam — unsubscribe anytime</li>
+        </ul>
       </div>
 
       <!-- MailerLite embedded form (account 2476370, form J3MzPf).
            Renders via the MailerLite Universal script in <head>. Subscribers
            land in the "Free Tracker Subscribers" group with double opt-in;
            the welcome automation delivers the free tracker. -->
-      <div class="ml-embedded" data-form="J3MzPf"></div>
+      <div class="signup-card">
+        <p class="sc-h">Send me the free Money Tracker</p>
+        <p class="sc-p">Enter your email and we'll send the download link right away.</p>
+        <div class="ml-embedded" data-form="J3MzPf"></div>
+        <p class="sc-fine">We only email occasionally. Unsubscribe with one click.</p>
+      </div>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section id="faq" aria-labelledby="faq-h">
+  <section id="faq" class="section" aria-labelledby="faq-h">
     <div class="wrap">
-      <div class="sec-head" style="margin-left:auto;margin-right:auto;text-align:center">
-        <span class="eyebrow"><span class="ref">E1</span> Questions</span>
+      <div class="sec-head center reveal">
+        <span class="kicker" style="justify-content:center">Questions</span>
         <h2 id="faq-h">Good to know before you download</h2>
       </div>
       <div class="faq">
-        <div class="qa">
-          <h3>Do these work in both Excel and Google Sheets?</h3>
-          <p>Yes. Every template is built to open in Microsoft Excel and to import into Google Sheets. You can use whichever you already have — no special software, plugins or add-ons are required to start tracking.</p>
-        </div>
-        <div class="qa">
-          <h3>How do I receive my template after buying?</h3>
-          <p>Checkout and delivery run through Gumroad. The moment your payment clears you get an instant download link on screen and by email, so you can open your spreadsheet right away — there's no waiting and nothing is shipped.</p>
-        </div>
-        <div class="qa">
-          <h3>Do I need any accounting knowledge to use them?</h3>
-          <p>No. The formulas, categories and dashboards are already built for you. You simply type your numbers into the labelled cells and the totals, charts and summaries update on their own. If you can fill in a cell, you can use it.</p>
-        </div>
-        <div class="qa">
-          <h3>Is the Simple Monthly Money Tracker really free?</h3>
-          <p>Yes, completely free. Add it on Gumroad at no cost and download it instantly. It's the best way to try the SheetReady style before buying one of the paid business or budgeting templates.</p>
-        </div>
-        <div class="qa">
-          <h3>What's your refund policy?</h3>
-          <p>If a paid template isn't what you expected, reply to your Gumroad receipt within 30 days and we'll sort out a refund. Because these are instant digital downloads, we appreciate you trying the free tracker first.</p>
-        </div>
-        <div class="qa">
-          <h3>Can I use one template for more than one business?</h3>
-          <p>Yes. Once you've downloaded a template it's yours to copy and reuse across your own projects, businesses or clients. Please don't resell or redistribute the files themselves — the templates stay with you.</p>
-        </div>
+        <details>
+          <summary>Do these work in both Excel and Google Sheets?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Yes. Every template is built to open in Microsoft Excel and to import into Google Sheets. You can use whichever you already have — no special software, plugins or add-ons are required to start tracking.</p>
+        </details>
+        <details>
+          <summary>How do I receive my template after buying?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Checkout and delivery run through Gumroad. The moment your payment clears you get an instant download link on screen and by email, so you can open your spreadsheet right away — there's no waiting and nothing is shipped.</p>
+        </details>
+        <details>
+          <summary>Do I need any accounting knowledge to use them?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">No. The formulas, categories and dashboards are already built for you. You simply type your numbers into the labelled cells and the totals, charts and summaries update on their own. If you can fill in a cell, you can use it.</p>
+        </details>
+        <details>
+          <summary>Is the Simple Monthly Money Tracker really free?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Yes, completely free. Add it on Gumroad at no cost and download it instantly. It's the best way to try the SheetReady style before buying one of the paid business or budgeting templates.</p>
+        </details>
+        <details>
+          <summary>What's your refund policy?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">If a paid template isn't what you expected, reply to your Gumroad receipt within 30 days and we'll sort out a refund. Because these are instant digital downloads, we appreciate you trying the free tracker first.</p>
+        </details>
+        <details>
+          <summary>Can I use one template for more than one business?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Yes. Once you've downloaded a template it's yours to copy and reuse across your own projects, businesses or clients. Please don't resell or redistribute the files themselves — the templates stay with you.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -670,28 +950,53 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
-    <div class="fbrand">Sheet<span class="g">Ready</span></div>
-    <nav class="flinks" aria-label="Footer">
-      <a href="#templates">Templates</a>
-      <a href="#free">Free tracker</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
-      <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
-    </nav>
+    <div class="top">
+      <div>
+        <div class="fbrand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#16315c"/><rect x="7" y="9" width="18" height="14" rx="2" fill="none" stroke="#F2B705" stroke-width="2"/><line x1="7" y1="14" x2="25" y2="14" stroke="#F2B705" stroke-width="2"/><line x1="13" y1="14" x2="13" y2="23" stroke="#F2B705" stroke-width="2"/></svg>
+          <span>Sheet<span class="g">Ready</span></span>
+        </div>
+        <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="#templates">Templates</a>
+        <a href="#how">How it works</a>
+        <a href="#free">Free tracker</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
+        <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
+      </nav>
+    </div>
     <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
   </div>
 </footer>
 
-<!-- Mobile nav toggle (tiny, no dependency) -->
+<!-- Mobile nav toggle + scroll reveal (tiny, no dependency) -->
 <script>
   (function(){
     var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav');
-    if(btn&&nav){btn.addEventListener('click',function(){
-      var open=nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-    });
-    nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}});}
+    if(btn&&nav){
+      btn.addEventListener('click',function(){
+        var open=nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded',open?'true':'false');
+      });
+      nav.addEventListener('click',function(e){
+        if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+      });
+    }
     var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+
+    // scroll reveal (respects reduced-motion: skipped if not supported / disabled)
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver'in window)){
+      items.forEach(function(el){el.classList.add('in');});
+    }else{
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      items.forEach(function(el){io.observe(el);});
+    }
   })();
 </script>
 
