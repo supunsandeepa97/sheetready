@@ -1,0 +1,6 @@
+# SheetReady robots.txt
+# NOTE: update the Sitemap host below to the custom domain when purchased.
+User-agent: *
+Allow: /
+
+Sitemap: https://sheetready-ddzzar09f-supun-sandeepas-projects.vercel.app/sitemap.xml
