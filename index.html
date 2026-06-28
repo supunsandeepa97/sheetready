@@ -247,11 +247,14 @@
   .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
   .sec-head h2{font-size:clamp(28px,3.6vw,42px);color:var(--navy-ink);margin-top:14px}
   .sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
+  /* AEO answer capsule: plain-text section intro for AI Overviews */
+  .answer-capsule{max-width:680px;margin:0 0 36px;color:var(--muted);font-size:17px;line-height:1.6}
+  .faq .answer-capsule{margin-left:auto;margin-right:auto;text-align:center}
 
   /* ---------- Topics chips ---------- */
   .topics{padding:56px 0 8px;text-align:center}
   .topics .h{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--muted);font-weight:600;margin-bottom:20px}
+    color:var(--muted);font-weight:600;line-height:1.6;margin:0 0 20px}
   .chips{list-style:none;margin:0 auto;padding:0;max-width:940px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
   .chips a{display:inline-block;text-decoration:none;font-size:14px;font-weight:600;color:var(--navy-ink);
     background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 17px;
@@ -333,7 +336,7 @@
   .card.featured .tagrow{display:flex;gap:8px;margin-bottom:10px}
   .feat-tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
     color:var(--navy-deep);background:var(--gold);padding:5px 11px;border-radius:7px}
-  .feat-tag.alt{background:var(--emerald-soft);color:var(--emerald)}
+  .feat-tag.alt{background:var(--emerald-soft);color:#0d6445}
   .card.featured h3{font-size:clamp(24px,3vw,33px);letter-spacing:-.02em}
   .card.featured .desc{font-size:16px;max-width:50ch;flex:0;margin-top:12px}
   .card.featured .row{margin-top:24px;justify-content:flex-start;gap:20px;border-top:0;padding-top:0}
@@ -396,7 +399,7 @@
   footer .fbrand .mark{width:30px;height:30px}
   footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
   footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
-  footer .flinks a{color:#cdd9f0;text-decoration:none}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:4px}
   footer .flinks a:hover{color:var(--gold-on-navy)}
   footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
     font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
@@ -538,7 +541,7 @@
   <!-- ============ TOPICS STRIP ============ -->
   <section class="topics" aria-label="What our spreadsheet templates help with">
     <div class="wrap">
-      <p class="h">Spreadsheet templates for every money job</p>
+      <h2 class="h">Spreadsheet templates for every money job</h2>
       <ul class="chips">
         <li><a href="#templates">Budgeting</a></li>
         <li><a href="#templates">Cash flow</a></li>
@@ -562,6 +565,8 @@
         <h2 id="tpl-h">Ten spreadsheets that do the thinking for you</h2>
         <p>Every template is pre-built with the formulas and a clean dashboard already wired up. Start with the free tracker, upgrade when you need more.</p>
       </div>
+
+      <p class="answer-capsule">SheetReady offers ten pre-built Excel and Google Sheets templates covering personal budgeting, small-business cash flow, invoicing, freelancer tax, inventory, and sales tracking. Every template has the formulas and a visual dashboard already wired up — open the file, type your numbers, and it works.</p>
 
       <div class="grid">
 
@@ -916,6 +921,7 @@
         <span class="kicker" style="justify-content:center">Questions</span>
         <h2 id="faq-h">Good to know before you download</h2>
       </div>
+      <p class="answer-capsule">Here are the most common questions about SheetReady's spreadsheet templates — Excel and Google Sheets compatibility, how instant delivery works through Gumroad, the refund policy, and whether you need any accounting knowledge (you don't).</p>
       <div class="faq">
         <details>
           <summary>Do these work in both Excel and Google Sheets?<span class="pm" aria-hidden="true">+</span></summary>
