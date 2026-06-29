@@ -93,6 +93,16 @@
 }
 </script>
 
+<!-- No-flash theme bootstrap: apply a manual LIGHT/DARK choice (set via the
+     header toggle, stored in localStorage 'sr-theme') BEFORE first paint.
+     If no manual choice exists, nothing is set and prefers-color-scheme wins.
+     Tiny synchronous inline script (allowed by CSP 'unsafe-inline'). -->
+<script>
+  (function(){try{var t=localStorage.getItem('sr-theme');
+    if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
+  }catch(e){}})();
+</script>
+
 <style>
   /* =========================================================
      SheetReady — "Ledger Light" clean premium / SaaS theme.
@@ -197,6 +207,35 @@
   .nav .cta[aria-current="true"]::after{display:none}
   .navtoggle{display:none}
   .nav-backdrop{display:none}
+
+  /* ---------- Theme toggle (manual light/dark, overrides the OS) ----------
+     One button holds BOTH a moon (offer dark) and a sun (offer light) icon.
+     Which icon shows is driven purely by CSS on the SAME conditions as the
+     theme itself, so the correct icon paints before JS runs (no flash). */
+  .themetoggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:40px;height:40px;margin-left:4px;padding:0;border-radius:11px;cursor:pointer;
+    background:transparent;border:1px solid var(--line);color:#3a4865;
+    transition:color .15s ease,background .15s ease,border-color .15s ease}
+  .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:#c7d2e8}
+  .themetoggle svg{width:20px;height:20px;display:block}
+  .themetoggle .ic-sun{display:none}      /* default (light): show moon, offer dark */
+  .themetoggle .ic-moon{display:block}
+  /* effective DARK (device-dark unless forced light) → show sun, offer light */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .themetoggle .ic-sun{display:block}
+    :root:not([data-theme="light"]) .themetoggle .ic-moon{display:none}
+    :root:not([data-theme="light"]) .themetoggle{border-color:var(--line);color:#C2CEE6}
+    :root:not([data-theme="light"]) .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  }
+  /* forced DARK on any device → show sun, offer light */
+  :root[data-theme="dark"] .themetoggle .ic-sun{display:block}
+  :root[data-theme="dark"] .themetoggle .ic-moon{display:none}
+  :root[data-theme="dark"] .themetoggle{border-color:var(--line);color:#C2CEE6}
+  :root[data-theme="dark"] .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  /* forced LIGHT on any device → moon (already the default, but be explicit
+     so a dark device that is forced light still shows the moon) */
+  :root[data-theme="light"] .themetoggle .ic-sun{display:none}
+  :root[data-theme="light"] .themetoggle .ic-moon{display:block}
 
   /* ---------- Buttons ---------- */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
@@ -594,7 +633,125 @@
      On-brand deep-navy ground + brighter gold/emerald for AA contrast.
      ========================================================= */
   @media (prefers-color-scheme:dark){
-    :root{
+    /* device-dark, unless the visitor has FORCED light via the toggle */
+    :root:not([data-theme="light"]){
+      /* navy/gold brand, retuned for a dark ground */
+      --navy:#9FC0F0;            /* body links + accents — readable on dark */
+      --navy-deep:#0A1322;       /* deepest ground (footer / capture base) */
+      --navy-ink:#E8EDF5;        /* was darkest ink → now near-white headings + wordmark */
+      --tile:#0E1A33;            /* logo tile stays dark navy (glyph reads on it) */
+      --gold:#E0A209;            /* keep brand gold for FILLS (buttons, kicker bar) */
+      --gold-text:#F6C948;       /* gold TEXT on dark — AA 9.2:1+ */
+      --gold-on-navy:#F6C948;
+      --gold-soft:#2A2210;       /* dark amber tint for soft gold backgrounds */
+      --emerald:#4FD0A0;         /* emerald TEXT/price on dark — AA 7.4:1+ */
+      --emerald-deep:#37b487;
+      --emerald-soft:#15311F;    /* dark emerald tint */
+
+      --ink:#E8EDF5;
+      --muted:#9AA7BD;           /* AA 5.9:1+ on cards */
+      --muted-on-navy:#A9BAD8;
+      --faint-on-navy:#8DA0C4;
+
+      --bg:#0E1726;              /* deep navy-charcoal ground */
+      --surface:#16233A;         /* recessed surface */
+      --card:#172A45;            /* elevated card */
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+
+      /* shadows: deepen + drop the white glass edge on dark */
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+
+    /* --- surfaces that were hardcoded light → re-theme to dark --- */
+    :root:not([data-theme="light"]) .topbar{background:rgba(14,23,38,.85)}
+    :root:not([data-theme="light"]) .badge{background:var(--card)}
+    :root:not([data-theme="light"]) .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
+    :root:not([data-theme="light"]) .panel{background:var(--card)}
+    :root:not([data-theme="light"]) .float-chip{background:var(--card)}
+    :root:not([data-theme="light"]) .proof{background:var(--surface)}
+    :root:not([data-theme="light"]) .btn-ghost{background:var(--card)}
+    :root:not([data-theme="light"]) .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root:not([data-theme="light"]) .searchbox input{background:var(--card)}
+    :root:not([data-theme="light"]) .searchbox input::placeholder{color:#7d8aa6}
+    :root:not([data-theme="light"]) .filters .pill{background:var(--card)}
+    :root:not([data-theme="light"]) .empty-state button{background:var(--card)}
+    :root:not([data-theme="light"]) .preview{background:
+      radial-gradient(420px 200px at 80% -20%,rgba(159,192,240,.06),transparent 70%),
+      linear-gradient(170deg,#15233b,#101b2e)}
+    :root:not([data-theme="light"]) .preview .mini{background:var(--card)}
+    :root:not([data-theme="light"]) .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
+    :root:not([data-theme="light"]) .kpi.accent .val,:root:not([data-theme="light"]) .pv-stats .s.gold .v{color:var(--gold-text)}
+    /* formula pill keeps a dark amber bg → use gold TEXT (10:1), not navy */
+    :root:not([data-theme="light"]) .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
+    /* mobile nav panel */
+    :root:not([data-theme="light"]) .nav.open{background:var(--card)}
+    :root:not([data-theme="light"]) .navtoggle{background:var(--card)}
+    /* keep gold button/badge label legible on its gold fill */
+    :root:not([data-theme="light"]) .btn-gold,:root:not([data-theme="light"]) .feat-tag{color:var(--navy-deep)}
+    /* "Free forever" badge: dark emerald-soft bg → light emerald text (7.3:1) */
+    :root:not([data-theme="light"]) .feat-tag.alt{color:var(--emerald)}
+    /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
+    :root:not([data-theme="light"]) .dash-bar .cellref,:root:not([data-theme="light"]) .dash-bar .tag,:root:not([data-theme="light"]) .panel-head .leg,:root:not([data-theme="light"]) .preview .mtop .nm,:root:not([data-theme="light"]) .pv-rows .r .tk{color:#aab8d4}
+    :root:not([data-theme="light"]) .kpi.accent .chg[style]{color:var(--gold-text) !important}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix).
+       In light mode --navy-ink / --navy are dark and are used both as
+       TEXT and as dark button/section BACKGROUNDS. In dark mode those
+       tokens correctly flip LIGHT (for text/links), which silently
+       turned every "dark" button/section LIGHT — making white labels
+       invisible. The rules below re-skin those *surfaces* so they stay
+       dark / become the gold primary treatment, with legible labels.
+       (Text/link/accent uses of --navy & --navy-ink are left light.)
+       ------------------------------------------------------------- */
+    /* Inverted/primary buttons that were navy-ink-on-white in light mode
+       → GOLD fill + navy-deep label in dark mode (matches hero .btn-gold).
+       gold #E0A209 on #0A1322 label = 8.3:1 (AA + AAA). */
+    :root:not([data-theme="light"]) .nav .cta,
+    :root:not([data-theme="light"]) .btn-navy,
+    :root:not([data-theme="light"]) a.gumroad-button.buy,
+    :root:not([data-theme="light"]) .filters .pill[aria-pressed="true"]{
+      background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    :root:not([data-theme="light"]) .nav .cta:hover,
+    :root:not([data-theme="light"]) .btn-navy:hover,
+    :root:not([data-theme="light"]) a.gumroad-button.buy:hover,
+    :root:not([data-theme="light"]) .filters .pill[aria-pressed="true"]:hover{
+      background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* free buy button keeps its emerald identity (emerald fill + dark label) */
+    :root:not([data-theme="light"]) a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
+    :root:not([data-theme="light"]) a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
+
+    /* Hero highlight word "money": light-blue --navy → brand gold text.
+       #F6C948 on the dark hero ground = 11.4:1. Gold underline accent kept. */
+    :root:not([data-theme="light"]) .hero h1 .hl{color:var(--gold-text)}
+
+    /* Email-capture section: its gradient used --navy (now light periwinkle)
+       as the top stop, making a glowing panel around the white ML form.
+       Re-anchor both stops to dark navy so it reads as white-form-on-dark. */
+    :root:not([data-theme="light"]) .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
+    /* signup card sits clearly on the dark section (slightly lifted, not glowing) */
+    :root:not([data-theme="light"]) .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+
+    /* Hardcoded dark text (#3a4865) that was never re-themed → dark-on-dark.
+       Nav links 1.96:1, proof strip 1.72:1, hero badges ~1.6:1. Lift to a
+       light slate that reads on the dark ground/cards (>=6.8:1). */
+    :root:not([data-theme="light"]) .nav a{color:#C2CEE6}
+    :root:not([data-theme="light"]) .nav a:hover{color:var(--navy-ink)}
+    :root:not([data-theme="light"]) .proof span,:root:not([data-theme="light"]) .badge{color:var(--muted-on-navy)}
+  }
+
+  /* =========================================================
+     FORCED DARK (manual toggle) — user chose dark on ANY device.
+     Mirrors the device-dark skin above so the toggle overrides the OS.
+     ========================================================= */
+  :root[data-theme="dark"]{
       /* navy/gold brand, retuned for a dark ground */
       --navy:#9FC0F0;            /* body links + accents — readable on dark */
       --navy-deep:#0A1322;       /* deepest ground (footer / capture base) */
@@ -627,36 +784,36 @@
     }
 
     /* --- surfaces that were hardcoded light → re-theme to dark --- */
-    .topbar{background:rgba(14,23,38,.85)}
-    .badge{background:var(--card)}
-    .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
-    .panel{background:var(--card)}
-    .float-chip{background:var(--card)}
-    .proof{background:var(--surface)}
-    .btn-ghost{background:var(--card)}
-    .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
-    .searchbox input{background:var(--card)}
-    .searchbox input::placeholder{color:#7d8aa6}
-    .filters .pill{background:var(--card)}
-    .empty-state button{background:var(--card)}
-    .preview{background:
+    :root[data-theme="dark"] .topbar{background:rgba(14,23,38,.85)}
+    :root[data-theme="dark"] .badge{background:var(--card)}
+    :root[data-theme="dark"] .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
+    :root[data-theme="dark"] .panel{background:var(--card)}
+    :root[data-theme="dark"] .float-chip{background:var(--card)}
+    :root[data-theme="dark"] .proof{background:var(--surface)}
+    :root[data-theme="dark"] .btn-ghost{background:var(--card)}
+    :root[data-theme="dark"] .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root[data-theme="dark"] .searchbox input{background:var(--card)}
+    :root[data-theme="dark"] .searchbox input::placeholder{color:#7d8aa6}
+    :root[data-theme="dark"] .filters .pill{background:var(--card)}
+    :root[data-theme="dark"] .empty-state button{background:var(--card)}
+    :root[data-theme="dark"] .preview{background:
       radial-gradient(420px 200px at 80% -20%,rgba(159,192,240,.06),transparent 70%),
       linear-gradient(170deg,#15233b,#101b2e)}
-    .preview .mini{background:var(--card)}
-    .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
-    .kpi.accent .val,.pv-stats .s.gold .v{color:var(--gold-text)}
+    :root[data-theme="dark"] .preview .mini{background:var(--card)}
+    :root[data-theme="dark"] .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
+    :root[data-theme="dark"] .kpi.accent .val,:root[data-theme="dark"] .pv-stats .s.gold .v{color:var(--gold-text)}
     /* formula pill keeps a dark amber bg → use gold TEXT (10:1), not navy */
-    .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
+    :root[data-theme="dark"] .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
     /* mobile nav panel */
-    .nav.open{background:var(--card)}
-    .navtoggle{background:var(--card)}
+    :root[data-theme="dark"] .nav.open{background:var(--card)}
+    :root[data-theme="dark"] .navtoggle{background:var(--card)}
     /* keep gold button/badge label legible on its gold fill */
-    .btn-gold,.feat-tag{color:var(--navy-deep)}
+    :root[data-theme="dark"] .btn-gold,:root[data-theme="dark"] .feat-tag{color:var(--navy-deep)}
     /* "Free forever" badge: dark emerald-soft bg → light emerald text (7.3:1) */
-    .feat-tag.alt{color:var(--emerald)}
+    :root[data-theme="dark"] .feat-tag.alt{color:var(--emerald)}
     /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
-    .dash-bar .cellref,.dash-bar .tag,.panel-head .leg,.preview .mtop .nm,.pv-rows .r .tk{color:#aab8d4}
-    .kpi.accent .chg[style]{color:var(--gold-text) !important}
+    :root[data-theme="dark"] .dash-bar .cellref,:root[data-theme="dark"] .dash-bar .tag,:root[data-theme="dark"] .panel-head .leg,:root[data-theme="dark"] .preview .mtop .nm,:root[data-theme="dark"] .pv-rows .r .tk{color:#aab8d4}
+    :root[data-theme="dark"] .kpi.accent .chg[style]{color:var(--gold-text) !important}
 
     /* -------------------------------------------------------------
        DARK-MODE SURFACE DECOUPLING (bugfix).
@@ -671,40 +828,39 @@
     /* Inverted/primary buttons that were navy-ink-on-white in light mode
        → GOLD fill + navy-deep label in dark mode (matches hero .btn-gold).
        gold #E0A209 on #0A1322 label = 8.3:1 (AA + AAA). */
-    .nav .cta,
-    .btn-navy,
-    a.gumroad-button.buy,
-    .filters .pill[aria-pressed="true"]{
+    :root[data-theme="dark"] .nav .cta,
+    :root[data-theme="dark"] .btn-navy,
+    :root[data-theme="dark"] a.gumroad-button.buy,
+    :root[data-theme="dark"] .filters .pill[aria-pressed="true"]{
       background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
-    .nav .cta:hover,
-    .btn-navy:hover,
-    a.gumroad-button.buy:hover,
-    .filters .pill[aria-pressed="true"]:hover{
+    :root[data-theme="dark"] .nav .cta:hover,
+    :root[data-theme="dark"] .btn-navy:hover,
+    :root[data-theme="dark"] a.gumroad-button.buy:hover,
+    :root[data-theme="dark"] .filters .pill[aria-pressed="true"]:hover{
       background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
     /* free buy button keeps its emerald identity (emerald fill + dark label) */
-    a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
-    a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
+    :root[data-theme="dark"] a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
+    :root[data-theme="dark"] a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
 
     /* Hero highlight word "money": light-blue --navy → brand gold text.
        #F6C948 on the dark hero ground = 11.4:1. Gold underline accent kept. */
-    .hero h1 .hl{color:var(--gold-text)}
+    :root[data-theme="dark"] .hero h1 .hl{color:var(--gold-text)}
 
     /* Email-capture section: its gradient used --navy (now light periwinkle)
        as the top stop, making a glowing panel around the white ML form.
        Re-anchor both stops to dark navy so it reads as white-form-on-dark. */
-    .capture{background:
+    :root[data-theme="dark"] .capture{background:
       radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.14),transparent 60%),
       linear-gradient(165deg,#16294a,var(--navy-deep))}
     /* signup card sits clearly on the dark section (slightly lifted, not glowing) */
-    .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+    :root[data-theme="dark"] .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
 
     /* Hardcoded dark text (#3a4865) that was never re-themed → dark-on-dark.
        Nav links 1.96:1, proof strip 1.72:1, hero badges ~1.6:1. Lift to a
        light slate that reads on the dark ground/cards (>=6.8:1). */
-    .nav a{color:#C2CEE6}
-    .nav a:hover{color:var(--navy-ink)}
-    .proof span,.badge{color:var(--muted-on-navy)}
-  }
+    :root[data-theme="dark"] .nav a{color:#C2CEE6}
+    :root[data-theme="dark"] .nav a:hover{color:var(--navy-ink)}
+    :root[data-theme="dark"] .proof span,:root[data-theme="dark"] .badge{color:var(--muted-on-navy)}
 </style>
 <!-- MailerLite Universal is loaded LAZILY (see deferred loader before </body>):
      it pulls jQuery + inputmask + universal.js + 2 web fonts, but the signup
@@ -738,6 +894,10 @@
       <a href="#about">About</a>
       <a href="/blog/">Blog</a>
       <a href="#faq">FAQ</a>
+      <button type="button" class="themetoggle" id="themeToggle" aria-label="Switch to dark theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+      </button>
       <a class="cta" href="#free">Get free tracker</a>
     </nav>
   </div>
@@ -1420,6 +1580,43 @@
       });
       /* close menu if resized back to desktop */
       window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+
+    /* ---- manual theme toggle (light/dark, overrides the OS) ----
+       Effective theme = data-theme attr if set, else the OS preference.
+       Click flips it, persists to localStorage 'sr-theme', updates the
+       button's aria-label and the active theme-color meta. The sun/moon
+       icon swap is handled in CSS, so it stays correct with zero JS too. */
+    var themeBtn=document.getElementById('themeToggle');
+    if(themeBtn){
+      var mqDark=window.matchMedia?window.matchMedia('(prefers-color-scheme:dark)'):null;
+      function effectiveTheme(){
+        var a=document.documentElement.getAttribute('data-theme');
+        if(a==='dark'||a==='light')return a;
+        return (mqDark&&mqDark.matches)?'dark':'light';
+      }
+      function syncThemeUI(){
+        var eff=effectiveTheme();
+        /* button offers the OPPOSITE of the current theme */
+        themeBtn.setAttribute('aria-label',eff==='dark'?'Switch to light theme':'Switch to dark theme');
+        /* keep the address-bar / theme-color in sync with what's shown */
+        var color=eff==='dark'?'#0E1726':'#FBFCFE';
+        var metas=document.querySelectorAll('meta[name="theme-color"]');
+        metas.forEach(function(m){m.setAttribute('content',color);});
+      }
+      themeBtn.addEventListener('click',function(){
+        var next=effectiveTheme()==='dark'?'light':'dark';
+        document.documentElement.dataset.theme=next;
+        try{localStorage.setItem('sr-theme',next);}catch(e){}
+        syncThemeUI();
+      });
+      /* if no manual choice yet, follow live OS changes for the label/meta */
+      if(mqDark&&mqDark.addEventListener){
+        mqDark.addEventListener('change',function(){
+          if(!document.documentElement.getAttribute('data-theme')){syncThemeUI();}
+        });
+      }
+      syncThemeUI();
     }
 
     /* ---- scroll reveal + CLS-safe dashboard bar animation ---- */

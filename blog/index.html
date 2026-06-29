@@ -59,6 +59,16 @@
 }
 </script>
 
+<!-- No-flash theme bootstrap: apply a manual LIGHT/DARK choice (set via the
+     header toggle, stored in localStorage 'sr-theme') BEFORE first paint.
+     If no manual choice exists, nothing is set and prefers-color-scheme wins.
+     Tiny synchronous inline script (allowed by CSP 'unsafe-inline'). -->
+<script>
+  (function(){try{var t=localStorage.getItem('sr-theme');
+    if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
+  }catch(e){}})();
+</script>
+
 <style>
   /* =========================================================
      SheetReady — "Ledger Light" theme (shared with storefront).
@@ -154,6 +164,31 @@
   .nav .cta[aria-current="true"]::after{display:none}
   .navtoggle{display:none}
   .nav-backdrop{display:none}
+
+  /* ---------- Theme toggle (manual light/dark, overrides the OS) ----------
+     One button holds BOTH a moon (offer dark) and a sun (offer light) icon.
+     Which icon shows is driven purely by CSS on the SAME conditions as the
+     theme itself, so the correct icon paints before JS runs (no flash). */
+  .themetoggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:40px;height:40px;margin-left:4px;padding:0;border-radius:11px;cursor:pointer;
+    background:transparent;border:1px solid var(--line);color:#3a4865;
+    transition:color .15s ease,background .15s ease,border-color .15s ease}
+  .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:#c7d2e8}
+  .themetoggle svg{width:20px;height:20px;display:block}
+  .themetoggle .ic-sun{display:none}
+  .themetoggle .ic-moon{display:block}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .themetoggle .ic-sun{display:block}
+    :root:not([data-theme="light"]) .themetoggle .ic-moon{display:none}
+    :root:not([data-theme="light"]) .themetoggle{border-color:var(--line);color:#C2CEE6}
+    :root:not([data-theme="light"]) .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  }
+  :root[data-theme="dark"] .themetoggle .ic-sun{display:block}
+  :root[data-theme="dark"] .themetoggle .ic-moon{display:none}
+  :root[data-theme="dark"] .themetoggle{border-color:var(--line);color:#C2CEE6}
+  :root[data-theme="dark"] .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  :root[data-theme="light"] .themetoggle .ic-sun{display:none}
+  :root[data-theme="light"] .themetoggle .ic-moon{display:block}
 
   /* ---------- Buttons ---------- */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
@@ -264,7 +299,8 @@
      the design tokens + a few hardcoded light surfaces.
      ========================================================= */
   @media (prefers-color-scheme:dark){
-    :root{
+    /* device-dark, unless the visitor has FORCED light via the toggle */
+    :root:not([data-theme="light"]){
       --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--tile:#0E1A33;
       --gold:#E0A209;--gold-text:#F6C948;--gold-on-navy:#F6C948;--gold-soft:#2A2210;
       --emerald:#4FD0A0;--emerald-deep:#37b487;--emerald-soft:#15311F;
@@ -276,12 +312,13 @@
       --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
       --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
     }
-    .topbar{background:rgba(14,23,38,.85)}
-    .btn-ghost{background:var(--card)}
-    .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
-    .nav.open{background:var(--card)}
-    .navtoggle{background:var(--card)}
-    .btn-gold{color:var(--navy-deep)}
+
+    :root:not([data-theme="light"]) .topbar{background:rgba(14,23,38,.85)}
+    :root:not([data-theme="light"]) .btn-ghost{background:var(--card)}
+    :root:not([data-theme="light"]) .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root:not([data-theme="light"]) .nav.open{background:var(--card)}
+    :root:not([data-theme="light"]) .navtoggle{background:var(--card)}
+    :root:not([data-theme="light"]) .btn-gold{color:var(--navy-deep)}
 
     /* -------------------------------------------------------------
        DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html.
@@ -290,14 +327,53 @@
        labels invisible. nav CTA + primary navy button → gold fill +
        navy-deep label (8.3:1, matches .btn-gold). Text/link uses stay light.
        ------------------------------------------------------------- */
-    .nav .cta,
-    .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
-    .nav .cta:hover,
-    .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    :root:not([data-theme="light"]) .nav .cta,
+    :root:not([data-theme="light"]) .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    :root:not([data-theme="light"]) .nav .cta:hover,
+    :root:not([data-theme="light"]) .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
     /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
-    .nav a{color:#C2CEE6}
-    .nav a:hover{color:var(--navy-ink)}
+    :root:not([data-theme="light"]) .nav a{color:#C2CEE6}
+    :root:not([data-theme="light"]) .nav a:hover{color:var(--navy-ink)}
   }
+
+  /* =========================================================
+     FORCED DARK (manual toggle) — user chose dark on ANY device.
+     Mirrors the device-dark skin above so the toggle overrides the OS.
+     ========================================================= */
+  :root[data-theme="dark"]{
+      --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--tile:#0E1A33;
+      --gold:#E0A209;--gold-text:#F6C948;--gold-on-navy:#F6C948;--gold-soft:#2A2210;
+      --emerald:#4FD0A0;--emerald-deep:#37b487;--emerald-soft:#15311F;
+      --ink:#E8EDF5;--muted:#9AA7BD;--muted-on-navy:#A9BAD8;--faint-on-navy:#8DA0C4;
+      --bg:#0E1726;--surface:#16233A;--card:#172A45;
+      --line:rgba(255,255,255,.10);--line-soft:rgba(255,255,255,.06);
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    :root[data-theme="dark"] .topbar{background:rgba(14,23,38,.85)}
+    :root[data-theme="dark"] .btn-ghost{background:var(--card)}
+    :root[data-theme="dark"] .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root[data-theme="dark"] .nav.open{background:var(--card)}
+    :root[data-theme="dark"] .navtoggle{background:var(--card)}
+    :root[data-theme="dark"] .btn-gold{color:var(--navy-deep)}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html.
+       --navy-ink / --navy flip light in dark mode (correct for text)
+       but were also used as dark button backgrounds, making white
+       labels invisible. nav CTA + primary navy button → gold fill +
+       navy-deep label (8.3:1, matches .btn-gold). Text/link uses stay light.
+       ------------------------------------------------------------- */
+    :root[data-theme="dark"] .nav .cta,
+    :root[data-theme="dark"] .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    :root[data-theme="dark"] .nav .cta:hover,
+    :root[data-theme="dark"] .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
+    :root[data-theme="dark"] .nav a{color:#C2CEE6}
+    :root[data-theme="dark"] .nav a:hover{color:var(--navy-ink)}
+
 </style>
 </head>
 <body>
@@ -327,6 +403,10 @@
       <a href="https://sheetready.vercel.app/#about">About</a>
       <a href="/blog/" aria-current="true">Blog</a>
       <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+      <button type="button" class="themetoggle" id="themeToggle" aria-label="Switch to dark theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+      </button>
       <a class="cta" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get free tracker</a>
     </nav>
   </div>
@@ -475,6 +555,39 @@
         }
       });
       window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+
+    /* ---- manual theme toggle (light/dark, overrides the OS) ----
+       Effective theme = data-theme attr if set, else the OS preference.
+       Click flips it, persists to localStorage 'sr-theme', updates the
+       button's aria-label and the active theme-color meta. Icon swap is CSS. */
+    var themeBtn=document.getElementById('themeToggle');
+    if(themeBtn){
+      var mqDark=window.matchMedia?window.matchMedia('(prefers-color-scheme:dark)'):null;
+      function effectiveTheme(){
+        var a=document.documentElement.getAttribute('data-theme');
+        if(a==='dark'||a==='light')return a;
+        return (mqDark&&mqDark.matches)?'dark':'light';
+      }
+      function syncThemeUI(){
+        var eff=effectiveTheme();
+        themeBtn.setAttribute('aria-label',eff==='dark'?'Switch to light theme':'Switch to dark theme');
+        var color=eff==='dark'?'#0E1726':'#FBFCFE';
+        var metas=document.querySelectorAll('meta[name="theme-color"]');
+        metas.forEach(function(m){m.setAttribute('content',color);});
+      }
+      themeBtn.addEventListener('click',function(){
+        var next=effectiveTheme()==='dark'?'light':'dark';
+        document.documentElement.dataset.theme=next;
+        try{localStorage.setItem('sr-theme',next);}catch(e){}
+        syncThemeUI();
+      });
+      if(mqDark&&mqDark.addEventListener){
+        mqDark.addEventListener('change',function(){
+          if(!document.documentElement.getAttribute('data-theme')){syncThemeUI();}
+        });
+      }
+      syncThemeUI();
     }
 
     var items=document.querySelectorAll('.reveal');
