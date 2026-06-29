@@ -18,7 +18,8 @@
 <meta name="description" content="Simple Excel & Google Sheets templates for small business & personal finance — money tracker, cash flow, invoicing, budgets & more. No accounting needed."/>
 
 <link rel="canonical" href="https://sheetready.vercel.app/"/>
-<meta name="theme-color" content="#102544"/>
+<meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0E1726" media="(prefers-color-scheme: dark)"/>
 <meta name="robots" content="index,follow"/>
 
 <!-- Resource hints: warm up third-party origins so lazy-loaded MailerLite +
@@ -583,6 +584,79 @@
     .dash.anim .chart .col .b{transform:scaleY(1)}
     .mbar{transition:none}
     .nav.open{opacity:1;transform:none}
+  }
+
+  /* =========================================================
+     AUTOMATIC DARK MODE — follows the visitor's OS/browser theme.
+     Light theme above is the DEFAULT and is untouched; this block
+     only OVERRIDES the design tokens (and a few hardcoded light
+     surfaces) so the whole UI re-themes with zero markup changes.
+     On-brand deep-navy ground + brighter gold/emerald for AA contrast.
+     ========================================================= */
+  @media (prefers-color-scheme:dark){
+    :root{
+      /* navy/gold brand, retuned for a dark ground */
+      --navy:#9FC0F0;            /* body links + accents — readable on dark */
+      --navy-deep:#0A1322;       /* deepest ground (footer / capture base) */
+      --navy-ink:#E8EDF5;        /* was darkest ink → now near-white headings + wordmark */
+      --tile:#0E1A33;            /* logo tile stays dark navy (glyph reads on it) */
+      --gold:#E0A209;            /* keep brand gold for FILLS (buttons, kicker bar) */
+      --gold-text:#F6C948;       /* gold TEXT on dark — AA 9.2:1+ */
+      --gold-on-navy:#F6C948;
+      --gold-soft:#2A2210;       /* dark amber tint for soft gold backgrounds */
+      --emerald:#4FD0A0;         /* emerald TEXT/price on dark — AA 7.4:1+ */
+      --emerald-deep:#37b487;
+      --emerald-soft:#15311F;    /* dark emerald tint */
+
+      --ink:#E8EDF5;
+      --muted:#9AA7BD;           /* AA 5.9:1+ on cards */
+      --muted-on-navy:#A9BAD8;
+      --faint-on-navy:#8DA0C4;
+
+      --bg:#0E1726;              /* deep navy-charcoal ground */
+      --surface:#16233A;         /* recessed surface */
+      --card:#172A45;            /* elevated card */
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+
+      /* shadows: deepen + drop the white glass edge on dark */
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    /* --- surfaces that were hardcoded light → re-theme to dark --- */
+    .topbar{background:rgba(14,23,38,.85)}
+    .badge{background:var(--card)}
+    .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
+    .panel{background:var(--card)}
+    .float-chip{background:var(--card)}
+    .proof{background:var(--surface)}
+    .btn-ghost{background:var(--card)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    .searchbox input{background:var(--card)}
+    .searchbox input::placeholder{color:#7d8aa6}
+    .filters .pill{background:var(--card)}
+    .empty-state button{background:var(--card)}
+    .preview{background:
+      radial-gradient(420px 200px at 80% -20%,rgba(159,192,240,.06),transparent 70%),
+      linear-gradient(170deg,#15233b,#101b2e)}
+    .preview .mini{background:var(--card)}
+    .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
+    .kpi.accent .val,.pv-stats .s.gold .v{color:var(--gold-text)}
+    /* formula pill keeps a dark amber bg → use gold TEXT (10:1), not navy */
+    .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
+    /* mobile nav panel */
+    .nav.open{background:var(--card)}
+    .navtoggle{background:var(--card)}
+    /* keep gold button/badge label legible on its gold fill */
+    .btn-gold,.feat-tag{color:var(--navy-deep)}
+    /* "Free forever" badge: dark emerald-soft bg → light emerald text (7.3:1) */
+    .feat-tag.alt{color:var(--emerald)}
+    /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
+    .dash-bar .cellref,.dash-bar .tag,.panel-head .leg,.preview .mtop .nm,.pv-rows .r .tk{color:#aab8d4}
+    .kpi.accent .chg[style]{color:var(--gold-text) !important}
   }
 </style>
 <!-- MailerLite Universal is loaded LAZILY (see deferred loader before </body>):

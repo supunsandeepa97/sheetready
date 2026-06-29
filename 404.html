@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Page not found — SheetReady</title>
 <meta name="robots" content="noindex,follow"/>
-<meta name="theme-color" content="#FBFCFE"/>
+<meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0E1726" media="(prefers-color-scheme: dark)"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
 <style>
   :root{
@@ -42,6 +43,21 @@
   a.alt{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
   a.alt:hover{border-color:#c7d2e8;background:var(--surface)}
   @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+
+  /* Automatic dark mode — light theme above is the untouched default. */
+  @media (prefers-color-scheme:dark){
+    :root{
+      --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--gold:#E0A209;--gold-text:#F6C948;
+      --emerald:#4FD0A0;--bg:#0E1726;--surface:#16233A;--card:#172A45;
+      --line:rgba(255,255,255,.10);--muted:#9AA7BD;
+    }
+    .card404{box-shadow:0 2px 6px rgba(0,0,0,.35),0 18px 50px rgba(0,0,0,.5)}
+    .code{background:#2A2210;border-color:#4a3c18}
+    a.home{box-shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.35)}
+    a.home:hover{box-shadow:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45)}
+    a.alt{background:var(--card)}
+    a.alt:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+  }
 </style>
 </head>
 <body>

@@ -8,7 +8,8 @@
 <meta name="description" content="Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets. Free tips from SheetReady's finance template builder."/>
 
 <link rel="canonical" href="https://sheetready.vercel.app/blog/"/>
-<meta name="theme-color" content="#102544"/>
+<meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0E1726" media="(prefers-color-scheme: dark)"/>
 <meta name="robots" content="index,follow"/>
 
 <!-- Open Graph -->
@@ -255,6 +256,32 @@
     *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
     .reveal{opacity:1;transform:none}
     .nav.open{opacity:1;transform:none}
+  }
+
+  /* =========================================================
+     AUTOMATIC DARK MODE — follows the visitor's OS/browser theme.
+     Light theme above is the untouched DEFAULT; this only overrides
+     the design tokens + a few hardcoded light surfaces.
+     ========================================================= */
+  @media (prefers-color-scheme:dark){
+    :root{
+      --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--tile:#0E1A33;
+      --gold:#E0A209;--gold-text:#F6C948;--gold-on-navy:#F6C948;--gold-soft:#2A2210;
+      --emerald:#4FD0A0;--emerald-deep:#37b487;--emerald-soft:#15311F;
+      --ink:#E8EDF5;--muted:#9AA7BD;--muted-on-navy:#A9BAD8;--faint-on-navy:#8DA0C4;
+      --bg:#0E1726;--surface:#16233A;--card:#172A45;
+      --line:rgba(255,255,255,.10);--line-soft:rgba(255,255,255,.06);
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .topbar{background:rgba(14,23,38,.85)}
+    .btn-ghost{background:var(--card)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    .nav.open{background:var(--card)}
+    .navtoggle{background:var(--card)}
+    .btn-gold{color:var(--navy-deep)}
   }
 </style>
 </head>
