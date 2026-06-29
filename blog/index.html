@@ -282,6 +282,21 @@
     .nav.open{background:var(--card)}
     .navtoggle{background:var(--card)}
     .btn-gold{color:var(--navy-deep)}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html.
+       --navy-ink / --navy flip light in dark mode (correct for text)
+       but were also used as dark button backgrounds, making white
+       labels invisible. nav CTA + primary navy button → gold fill +
+       navy-deep label (8.3:1, matches .btn-gold). Text/link uses stay light.
+       ------------------------------------------------------------- */
+    .nav .cta,
+    .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    .nav .cta:hover,
+    .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
+    .nav a{color:#C2CEE6}
+    .nav a:hover{color:var(--navy-ink)}
   }
 </style>
 </head>

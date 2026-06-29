@@ -657,6 +657,53 @@
     /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
     .dash-bar .cellref,.dash-bar .tag,.panel-head .leg,.preview .mtop .nm,.pv-rows .r .tk{color:#aab8d4}
     .kpi.accent .chg[style]{color:var(--gold-text) !important}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix).
+       In light mode --navy-ink / --navy are dark and are used both as
+       TEXT and as dark button/section BACKGROUNDS. In dark mode those
+       tokens correctly flip LIGHT (for text/links), which silently
+       turned every "dark" button/section LIGHT — making white labels
+       invisible. The rules below re-skin those *surfaces* so they stay
+       dark / become the gold primary treatment, with legible labels.
+       (Text/link/accent uses of --navy & --navy-ink are left light.)
+       ------------------------------------------------------------- */
+    /* Inverted/primary buttons that were navy-ink-on-white in light mode
+       → GOLD fill + navy-deep label in dark mode (matches hero .btn-gold).
+       gold #E0A209 on #0A1322 label = 8.3:1 (AA + AAA). */
+    .nav .cta,
+    .btn-navy,
+    a.gumroad-button.buy,
+    .filters .pill[aria-pressed="true"]{
+      background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    .nav .cta:hover,
+    .btn-navy:hover,
+    a.gumroad-button.buy:hover,
+    .filters .pill[aria-pressed="true"]:hover{
+      background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* free buy button keeps its emerald identity (emerald fill + dark label) */
+    a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
+    a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
+
+    /* Hero highlight word "money": light-blue --navy → brand gold text.
+       #F6C948 on the dark hero ground = 11.4:1. Gold underline accent kept. */
+    .hero h1 .hl{color:var(--gold-text)}
+
+    /* Email-capture section: its gradient used --navy (now light periwinkle)
+       as the top stop, making a glowing panel around the white ML form.
+       Re-anchor both stops to dark navy so it reads as white-form-on-dark. */
+    .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
+    /* signup card sits clearly on the dark section (slightly lifted, not glowing) */
+    .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+
+    /* Hardcoded dark text (#3a4865) that was never re-themed → dark-on-dark.
+       Nav links 1.96:1, proof strip 1.72:1, hero badges ~1.6:1. Lift to a
+       light slate that reads on the dark ground/cards (>=6.8:1). */
+    .nav a{color:#C2CEE6}
+    .nav a:hover{color:var(--navy-ink)}
+    .proof span,.badge{color:var(--muted-on-navy)}
   }
 </style>
 <!-- MailerLite Universal is loaded LAZILY (see deferred loader before </body>):

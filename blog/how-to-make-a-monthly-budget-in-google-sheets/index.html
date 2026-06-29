@@ -355,6 +355,29 @@
     /* article tables: light #fff / #fcfdff zebra → dark surfaces */
     .article-body table{background:var(--card)}
     .article-body tbody tr:nth-child(even){background:#1d3050}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html for the
+       full explanation. --navy-ink / --navy flip light in dark mode
+       (correct for text), but are also used as dark button/section
+       backgrounds; re-skin those surfaces so labels stay legible.
+       NOTE: a.gumroad-button.buy is already gold-on-navy here, so it
+       is intentionally NOT touched below.
+       ------------------------------------------------------------- */
+    /* nav CTA + primary navy button → gold fill + navy-deep label (8.3:1) */
+    .nav .cta,
+    .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    .nav .cta:hover,
+    .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+
+    /* CTA block: gradient top stop was --navy (now light periwinkle) →
+       re-anchor to dark navy so the panel stays dark, white heading legible. */
+    .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
+    /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
+    .nav a{color:#C2CEE6}
+    .nav a:hover{color:var(--navy-ink)}
   }
 </style>
 </head>
