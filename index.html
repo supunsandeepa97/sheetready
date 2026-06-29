@@ -21,6 +21,20 @@
 <meta name="theme-color" content="#102544"/>
 <meta name="robots" content="index,follow"/>
 
+<!-- Resource hints: warm up third-party origins so lazy-loaded MailerLite +
+     Gumroad connect fast WITHOUT loading their scripts/fonts on the critical path. -->
+<link rel="preconnect" href="https://assets.mailerlite.com" crossorigin/>
+<link rel="preconnect" href="https://assets.mlcdn.com" crossorigin/>
+<link rel="dns-prefetch" href="https://assets.mailerlite.com"/>
+<link rel="dns-prefetch" href="https://assets.mlcdn.com"/>
+<link rel="dns-prefetch" href="https://static.mailerlite.com"/>
+<link rel="dns-prefetch" href="https://groot.mailerlite.com"/>
+<link rel="dns-prefetch" href="https://fonts.mailerlite.com"/>
+<link rel="preconnect" href="https://gumroad.com"/>
+<link rel="dns-prefetch" href="https://gumroad.com"/>
+<link rel="preconnect" href="https://assets.gumroad.com"/>
+<link rel="dns-prefetch" href="https://assets.gumroad.com"/>
+
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="SheetReady"/>
@@ -89,7 +103,8 @@
     --navy-deep:#102544;
     --navy-ink:#0E1A33;
     --tile:#102544;            /* ONE consistent logo tile fill (header + footer + 404) */
-    --gold:#E0A209;            /* AA-safe accent on white / text-on-light */
+    --gold:#E0A209;            /* decorative gold FILLS only (kicker bar, button bg, skip bg) */
+    --gold-text:#8A6100;       /* gold TEXT on light bg — WCAG AA: 5.40:1 on #FBFCFE (>=4.5) */
     --gold-on-navy:#F2B705;    /* brighter gold for dark surfaces only */
     --gold-soft:#FFF6E1;
     --emerald:#0F7A52;         /* AA-safe emerald text on white (>=4.5:1) */
@@ -154,7 +169,7 @@
 
   /* mono utility label */
   .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:9px}
+    text-transform:uppercase;color:var(--gold-text);display:inline-flex;align-items:center;gap:9px}
   .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
   .kicker.dark{color:var(--gold-on-navy)}
   .kicker.dark::before{background:var(--gold-on-navy)}
@@ -167,7 +182,7 @@
   .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
     color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
   .brand .mark{width:32px;height:32px;flex:0 0 auto}
-  .brand .g{color:var(--gold)}
+  .brand .g{color:var(--gold-text)}
   .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
   .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
     border-radius:9px;transition:color .15s ease,background .15s ease}
@@ -410,7 +425,7 @@
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;
     box-shadow:var(--sh-1),var(--glass-edge)}
-  .step .n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold);
+  .step .n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold-text);
     width:42px;height:42px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:18px}
   .step h3{font-size:var(--fs-h3);color:var(--navy-ink)}
   .step p{margin-top:9px;color:var(--muted);font-size:15px}
@@ -465,7 +480,10 @@
     border-radius:var(--r-lg);padding:24px;box-shadow:0 24px 60px rgba(8,16,36,.4);backdrop-filter:blur(4px)}
   .signup-card .sc-h{font-weight:700;font-size:18px;color:#fff;letter-spacing:-.01em}
   .signup-card .sc-p{font-size:13.5px;color:var(--muted-on-navy);margin-top:6px;margin-bottom:18px}
-  .signup-card .ml-embedded{min-height:50px}
+  /* Reserve space for the lazily-injected MailerLite form so injection causes no layout shift.
+     ~Email field (48px) + submit button (48px) + spacing/consent line. Tuned to the rendered form. */
+  .signup-card .ml-embedded{min-height:184px}
+  @media (max-width:560px){.signup-card .ml-embedded{min-height:208px}}
   .signup-card .ml-embedded input[type=email],
   .signup-card .ml-embedded input[type=text]{font-family:var(--sans)}
   .sc-fine{margin-top:14px;font-size:12px;color:var(--faint-on-navy);text-align:center}
@@ -567,15 +585,9 @@
     .nav.open{opacity:1;transform:none}
   }
 </style>
-<!-- MailerLite Universal -->
-<script>
-  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-  ml('account', '2476370');
-</script>
-<!-- End MailerLite Universal -->
+<!-- MailerLite Universal is loaded LAZILY (see deferred loader before </body>):
+     it pulls jQuery + inputmask + universal.js + 2 web fonts, but the signup
+     form is below the fold. Loading it eagerly here regressed LCP/CLS. -->
 </head>
 <body>
 <a class="skip" href="#templates">Skip to templates</a>
@@ -1150,8 +1162,9 @@
            land in the "Free Tracker Subscribers" group with double opt-in;
            the welcome automation delivers the free tracker. -->
       <div class="signup-card">
-        <p class="sc-h">Send me the free Money Tracker</p>
+        <h3 class="sc-h">Send me the free Money Tracker</h3>
         <p class="sc-p">Enter your email and we'll send the download link right away.</p>
+        <!-- Placeholder reserves the form's height so lazy MailerLite injection causes ZERO layout shift (CLS). -->
         <div class="ml-embedded" data-form="J3MzPf"></div>
         <p class="sc-fine">We only email occasionally. Unsubscribe with one click.</p>
       </div>
@@ -1389,7 +1402,72 @@
   })();
 </script>
 
-<!-- Gumroad overlay (deferred, non-critical) -->
-<script src="https://gumroad.com/js/gumroad.js" defer></script>
+<!-- ============================================================
+     LAZY THIRD-PARTY LOADER (no deps)
+     Keeps jQuery/inputmask/universal.js + ABCFavorit/design CSS off the
+     critical path. Each script loads only when it's actually needed.
+     ============================================================ -->
+<script>
+  (function(){
+    /* ---------- 1) MailerLite (below-the-fold signup form) ----------
+       Load when the form is about to enter the viewport, OR on first user
+       interaction (scroll / pointer / keydown / touch), whichever fires first;
+       hard fallback on window 'load'. Form identity unchanged: account 2476370,
+       data-form="J3MzPf". Height is reserved in CSS so injection => no CLS. */
+    var mlLoaded=false;
+    function loadMailerLite(){
+      if(mlLoaded)return; mlLoaded=true;
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      window.ml('account','2476370');
+    }
+    var mlForm=document.querySelector('.ml-embedded');
+    if('IntersectionObserver'in window && mlForm){
+      var mlIO=new IntersectionObserver(function(entries){
+        if(entries.some(function(en){return en.isIntersecting;})){mlIO.disconnect();loadMailerLite();}
+      },{rootMargin:'400px 0px'}); /* prefetch a bit before it scrolls into view */
+      mlIO.observe(mlForm);
+    }
+    var mlInteract=function(){loadMailerLite();removeMlInteract();};
+    function removeMlInteract(){
+      ['scroll','pointerdown','keydown','touchstart','mousemove'].forEach(function(ev){
+        window.removeEventListener(ev,mlInteract,{passive:true});
+      });
+    }
+    ['scroll','pointerdown','keydown','touchstart','mousemove'].forEach(function(ev){
+      window.addEventListener(ev,mlInteract,{passive:true,once:true});
+    });
+    window.addEventListener('load',function(){setTimeout(loadMailerLite,2500);}); /* safety net */
+
+    /* ---------- 2) Gumroad overlay (checkout) ----------
+       gumroad.js attaches its overlay handler to .gumroad-button links at load.
+       Load it on the first hover/touch/focus of ANY buy link so the subsequent
+       click opens the overlay; idle fallback after window load if untouched.
+       The links are real /l/ URLs, so even before JS loads a click still works
+       (graceful fallback: opens the Gumroad product page in a new tab). */
+    var grLoaded=false;
+    function loadGumroad(){
+      if(grLoaded)return; grLoaded=true;
+      var s=document.createElement('script');
+      s.src='https://gumroad.com/js/gumroad.js'; s.async=true;
+      document.body.appendChild(s);
+    }
+    var grBtns=document.querySelectorAll('.gumroad-button');
+    var grTriggers=['pointerover','touchstart','focus'];
+    function grWarm(){loadGumroad();}
+    grBtns.forEach(function(b){
+      grTriggers.forEach(function(ev){
+        b.addEventListener(ev,grWarm,{once:true,passive:true});
+      });
+    });
+    /* fallback: load when the browser is idle after first paint */
+    window.addEventListener('load',function(){
+      if('requestIdleCallback'in window){requestIdleCallback(loadGumroad,{timeout:4000});}
+      else{setTimeout(loadGumroad,3000);}
+    });
+  })();
+</script>
 </body>
 </html>
