@@ -1,0 +1,4 @@
+Contact: mailto:finance.nfm@ncg.lk
+Expires: 2027-06-28T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://sheetready.vercel.app/.well-known/security.txt

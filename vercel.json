@@ -22,6 +22,18 @@
         {
           "key": "X-XSS-Protection",
           "value": "0"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin-allow-popups"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gumroad.com https://*.gumroad.com https://*.mailerlite.com https://*.mlcdn.com https://assets.mailerlite.com https://static.mailerlite.com https://groot.mailerlite.com; style-src 'self' 'unsafe-inline' https://*.gumroad.com https://*.mailerlite.com https://fonts.mailerlite.com; font-src 'self' data: https://*.gumroad.com https://assets.gumroad.com https://*.mailerlite.com https://fonts.mailerlite.com; img-src 'self' data: https:; connect-src 'self' https://gumroad.com https://*.gumroad.com https://*.mailerlite.com https://*.mlcdn.com https://assets.mailerlite.com https://static.mailerlite.com https://groot.mailerlite.com; frame-src 'self' https://gumroad.com https://*.gumroad.com; form-action 'self' https://gumroad.com https://*.gumroad.com https://*.mailerlite.com https://groot.mailerlite.com https://static.mailerlite.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
         }
       ]
     }
