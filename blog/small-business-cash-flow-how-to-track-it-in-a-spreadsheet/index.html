@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Small Business Cash Flow Spreadsheet Guide — SheetReady</title>
+<meta name="description" content="Learn how to track small business cash flow in a simple spreadsheet — what to record, how to spot shortfalls early, and which templates make it faster."/>
+
+<link rel="canonical" href="https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/"/>
+<meta name="theme-color" content="#102544"/>
+<meta name="robots" content="index,follow"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="SheetReady"/>
+<meta property="og:title" content="Small Business Cash Flow: How to Track It in a Spreadsheet"/>
+<meta property="og:description" content="What to record, how to spot shortfalls early, and which templates make tracking small business cash flow faster."/>
+<meta property="og:url" content="https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/"/>
+<meta property="og:image" content="https://sheetready.vercel.app/webpins/blog-og-small-business-cash-flow-how-to-track-it-in-a-spreadsheet.png"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Small Business Cash Flow: How to Track It in a Spreadsheet"/>
+<meta name="twitter:description" content="What to record, how to spot shortfalls early, and the templates that make it faster."/>
+<meta name="twitter:image" content="https://sheetready.vercel.app/webpins/blog-og-small-business-cash-flow-how-to-track-it-in-a-spreadsheet.png"/>
+
+<!-- Favicon: "The Ready Cell" glyph -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
+
+<!-- JSON-LD: BlogPosting + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/#article",
+      "headline": "Small Business Cash Flow: How to Track It in a Simple Spreadsheet",
+      "description": "Cash flow tracking means recording every payment into and out of your business and comparing the two. A basic spreadsheet is all you need to start.",
+      "image": "https://sheetready.vercel.app/webpins/blog-og-small-business-cash-flow-how-to-track-it-in-a-spreadsheet.png",
+      "url": "https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/",
+      "datePublished": "2026-06-28",
+      "dateModified": "2026-06-28",
+      "author": {
+        "@type": "Person",
+        "@id": "https://sheetready.vercel.app/#author-supun",
+        "name": "Supun",
+        "jobTitle": "Finance template builder",
+        "description": "Finance background, builds Excel and Google Sheets templates at SheetReady.",
+        "url": "https://sheetready.vercel.app/blog/",
+        "sameAs": ["https://supunsandeep.gumroad.com"]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://sheetready.vercel.app/#org",
+        "name": "SheetReady",
+        "logo": "https://sheetready.vercel.app/webpins/og-cover.png"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://sheetready.vercel.app/blog/#blog",
+        "name": "SheetReady Blog"
+      },
+      "mainEntityOfPage": "https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sheetready.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sheetready.vercel.app/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Small Business Cash Flow: How to Track It in a Simple Spreadsheet", "item": "https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  /* =========================================================
+     SheetReady — "Ledger Light" theme (shared with storefront).
+     System fonts only (zero render-blocking, zero CLS).
+     ========================================================= */
+  :root{
+    --navy:#1B3A6B;
+    --navy-deep:#102544;
+    --navy-ink:#0E1A33;
+    --tile:#102544;
+    --gold:#E0A209;
+    --gold-on-navy:#F2B705;
+    --gold-soft:#FFF6E1;
+    --emerald:#0F7A52;
+    --emerald-deep:#0c6e4b;
+    --emerald-soft:#E6F4EE;
+
+    --ink:#0E1A33;
+    --muted:#566480;
+    --muted-on-navy:#A9BAD8;
+    --faint-on-navy:#92A6CC;
+
+    --bg:#FBFCFE;
+    --surface:#F2F5FB;
+    --card:#FFFFFF;
+    --line:#E6EAF2;
+    --line-soft:#EFF2F8;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+
+    --fs-micro:clamp(11px,.7vw,12.5px);
+    --fs-small:14px;
+    --fs-body:16px;
+    --fs-lead:clamp(16px,1.6vw,19px);
+    --fs-h3:clamp(18px,1.4vw,20px);
+    --fs-h2:clamp(24px,2.6vw,32px);
+    --fs-display:clamp(32px,4.4vw,46px);
+
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --s7:48px; --s8:64px; --s9:96px;
+
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+
+    --sh-1:0 1px 2px rgba(16,37,68,.05),0 4px 14px rgba(16,37,68,.05);
+    --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
+    --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
+    --maxw:1180px;
+    --readw:720px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:var(--navy)}
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
+    padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
+
+  /* ---------- Header ---------- */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(251,252,254,.82);
+    backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
+    color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+  .brand .mark{width:32px;height:32px;flex:0 0 auto}
+  .brand .g{color:var(--gold)}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
+    border-radius:9px;transition:color .15s ease,background .15s ease}
+  .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  .nav a[aria-current="true"]{color:var(--navy-ink)}
+  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+    background:var(--gold);border-radius:2px}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
+  .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
+  .nav .cta[aria-current="true"]::after{display:none}
+  .navtoggle{display:none}
+  .nav-backdrop{display:none}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;min-height:48px;
+    font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn .arr{transition:transform .15s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 26px rgba(224,162,9,.30)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36)}
+  .btn-navy{background:var(--navy-ink);color:#fff;box-shadow:var(--sh-1)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
+  .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
+
+  /* ---------- Article layout ---------- */
+  .article-head{border-bottom:1px solid var(--line);background:
+      radial-gradient(620px 360px at 88% 0%,rgba(242,183,5,.10),transparent 62%),
+      radial-gradient(620px 460px at 6% -12%,rgba(27,58,107,.07),transparent 60%)}
+  .article-head .wrap{max-width:var(--readw);padding-top:40px;padding-bottom:40px}
+  .crumb{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+  .crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0}
+  .crumb a{color:var(--navy);text-decoration:none;font-weight:600}
+  .crumb a:hover{color:var(--gold)}
+  .crumb .sep{color:#aab6cf}
+  .crumb [aria-current]{color:var(--navy-ink);font-weight:600;max-width:34ch;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .back-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;
+    color:var(--navy);text-decoration:none;margin-bottom:18px}
+  .back-link:hover{color:var(--gold)}
+  .article-head h1{font-size:var(--fs-display);color:var(--navy-ink);line-height:1.1}
+  .article-meta{margin-top:16px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px}
+  .article-meta .by{font-weight:600;color:var(--navy-ink)}
+
+  .article-wrap{max-width:var(--readw);margin:0 auto;padding:0 var(--s5)}
+  .article-body{padding:40px 0 8px;line-height:1.7;font-size:17px;color:var(--ink)}
+  .answer-capsule{margin:0 0 28px;color:var(--navy-ink);font-size:18px;line-height:1.6;
+    background:var(--gold-soft);border:1px solid #f4e6bd;border-left:4px solid var(--gold);
+    border-radius:var(--r-md);padding:18px 20px}
+  .article-body h2{font-size:var(--fs-h2);color:var(--navy-ink);margin:40px 0 14px;line-height:1.18}
+  .article-body h3{font-size:var(--fs-h3);color:var(--navy-ink);margin:26px 0 10px}
+  .article-body p{margin:0 0 18px}
+  .article-body p:last-child{margin-bottom:0}
+  .article-body a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+  .article-body a:hover{color:var(--gold)}
+  .article-body ul,.article-body ol{margin:0 0 20px;padding-left:24px}
+  .article-body li{margin-bottom:9px}
+  .article-body code{font-family:var(--mono);font-size:.92em;background:var(--surface);
+    border:1px solid var(--line-soft);border-radius:6px;padding:2px 6px;color:var(--navy)}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 24px;
+    border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-1)}
+  .article-body table{border-collapse:collapse;width:100%;font-size:15px;background:#fff;min-width:480px}
+  .article-body thead th{background:var(--surface);text-align:left;font-weight:700;color:var(--navy-ink);
+    padding:12px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .article-body tbody td,.article-body tbody th{padding:11px 14px;border-bottom:1px solid var(--line-soft);
+    text-align:left;vertical-align:top;font-weight:400}
+  .article-body tbody th{font-weight:600;color:var(--navy-ink)}
+  .article-body tbody tr:last-child td,.article-body tbody tr:last-child th{border-bottom:0}
+  .article-body tbody tr:nth-child(even){background:#fcfdff}
+
+  /* disclaimer / callout */
+  .disclaimer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--navy);
+    border-radius:var(--r-md);padding:18px 20px;margin:0 0 26px;font-size:15px;color:var(--ink);line-height:1.6}
+  .disclaimer strong{color:var(--navy-ink)}
+
+  /* CTA block */
+  .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;border-radius:var(--r-lg);
+    padding:32px 30px;margin:36px 0;box-shadow:var(--sh-2)}
+  .cta-block h2{color:#fff;font-size:var(--fs-h3);margin:0 0 10px}
+  .cta-block p{color:var(--muted-on-navy);font-size:15.5px;margin:0 0 20px;max-width:54ch}
+  .cta-block p a{color:var(--gold-on-navy)}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+  a.gumroad-button.buy{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;
+    padding:14px 22px;border-radius:12px;background:var(--gold);color:var(--navy-deep);white-space:nowrap;line-height:1.2;min-height:48px;
+    box-shadow:0 10px 26px rgba(224,162,9,.30);transition:transform .15s ease,box-shadow .15s ease}
+  a.gumroad-button.buy:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36);color:var(--navy-deep)}
+  a.gumroad-button.buy.ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.28);
+    box-shadow:none}
+  a.gumroad-button.buy.ghost:hover{background:rgba(255,255,255,.18);color:#fff}
+  a.gumroad-button.buy .arr{transition:transform .15s ease}
+  a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:12px;margin:8px 0 0}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:var(--sh-1),var(--glass-edge);overflow:hidden;transition:border-color .15s ease}
+  .faq details[open]{border-color:#cfdaef}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;font-weight:700;font-size:16.5px;color:var(--navy-ink);min-height:48px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--surface);
+    display:grid;place-items:center;color:var(--navy);transition:transform .2s ease,background .15s ease;font-weight:700}
+  .faq details[open] summary .pm{transform:rotate(45deg);background:var(--gold-soft);color:var(--gold)}
+  .faq .ans{padding:0 20px 20px;color:var(--muted);font-size:15.5px;line-height:1.65}
+  .faq .ans p{margin:0}
+
+  /* author bio */
+  .about{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:28px 28px 26px;box-shadow:var(--sh-1),var(--glass-edge);margin:48px auto;max-width:var(--readw)}
+  .about .who{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .about .who .av{width:48px;height:48px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--tile);box-shadow:var(--sh-1)}
+  .about .who .nm{font-weight:700;font-size:16px;color:var(--navy-ink);display:block}
+  .about .who .rl{font-size:13px;color:var(--muted);display:block}
+  .about p{color:var(--ink);font-size:15px;line-height:1.65}
+
+  .article-footer-links{max-width:var(--readw);margin:0 auto 8px;padding:0 var(--s5) 16px;font-size:15.5px}
+  .article-footer-links a{font-weight:700}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
+  footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+  footer .fbrand .g{color:var(--gold-on-navy)}
+  footer .fbrand .mark{width:32px;height:32px}
+  footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:6px;min-height:24px}
+  footer .flinks a:hover{color:var(--gold-on-navy)}
+  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
+    font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    .nav{display:none}
+    .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:6px;background:#fff;padding:16px 18px 22px;border-bottom:1px solid var(--line);
+      box-shadow:var(--sh-2);z-index:110;
+      opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
+    .nav.open.in{opacity:1;transform:translateY(0)}
+    .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
+    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open .cta{margin-left:0;justify-content:center}
+    .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
+      opacity:0;transition:opacity .22s ease}
+    .nav-backdrop.in{opacity:1}
+    .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
+      width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+    .navtoggle svg{width:22px;height:22px}
+    .cta-actions .gumroad-button.buy{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    .reveal{opacity:1;transform:none}
+    .nav.open{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#article-content">Skip to content</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="https://sheetready.vercel.app/" aria-label="SheetReady home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#102544"/>
+        <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+        <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+        <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+        <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+      </svg>
+      <span>Sheet<span class="g">Ready</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg id="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="https://sheetready.vercel.app/#templates">Templates</a>
+      <a href="https://sheetready.vercel.app/#how">How it works</a>
+      <a href="https://sheetready.vercel.app/#about">About</a>
+      <a href="/blog/" aria-current="true">Blog</a>
+      <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+      <a class="cta" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get free tracker</a>
+    </nav>
+  </div>
+</header>
+
+<main id="article-content">
+  <article>
+
+    <!-- ============ ARTICLE HEAD ============ -->
+    <header class="article-head">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="https://sheetready.vercel.app/">Home</a></li>
+            <li class="sep" aria-hidden="true">/</li>
+            <li><a href="/blog/">Blog</a></li>
+            <li class="sep" aria-hidden="true">/</li>
+            <li><span aria-current="page">Small Business Cash Flow</span></li>
+          </ol>
+        </nav>
+        <a class="back-link" href="/blog/"><span aria-hidden="true">←</span> Back to all guides</a>
+        <h1>Small Business Cash Flow: How to Track It in a Simple Spreadsheet</h1>
+        <div class="article-meta">
+          <span class="by">By Supun · SheetReady</span>
+          <span>Last updated: June 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ ARTICLE BODY ============ -->
+    <div class="article-wrap">
+      <div class="article-body">
+
+        <p class="answer-capsule">Cash flow tracking means recording every payment that comes into and goes out of your business, and comparing the two. A basic spreadsheet with columns for date, description, money in, money out, and a running balance is all you need to start. The goal is to see your real cash position on any given day — not just what your invoices say you are owed.</p>
+
+        <h2>Why cash flow kills profitable businesses</h2>
+        <p>It sounds contradictory, but many small businesses that fail are actually profitable on paper. The problem is timing. You invoice a client in April, they pay in June, but your supplier bill, rent, and software subscriptions are due in May. On your profit-and-loss statement you made money. In your bank account you have nothing to pay with.</p>
+        <p>This gap between profit and cash is the single most common financial shock for freelancers, consultants, and small-business owners. Tracking cash flow does not prevent the gap — but it shows you it is coming weeks in advance, so you can act on it.</p>
+
+        <h2>What is cash flow and how is it different from profit?</h2>
+        <p>Cash flow is the movement of actual money into and out of your business bank account. Profit is revenue minus costs on paper, which may include money you have not yet received (outstanding invoices) or costs you have not yet paid (upcoming bills).</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col"></th><th scope="col">Cash flow</th><th scope="col">Profit</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">What it measures</th><td>Money actually received and paid</td><td>Revenue minus expenses on paper</td></tr>
+              <tr><th scope="row">Timing</th><td>When cash changes hands</td><td>When the transaction is recorded</td></tr>
+              <tr><th scope="row">Accounts for unpaid invoices</th><td>No — only received cash</td><td>Yes</td></tr>
+              <tr><th scope="row">Accounts for upcoming bills</th><td>Only when paid</td><td>Sometimes</td></tr>
+              <tr><th scope="row">Best for</th><td>Day-to-day survival decisions</td><td>Assessing business performance</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A business needs both. Profit tells you whether the model is working. Cash flow tells you whether you can make payroll next week.</p>
+
+        <h2>What should a cash flow spreadsheet include?</h2>
+        <p>A practical cash flow spreadsheet for a small business should include, at minimum: the date of each transaction, a brief description, the amount received (money in), the amount paid (money out), and a running balance that updates automatically after each row.</p>
+        <p>More advanced versions add a category column (so you can see where money is going), a projected column alongside the actual column, and a summary section that shows weekly or monthly totals. The SheetReady Cash Flow &amp; Profit Dashboard and 13-Week Cash Flow Forecast both use this structure.</p>
+
+        <h2>How to set up a basic cash flow spreadsheet</h2>
+        <h3>Step 1 — Create five columns</h3>
+        <p>Open Google Sheets or Excel. Label the columns:</p>
+        <ul>
+          <li><strong>A:</strong> Date</li>
+          <li><strong>B:</strong> Description</li>
+          <li><strong>C:</strong> Money In</li>
+          <li><strong>D:</strong> Money Out</li>
+          <li><strong>E:</strong> Running Balance</li>
+        </ul>
+        <h3>Step 2 — Enter your opening balance</h3>
+        <p>In row 2, put today's date, "Opening balance" in the description, your current bank balance in column C, and that same figure in column E.</p>
+        <h3>Step 3 — Record transactions as they happen</h3>
+        <p>For every payment you receive, enter it in column C. For every payment you make, enter it in column D. The running balance in column E uses a simple formula: <code>=E2+C3-D3</code> (previous balance plus money in minus money out). Copy that formula down for every subsequent row.</p>
+        <h3>Step 4 — Review once a week</h3>
+        <p>At the end of each week, check that your running balance matches your bank statement. Any mismatch signals a transaction you missed. This weekly reconciliation takes five minutes and keeps your data reliable.</p>
+        <h3>Step 5 — Spot shortfalls before they hit</h3>
+        <p>Once you have a few weeks of data, you can start adding projected rows for future known outflows — rent due on the 1st, a supplier invoice due on the 15th, and so on. When the projected balance dips negative, you know to act: chase an outstanding invoice, delay a discretionary purchase, or arrange a short-term credit facility.</p>
+
+        <h2>What is a 13-week cash flow forecast and who needs it?</h2>
+        <p>A 13-week cash flow forecast is a rolling, week-by-week projection of all expected cash inflows and outflows for the next quarter. It is the standard tool used by accountants, lenders, and finance managers to manage business liquidity.</p>
+        <p>The 13-week window is long enough to show seasonal dips or invoice timing problems, but short enough that the numbers stay credible. It is particularly useful for:</p>
+        <ul>
+          <li>Businesses with irregular invoice payment terms (30, 60, or 90 days)</li>
+          <li>Seasonal businesses that have high-cash and low-cash periods</li>
+          <li>Any business that has taken on debt and needs to manage repayments</li>
+          <li>Freelancers and consultants with lumpy, project-based income</li>
+        </ul>
+        <p>If you want the structure pre-built, you can <a href="https://supunsandeep.gumroad.com/l/xfitf" target="_blank" rel="noopener noreferrer">download the 13-week forecast</a> ($24) — it comes with weekly in/out columns, a rolling closing balance, and a low-cash alert that highlights any week where the projected balance drops below a threshold you set.</p>
+
+        <h2>Simple cash flow tracker vs. full dashboard — which do you need?</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col"></th><th scope="col">Simple tracker (DIY)</th><th scope="col">Cash Flow &amp; Profit Dashboard</th><th scope="col">13-Week Forecast</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Best for</th><td>Sole traders, brand new businesses</td><td>Businesses with multiple income streams</td><td>Businesses with longer payment cycles</td></tr>
+              <tr><th scope="row">Tracks actuals</th><td>Yes</td><td>Yes</td><td>Primarily projections</td></tr>
+              <tr><th scope="row">Shows profit view</th><td>No</td><td>Yes (separate P&amp;L tab)</td><td>No</td></tr>
+              <tr><th scope="row">Forecasting</th><td>No</td><td>Limited</td><td>Yes — 13 weeks ahead</td></tr>
+              <tr><th scope="row">Setup time</th><td>15–20 min</td><td>5 min</td><td>5 min</td></tr>
+              <tr><th scope="row">Price</th><td>Free (your time)</td><td>$24 (SheetReady)</td><td>$24 (SheetReady)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For a freelancer or very small business just getting started, the DIY tracker above is a completely reasonable first step. When your business has multiple clients, recurring expenses, and payment terms that stretch beyond two weeks, a structured dashboard saves meaningful time and surfaces problems earlier.</p>
+
+        <h2>How often should I update my cash flow spreadsheet?</h2>
+        <p>Update your cash flow record at least once a week. The best businesses update it daily — but for most small-business owners, a weekly session of ten to fifteen minutes is enough to keep the data useful and catch problems before they become emergencies.</p>
+        <p>Pick a consistent day (Friday afternoon works well for many owners — it closes out the week before the weekend). Pull your bank transactions for the week, enter any you missed, and scan the running balance column. If anything looks off, you have the weekend to think before Monday.</p>
+
+        <h2>What are the most common cash flow mistakes small businesses make?</h2>
+        <p><strong>Tracking invoiced revenue, not received cash.</strong> An invoice is not money. Until the payment clears your account, it does not belong in your cash flow record — only in your accounts receivable.</p>
+        <p><strong>Skipping the weekly review.</strong> A cash flow spreadsheet you update monthly is usually too late. Problems that are visible three weeks ahead often require only a phone call to fix. Problems discovered the day before payday require panic.</p>
+        <p><strong>Ignoring seasonal patterns.</strong> Most businesses have months that are consistently slow and months that are consistently busy. Once you have six months of data, patterns appear. Knowing that March is always slow lets you hold more cash in February.</p>
+        <p><strong>No low-cash alert.</strong> Decide on a minimum comfortable bank balance — perhaps one month of fixed costs — and treat any balance below that number as a signal to act, not a number to ignore. The <a href="https://www.investopedia.com/terms/c/cashflow.asp" target="_blank" rel="noopener">Investopedia guide to cash flow</a> is a useful primer if you want the underlying definitions.</p>
+
+        <!-- ============ PRODUCT CTA ============ -->
+        <div class="cta-block reveal">
+          <h2>Take control of your cash flow</h2>
+          <p>Start with the free structure above, or get a ready-built file that handles the formulas for you. The <a href="https://supunsandeep.gumroad.com/l/khtvuw" target="_blank" rel="noopener noreferrer">Cash Flow &amp; Profit Dashboard</a> gives you a full business view — income, expenses, profit, and cash. For businesses that need to plan weeks ahead, the 13-Week Cash Flow Forecast shows every potential shortfall before it arrives. Both work in Google Sheets and Excel.</p>
+          <div class="cta-actions">
+            <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/khtvuw" target="_blank" rel="noopener noreferrer">Get the Cash Flow Dashboard — $24 <span class="arr" aria-hidden="true">→</span></a>
+            <a class="gumroad-button buy ghost" href="https://supunsandeep.gumroad.com/l/xfitf" target="_blank" rel="noopener noreferrer">Get the 13-Week Forecast — $24</a>
+          </div>
+        </div>
+
+        <h2>Frequently asked questions about cash flow tracking</h2>
+        <div class="faq">
+          <details>
+            <summary>Can I use one spreadsheet for both cash flow and profit tracking?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>Yes, and many small businesses do. The SheetReady Cash Flow &amp; Profit Dashboard has separate tabs for cash flow and a profit-and-loss summary in the same file, so you can see both views without switching tools.</p></div>
+          </details>
+          <details>
+            <summary>My business is very small — do I really need a cash flow tracker?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>If you send invoices or have any gap between earning money and receiving it, yes. Even a solo freelancer with two clients can hit a timing crunch that a tracker would have flagged two weeks earlier.</p></div>
+          </details>
+          <details>
+            <summary>What is the difference between a cash flow statement and a forecast?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>A cash flow statement records what actually happened — money that came in and went out. A forecast projects what is expected to happen in the coming weeks or months. Both are useful; the statement tells you where you have been, the forecast tells you where you are heading.</p></div>
+          </details>
+          <details>
+            <summary>I have clients who pay on 60-day terms. How do I handle that in a spreadsheet?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>Create a separate "Expected receipts" column for money you are owed but have not yet received. When the payment clears, move it to your actual "Money in" column. This way you can see both your real cash position and what is on its way.</p></div>
+          </details>
+          <details>
+            <summary>How does cash flow tracking help at tax time?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>When every transaction is already categorised and dated in your spreadsheet, producing a summary for your accountant — or for a tax return — is a matter of filtering by date range, not hunting through a year of bank statements.</p></div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ AUTHOR BIO (E-E-A-T) ============ -->
+    <aside class="about reveal" aria-label="About the author">
+      <div class="who">
+        <span class="av" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 32 32">
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>
+          <span class="nm">Supun — SheetReady</span>
+          <span class="rl">Finance background · spreadsheet template builder</span>
+        </span>
+      </div>
+      <p>Supun built SheetReady after years working in finance. Every template is hand-built and tested in both Excel and Google Sheets before it ships. He writes about practical spreadsheet techniques for small business owners, freelancers, and anyone managing money without a full accounting team.</p>
+    </aside>
+
+    <p class="article-footer-links"><a href="https://sheetready.vercel.app/#templates">Browse all SheetReady templates →</a></p>
+
+  </article>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="fbrand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#102544"/>
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+          <span>Sheet<span class="g">Ready</span></span>
+        </div>
+        <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="https://sheetready.vercel.app/#templates">Templates</a>
+        <a href="https://sheetready.vercel.app/#how">How it works</a>
+        <a href="https://sheetready.vercel.app/#about">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://sheetready.vercel.app/#free">Free tracker</a>
+        <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+        <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
+        <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
+      </nav>
+    </div>
+    <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+  </div>
+</footer>
+
+<!-- Site interactions: nav, reveal, dynamic year (vanilla, no deps) -->
+<script>
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
+        backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
+    var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+    var xHTML='<line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>';
+    var navOpen=false;
+    function focusables(){return nav.querySelectorAll('a[href],button');}
+    function openNav(){
+      navOpen=true;nav.classList.add('open');backdrop.hidden=false;
+      requestAnimationFrame(function(){nav.classList.add('in');backdrop.classList.add('in');});
+      btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Close menu');
+      navIcon.innerHTML=xHTML;
+      var f=focusables(); if(f.length){f[0].focus();}
+    }
+    function closeNav(returnFocus){
+      navOpen=false;nav.classList.remove('in');backdrop.classList.remove('in');
+      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+      navIcon.innerHTML=menuHTML;
+      var done=function(){nav.classList.remove('open');backdrop.hidden=true;};
+      if(reduce){done();}else{setTimeout(done,220);}
+      if(returnFocus){btn.focus();}
+    }
+    if(btn&&nav){
+      btn.addEventListener('click',function(){navOpen?closeNav(true):openNav();});
+      backdrop.addEventListener('click',function(){closeNav(false);});
+      nav.addEventListener('click',function(e){if(e.target.closest('a')){closeNav(false);}});
+      document.addEventListener('keydown',function(e){
+        if(!navOpen)return;
+        if(e.key==='Escape'){closeNav(true);}
+        else if(e.key==='Tab'){
+          var f=focusables();if(!f.length)return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+    var items=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver'in window)){
+      items.forEach(function(el){el.classList.add('in');});
+    }else{
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      items.forEach(function(el){io.observe(el);});
+    }
+  })();
+</script>
+
+<!-- Gumroad overlay (deferred, non-critical) -->
+<script src="https://gumroad.com/js/gumroad.js" defer></script>
+</body>
+</html>

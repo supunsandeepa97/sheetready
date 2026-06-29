@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Spreadsheet Finance Tips &amp; Guides — SheetReady Blog</title>
+<meta name="description" content="Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets. Free tips from SheetReady's finance template builder."/>
+
+<link rel="canonical" href="https://sheetready.vercel.app/blog/"/>
+<meta name="theme-color" content="#102544"/>
+<meta name="robots" content="index,follow"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SheetReady"/>
+<meta property="og:title" content="Spreadsheet Finance Tips & Guides — SheetReady Blog"/>
+<meta property="og:description" content="Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets."/>
+<meta property="og:url" content="https://sheetready.vercel.app/blog/"/>
+<meta property="og:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="SheetReady — simple Excel & Google Sheets finance templates"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Spreadsheet Finance Tips & Guides — SheetReady Blog"/>
+<meta name="twitter:description" content="Practical guides on cash flow, budgeting and tax with Excel & Google Sheets."/>
+<meta name="twitter:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
+
+<!-- Favicon: "The Ready Cell" glyph -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
+
+<!-- JSON-LD: CollectionPage + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://sheetready.vercel.app/blog/#page",
+      "name": "SheetReady Blog — Spreadsheet Finance Guides",
+      "url": "https://sheetready.vercel.app/blog/",
+      "description": "Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets.",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://sheetready.vercel.app/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sheetready.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sheetready.vercel.app/blog/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  /* =========================================================
+     SheetReady — "Ledger Light" theme (shared with storefront).
+     System fonts only (zero render-blocking, zero CLS).
+     ========================================================= */
+  :root{
+    --navy:#1B3A6B;
+    --navy-deep:#102544;
+    --navy-ink:#0E1A33;
+    --tile:#102544;
+    --gold:#E0A209;
+    --gold-on-navy:#F2B705;
+    --gold-soft:#FFF6E1;
+    --emerald:#0F7A52;
+    --emerald-deep:#0c6e4b;
+    --emerald-soft:#E6F4EE;
+
+    --ink:#0E1A33;
+    --muted:#566480;
+    --muted-on-navy:#A9BAD8;
+    --faint-on-navy:#92A6CC;
+
+    --bg:#FBFCFE;
+    --surface:#F2F5FB;
+    --card:#FFFFFF;
+    --line:#E6EAF2;
+    --line-soft:#EFF2F8;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+
+    --fs-micro:clamp(11px,.7vw,12.5px);
+    --fs-small:14px;
+    --fs-body:16px;
+    --fs-lead:clamp(16px,1.6vw,19px);
+    --fs-h3:clamp(18px,1.4vw,20px);
+    --fs-h2:clamp(28px,3.4vw,40px);
+    --fs-display:clamp(40px,5.2vw,60px);
+
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --s7:48px; --s8:64px; --s9:96px;
+
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+
+    --sh-1:0 1px 2px rgba(16,37,68,.05),0 4px 14px rgba(16,37,68,.05);
+    --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
+    --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:var(--navy)}
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
+    padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+  .ic{width:24px;height:24px;flex:0 0 auto;stroke-width:2}
+
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
+
+  /* ---------- Header ---------- */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(251,252,254,.82);
+    backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
+    color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+  .brand .mark{width:32px;height:32px;flex:0 0 auto}
+  .brand .g{color:var(--gold)}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
+    border-radius:9px;transition:color .15s ease,background .15s ease}
+  .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  .nav a[aria-current="true"]{color:var(--navy-ink)}
+  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+    background:var(--gold);border-radius:2px}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
+  .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
+  .nav .cta[aria-current="true"]::after{display:none}
+  .navtoggle{display:none}
+  .nav-backdrop{display:none}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;min-height:48px;
+    font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn .arr{transition:transform .15s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 26px rgba(224,162,9,.30)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36)}
+  .btn-navy{background:var(--navy-ink);color:#fff;box-shadow:var(--sh-1)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
+  .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
+
+  /* ---------- Section scaffold ---------- */
+  .section{padding:var(--s9) 0}
+  .sec-head{max-width:680px;margin-bottom:44px}
+  .sec-head h1{font-size:var(--fs-display);color:var(--navy-ink);margin-top:14px}
+  .sec-head p{margin-top:16px;color:var(--muted);font-size:var(--fs-lead)}
+
+  /* ---------- Blog hub hero ---------- */
+  .blog-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(680px 420px at 82% 4%,rgba(242,183,5,.13),transparent 60%),
+      radial-gradient(720px 560px at 10% -10%,rgba(27,58,107,.09),transparent 60%);}
+  .blog-hero .wrap{padding-top:72px;padding-bottom:56px;position:relative;z-index:1}
+  .crumb{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+  .crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0}
+  .crumb a{color:var(--navy);text-decoration:none;font-weight:600}
+  .crumb a:hover{color:var(--gold)}
+  .crumb .sep{color:#aab6cf}
+  .crumb [aria-current]{color:var(--navy-ink);font-weight:600}
+  .blog-hero h1{font-size:var(--fs-display);color:var(--navy-ink);max-width:16ch}
+  .blog-hero .sub{margin-top:18px;font-size:var(--fs-lead);color:var(--muted);max-width:54ch}
+  .blog-hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+  /* ---------- Article card grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .post-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:var(--sh-1),var(--glass-edge);text-decoration:none;color:inherit;
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .post-card:hover{transform:translateY(-5px);box-shadow:var(--sh-2),var(--glass-edge);border-color:#d3def1}
+  .post-card .pc-top{padding:20px 22px 0;display:flex;align-items:center;gap:9px}
+  .post-card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600}
+  .post-card .body{padding:14px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .post-card h2{font-size:var(--fs-h3);line-height:1.25;letter-spacing:-.01em;color:var(--navy-ink)}
+  .post-card .desc{margin-top:10px;font-size:14.5px;color:var(--muted);flex:1;line-height:1.55}
+  .post-card .more{margin-top:18px;font-weight:700;font-size:14.5px;color:var(--navy);display:inline-flex;
+    align-items:center;gap:7px}
+  .post-card .more .arr{transition:transform .15s ease}
+  .post-card:hover .more .arr{transform:translateX(4px)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
+  footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+  footer .fbrand .g{color:var(--gold-on-navy)}
+  footer .fbrand .mark{width:32px;height:32px}
+  footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:6px;min-height:24px}
+  footer .flinks a:hover{color:var(--gold-on-navy)}
+  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
+    font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .section{padding:64px 0}
+  }
+  @media (max-width:760px){
+    .nav{display:none}
+    .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:6px;background:#fff;padding:16px 18px 22px;border-bottom:1px solid var(--line);
+      box-shadow:var(--sh-2);z-index:110;
+      opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
+    .nav.open.in{opacity:1;transform:translateY(0)}
+    .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
+    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open .cta{margin-left:0;justify-content:center}
+    .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
+      opacity:0;transition:opacity .22s ease}
+    .nav-backdrop.in{opacity:1}
+    .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
+      width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+    .navtoggle svg{width:22px;height:22px}
+    .section{padding:48px 0}
+    .grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .btn{width:100%}
+    .blog-hero .cta-row .btn{flex:1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    .reveal{opacity:1;transform:none}
+    .nav.open{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#blog-content">Skip to articles</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="https://sheetready.vercel.app/" aria-label="SheetReady home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#102544"/>
+        <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+        <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+        <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+        <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+      </svg>
+      <span>Sheet<span class="g">Ready</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg id="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="https://sheetready.vercel.app/#templates">Templates</a>
+      <a href="https://sheetready.vercel.app/#how">How it works</a>
+      <a href="https://sheetready.vercel.app/#about">About</a>
+      <a href="/blog/" aria-current="true">Blog</a>
+      <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+      <a class="cta" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get free tracker</a>
+    </nav>
+  </div>
+</header>
+
+<main id="blog-content">
+
+  <!-- ============ HUB HERO ============ -->
+  <section class="blog-hero" aria-labelledby="blog-h1">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="https://sheetready.vercel.app/">Home</a></li>
+          <li class="sep" aria-hidden="true">/</li>
+          <li><span aria-current="page">Blog</span></li>
+        </ol>
+      </nav>
+      <span class="kicker">The SheetReady blog</span>
+      <h1 id="blog-h1">Spreadsheet finance tips &amp; guides</h1>
+      <p class="sub">Practical, no-jargon guides on tracking cash flow, budgeting and tax with Excel and Google Sheets — written by the person who builds the templates. Start free, upgrade when you need more.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get the free money tracker <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="https://sheetready.vercel.app/#templates">Browse all templates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTICLE GRID ============ -->
+  <section class="section" aria-labelledby="posts-h">
+    <div class="wrap">
+      <h2 id="posts-h" style="font-size:var(--fs-h2);color:var(--navy-ink);margin-bottom:8px">Latest guides</h2>
+      <p style="color:var(--muted);font-size:17px;margin-bottom:36px;max-width:60ch">Step-by-step walkthroughs you can follow today, each paired with a ready-made template that does the maths for you.</p>
+
+      <div class="grid">
+
+        <a class="post-card reveal" href="/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/">
+          <div class="pc-top"><span class="cat">Cash flow</span></div>
+          <div class="body">
+            <h2>Small Business Cash Flow: How to Track It in a Simple Spreadsheet</h2>
+            <p class="desc">What to record, how to spot a shortfall weeks before it hits, and how a 13-week forecast keeps profitable businesses from running out of cash.</p>
+            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="post-card reveal" href="/blog/how-much-should-freelancers-set-aside-for-taxes/">
+          <div class="pc-top"><span class="cat">Freelance · Tax</span></div>
+          <div class="body">
+            <h2>How Much Should Freelancers Set Aside for Taxes?</h2>
+            <p class="desc">A practical method for estimating your freelance tax bill and setting aside the right percentage — with a free spreadsheet approach and country-by-country notes.</p>
+            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="post-card reveal" href="/blog/how-to-make-a-monthly-budget-in-google-sheets/">
+          <div class="pc-top"><span class="cat">Budgeting</span></div>
+          <div class="body">
+            <h2>How to Make a Monthly Budget in Google Sheets (Step by Step)</h2>
+            <p class="desc">Build a working monthly budget from scratch in about 20 minutes — or skip the setup with a free template — plus how to track actual spending against your plan.</p>
+            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+      </div>
+
+      <p style="margin-top:40px;font-size:15.5px">
+        Looking for the spreadsheets themselves? <a href="https://sheetready.vercel.app/#templates" style="font-weight:700">Browse all SheetReady templates →</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="fbrand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#102544"/>
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+          <span>Sheet<span class="g">Ready</span></span>
+        </div>
+        <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="https://sheetready.vercel.app/#templates">Templates</a>
+        <a href="https://sheetready.vercel.app/#how">How it works</a>
+        <a href="https://sheetready.vercel.app/#about">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://sheetready.vercel.app/#free">Free tracker</a>
+        <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+        <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
+        <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
+      </nav>
+    </div>
+    <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+  </div>
+</footer>
+
+<!-- Site interactions: nav, reveal, dynamic year (vanilla, no deps) -->
+<script>
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+
+    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
+        backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
+    var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+    var xHTML='<line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>';
+    var navOpen=false;
+    function focusables(){return nav.querySelectorAll('a[href],button');}
+    function openNav(){
+      navOpen=true;nav.classList.add('open');backdrop.hidden=false;
+      requestAnimationFrame(function(){nav.classList.add('in');backdrop.classList.add('in');});
+      btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Close menu');
+      navIcon.innerHTML=xHTML;
+      var f=focusables(); if(f.length){f[0].focus();}
+    }
+    function closeNav(returnFocus){
+      navOpen=false;nav.classList.remove('in');backdrop.classList.remove('in');
+      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+      navIcon.innerHTML=menuHTML;
+      var done=function(){nav.classList.remove('open');backdrop.hidden=true;};
+      if(reduce){done();}else{setTimeout(done,220);}
+      if(returnFocus){btn.focus();}
+    }
+    if(btn&&nav){
+      btn.addEventListener('click',function(){navOpen?closeNav(true):openNav();});
+      backdrop.addEventListener('click',function(){closeNav(false);});
+      nav.addEventListener('click',function(e){if(e.target.closest('a')){closeNav(false);}});
+      document.addEventListener('keydown',function(e){
+        if(!navOpen)return;
+        if(e.key==='Escape'){closeNav(true);}
+        else if(e.key==='Tab'){
+          var f=focusables();if(!f.length)return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+
+    var items=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver'in window)){
+      items.forEach(function(el){el.classList.add('in');});
+    }else{
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      items.forEach(function(el){io.observe(el);});
+    }
+  })();
+</script>
+</body>
+</html>

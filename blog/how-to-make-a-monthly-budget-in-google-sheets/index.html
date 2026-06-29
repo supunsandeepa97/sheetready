@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>How to Make a Monthly Budget in Google Sheets — SheetReady</title>
+<meta name="description" content="Learn how to build a monthly budget in Google Sheets from scratch — with a free template to download and a premium planner that does the maths for you."/>
+
+<link rel="canonical" href="https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/"/>
+<meta name="theme-color" content="#102544"/>
+<meta name="robots" content="index,follow"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="SheetReady"/>
+<meta property="og:title" content="How to Make a Monthly Budget in Google Sheets (Step by Step)"/>
+<meta property="og:description" content="Build a monthly budget in Google Sheets from scratch — with a free template and a premium planner that does the maths for you."/>
+<meta property="og:url" content="https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/"/>
+<meta property="og:image" content="https://sheetready.vercel.app/webpins/blog-og-how-to-make-a-monthly-budget-in-google-sheets.png"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="How to Make a Monthly Budget in Google Sheets (Step by Step)"/>
+<meta name="twitter:description" content="Build a working monthly budget in Google Sheets — free template included."/>
+<meta name="twitter:image" content="https://sheetready.vercel.app/webpins/blog-og-how-to-make-a-monthly-budget-in-google-sheets.png"/>
+
+<!-- Favicon: "The Ready Cell" glyph -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
+
+<!-- JSON-LD: BlogPosting + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/#article",
+      "headline": "How to Make a Monthly Budget in Google Sheets (Step by Step)",
+      "description": "A simple monthly budget in Google Sheets takes about 20 minutes to build from scratch. You need four columns, one row per category, and a SUM formula.",
+      "image": "https://sheetready.vercel.app/webpins/blog-og-how-to-make-a-monthly-budget-in-google-sheets.png",
+      "url": "https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/",
+      "datePublished": "2026-06-28",
+      "dateModified": "2026-06-28",
+      "author": {
+        "@type": "Person",
+        "@id": "https://sheetready.vercel.app/#author-supun",
+        "name": "Supun",
+        "jobTitle": "Finance template builder",
+        "description": "Finance background, builds Excel and Google Sheets templates at SheetReady.",
+        "url": "https://sheetready.vercel.app/blog/",
+        "sameAs": ["https://supunsandeep.gumroad.com"]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://sheetready.vercel.app/#org",
+        "name": "SheetReady",
+        "logo": "https://sheetready.vercel.app/webpins/og-cover.png"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://sheetready.vercel.app/blog/#blog",
+        "name": "SheetReady Blog"
+      },
+      "mainEntityOfPage": "https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sheetready.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sheetready.vercel.app/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "How to Make a Monthly Budget in Google Sheets (Step by Step)", "item": "https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  /* =========================================================
+     SheetReady — "Ledger Light" theme (shared with storefront).
+     System fonts only (zero render-blocking, zero CLS).
+     ========================================================= */
+  :root{
+    --navy:#1B3A6B;
+    --navy-deep:#102544;
+    --navy-ink:#0E1A33;
+    --tile:#102544;
+    --gold:#E0A209;
+    --gold-on-navy:#F2B705;
+    --gold-soft:#FFF6E1;
+    --emerald:#0F7A52;
+    --emerald-deep:#0c6e4b;
+    --emerald-soft:#E6F4EE;
+
+    --ink:#0E1A33;
+    --muted:#566480;
+    --muted-on-navy:#A9BAD8;
+    --faint-on-navy:#92A6CC;
+
+    --bg:#FBFCFE;
+    --surface:#F2F5FB;
+    --card:#FFFFFF;
+    --line:#E6EAF2;
+    --line-soft:#EFF2F8;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+
+    --fs-micro:clamp(11px,.7vw,12.5px);
+    --fs-small:14px;
+    --fs-body:16px;
+    --fs-lead:clamp(16px,1.6vw,19px);
+    --fs-h3:clamp(18px,1.4vw,20px);
+    --fs-h2:clamp(24px,2.6vw,32px);
+    --fs-display:clamp(32px,4.4vw,46px);
+
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --s7:48px; --s8:64px; --s9:96px;
+
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+
+    --sh-1:0 1px 2px rgba(16,37,68,.05),0 4px 14px rgba(16,37,68,.05);
+    --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
+    --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
+    --maxw:1180px;
+    --readw:720px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:var(--navy)}
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
+    padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
+
+  /* ---------- Header ---------- */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(251,252,254,.82);
+    backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
+    color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+  .brand .mark{width:32px;height:32px;flex:0 0 auto}
+  .brand .g{color:var(--gold)}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
+    border-radius:9px;transition:color .15s ease,background .15s ease}
+  .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  .nav a[aria-current="true"]{color:var(--navy-ink)}
+  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+    background:var(--gold);border-radius:2px}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
+  .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
+  .nav .cta[aria-current="true"]::after{display:none}
+  .navtoggle{display:none}
+  .nav-backdrop{display:none}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;min-height:48px;
+    font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn .arr{transition:transform .15s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 26px rgba(224,162,9,.30)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36)}
+  .btn-navy{background:var(--navy-ink);color:#fff;box-shadow:var(--sh-1)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
+  .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
+
+  /* ---------- Article layout ---------- */
+  .article-head{border-bottom:1px solid var(--line);background:
+      radial-gradient(620px 360px at 88% 0%,rgba(242,183,5,.10),transparent 62%),
+      radial-gradient(620px 460px at 6% -12%,rgba(27,58,107,.07),transparent 60%)}
+  .article-head .wrap{max-width:var(--readw);padding-top:40px;padding-bottom:40px}
+  .crumb{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+  .crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0}
+  .crumb a{color:var(--navy);text-decoration:none;font-weight:600}
+  .crumb a:hover{color:var(--gold)}
+  .crumb .sep{color:#aab6cf}
+  .crumb [aria-current]{color:var(--navy-ink);font-weight:600;max-width:34ch;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .back-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;
+    color:var(--navy);text-decoration:none;margin-bottom:18px}
+  .back-link:hover{color:var(--gold)}
+  .article-head h1{font-size:var(--fs-display);color:var(--navy-ink);line-height:1.1}
+  .article-meta{margin-top:16px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 16px}
+  .article-meta .by{font-weight:600;color:var(--navy-ink)}
+
+  .article-wrap{max-width:var(--readw);margin:0 auto;padding:0 var(--s5)}
+  .article-body{padding:40px 0 8px;line-height:1.7;font-size:17px;color:var(--ink)}
+  .answer-capsule{margin:0 0 28px;color:var(--navy-ink);font-size:18px;line-height:1.6;
+    background:var(--gold-soft);border:1px solid #f4e6bd;border-left:4px solid var(--gold);
+    border-radius:var(--r-md);padding:18px 20px}
+  .article-body h2{font-size:var(--fs-h2);color:var(--navy-ink);margin:40px 0 14px;line-height:1.18}
+  .article-body h3{font-size:var(--fs-h3);color:var(--navy-ink);margin:26px 0 10px}
+  .article-body p{margin:0 0 18px}
+  .article-body p:last-child{margin-bottom:0}
+  .article-body a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+  .article-body a:hover{color:var(--gold)}
+  .article-body ul,.article-body ol{margin:0 0 20px;padding-left:24px}
+  .article-body li{margin-bottom:9px}
+  .article-body code{font-family:var(--mono);font-size:.92em;background:var(--surface);
+    border:1px solid var(--line-soft);border-radius:6px;padding:2px 6px;color:var(--navy)}
+
+  /* tables */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 24px;
+    border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-1)}
+  .article-body table{border-collapse:collapse;width:100%;font-size:15px;background:#fff;min-width:480px}
+  .article-body thead th{background:var(--surface);text-align:left;font-weight:700;color:var(--navy-ink);
+    padding:12px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .article-body tbody td,.article-body tbody th{padding:11px 14px;border-bottom:1px solid var(--line-soft);
+    text-align:left;vertical-align:top;font-weight:400}
+  .article-body tbody th{font-weight:600;color:var(--navy-ink)}
+  .article-body tbody tr:last-child td,.article-body tbody tr:last-child th{border-bottom:0}
+  .article-body tbody tr:nth-child(even){background:#fcfdff}
+
+  /* disclaimer / callout */
+  .disclaimer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--navy);
+    border-radius:var(--r-md);padding:18px 20px;margin:0 0 26px;font-size:15px;color:var(--ink);line-height:1.6}
+  .disclaimer strong{color:var(--navy-ink)}
+
+  /* CTA block */
+  .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;border-radius:var(--r-lg);
+    padding:32px 30px;margin:36px 0;box-shadow:var(--sh-2)}
+  .cta-block h2{color:#fff;font-size:var(--fs-h3);margin:0 0 10px}
+  .cta-block p{color:var(--muted-on-navy);font-size:15.5px;margin:0 0 20px;max-width:54ch}
+  .cta-block p a{color:var(--gold-on-navy)}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+  a.gumroad-button.buy{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;
+    padding:14px 22px;border-radius:12px;background:var(--gold);color:var(--navy-deep);white-space:nowrap;line-height:1.2;min-height:48px;
+    box-shadow:0 10px 26px rgba(224,162,9,.30);transition:transform .15s ease,box-shadow .15s ease}
+  a.gumroad-button.buy:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36);color:var(--navy-deep)}
+  a.gumroad-button.buy.ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.28);
+    box-shadow:none}
+  a.gumroad-button.buy.ghost:hover{background:rgba(255,255,255,.18);color:#fff}
+  a.gumroad-button.buy .arr{transition:transform .15s ease}
+  a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
+
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:12px;margin:8px 0 0}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:var(--sh-1),var(--glass-edge);overflow:hidden;transition:border-color .15s ease}
+  .faq details[open]{border-color:#cfdaef}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;font-weight:700;font-size:16.5px;color:var(--navy-ink);min-height:48px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--surface);
+    display:grid;place-items:center;color:var(--navy);transition:transform .2s ease,background .15s ease;font-weight:700}
+  .faq details[open] summary .pm{transform:rotate(45deg);background:var(--gold-soft);color:var(--gold)}
+  .faq .ans{padding:0 20px 20px;color:var(--muted);font-size:15.5px;line-height:1.65}
+  .faq .ans p{margin:0}
+
+  /* author bio */
+  .about{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:28px 28px 26px;box-shadow:var(--sh-1),var(--glass-edge);margin:48px auto;max-width:var(--readw)}
+  .about .who{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .about .who .av{width:48px;height:48px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--tile);box-shadow:var(--sh-1)}
+  .about .who .nm{font-weight:700;font-size:16px;color:var(--navy-ink);display:block}
+  .about .who .rl{font-size:13px;color:var(--muted);display:block}
+  .about p{color:var(--ink);font-size:15px;line-height:1.65}
+
+  .article-footer-links{max-width:var(--readw);margin:0 auto 8px;padding:0 var(--s5) 16px;font-size:15.5px}
+  .article-footer-links a{font-weight:700}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
+  footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+  footer .fbrand .g{color:var(--gold-on-navy)}
+  footer .fbrand .mark{width:32px;height:32px}
+  footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:6px;min-height:24px}
+  footer .flinks a:hover{color:var(--gold-on-navy)}
+  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
+    font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    .nav{display:none}
+    .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:6px;background:#fff;padding:16px 18px 22px;border-bottom:1px solid var(--line);
+      box-shadow:var(--sh-2);z-index:110;
+      opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
+    .nav.open.in{opacity:1;transform:translateY(0)}
+    .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
+    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open .cta{margin-left:0;justify-content:center}
+    .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
+      opacity:0;transition:opacity .22s ease}
+    .nav-backdrop.in{opacity:1}
+    .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
+      width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+    .navtoggle svg{width:22px;height:22px}
+    .cta-actions .gumroad-button.buy{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    .reveal{opacity:1;transform:none}
+    .nav.open{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#article-content">Skip to content</a>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="https://sheetready.vercel.app/" aria-label="SheetReady home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#102544"/>
+        <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+        <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+        <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+        <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+      </svg>
+      <span>Sheet<span class="g">Ready</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg id="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="https://sheetready.vercel.app/#templates">Templates</a>
+      <a href="https://sheetready.vercel.app/#how">How it works</a>
+      <a href="https://sheetready.vercel.app/#about">About</a>
+      <a href="/blog/" aria-current="true">Blog</a>
+      <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+      <a class="cta" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get free tracker</a>
+    </nav>
+  </div>
+</header>
+
+<main id="article-content">
+  <article>
+
+    <!-- ============ ARTICLE HEAD ============ -->
+    <header class="article-head">
+      <div class="wrap">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="https://sheetready.vercel.app/">Home</a></li>
+            <li class="sep" aria-hidden="true">/</li>
+            <li><a href="/blog/">Blog</a></li>
+            <li class="sep" aria-hidden="true">/</li>
+            <li><span aria-current="page">Monthly Budget in Google Sheets</span></li>
+          </ol>
+        </nav>
+        <a class="back-link" href="/blog/"><span aria-hidden="true">←</span> Back to all guides</a>
+        <h1>How to Make a Monthly Budget in Google Sheets (Step by Step)</h1>
+        <div class="article-meta">
+          <span class="by">By Supun · SheetReady</span>
+          <span>Last updated: June 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ ARTICLE BODY ============ -->
+    <div class="article-wrap">
+      <div class="article-body">
+
+        <p class="answer-capsule">A simple monthly budget in Google Sheets takes about 20 minutes to build from scratch. You need four columns — Category, Budgeted Amount, Actual Amount, and Difference — one row per spending category, and a SUM formula at the bottom. If you would rather skip the setup, a ready-made template gets you started in two minutes.</p>
+
+        <h2>Why most budgets fail before the month is over</h2>
+        <p>Most budgets fail not because people spend too much, but because the budget lives nowhere permanent. A note on your phone gets ignored. A vague mental plan has no numbers to check. A spreadsheet you open every week turns budgeting into a habit instead of a chore, because the data is always there — no app subscription, no login, no algorithm deciding what categories matter.</p>
+        <p>Google Sheets is free, works on any device, saves automatically, and lets you share with a partner. That makes it one of the most practical budgeting tools available to anyone, anywhere.</p>
+
+        <h2>What should a monthly budget spreadsheet include?</h2>
+        <p>A complete monthly budget spreadsheet should include five things: a list of income sources, a list of spending categories, a column for your planned (budgeted) amounts, a column for what you actually spent, and a summary that shows whether you are ahead or behind for the month.</p>
+        <p>Optional but useful additions include a savings row, a debt payment section, and a visual chart that shows spending by category at a glance. The SheetReady Monthly Personal Budget Planner includes all of these in one pre-formatted file.</p>
+
+        <h2>How to build a monthly budget in Google Sheets from scratch</h2>
+        <h3>Step 1 — Open a blank Google Sheet and name it</h3>
+        <p>Go to sheets.new in your browser. This opens a blank spreadsheet instantly. Click the filename at the top ("Untitled spreadsheet") and rename it "June 2026 Budget" or whatever month you are working on.</p>
+        <h3>Step 2 — Set up your income section</h3>
+        <p>In cell A1 type "INCOME". In A2 type "Job / salary". In A3 type any other income source (freelance, side hustle, rental, etc.). In column B, enter your expected amounts next to each source. Add a SUM formula in the row below: <code>=SUM(B2:B3)</code>.</p>
+        <h3>Step 3 — Set up your expense categories</h3>
+        <p>Skip a row, then in A5 type "EXPENSES". Common categories to list below it:</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col">Category</th><th scope="col">Example monthly amount</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Housing (rent / mortgage)</th><td>your figure</td></tr>
+              <tr><th scope="row">Utilities</th><td>your figure</td></tr>
+              <tr><th scope="row">Groceries</th><td>your figure</td></tr>
+              <tr><th scope="row">Transport</th><td>your figure</td></tr>
+              <tr><th scope="row">Insurance</th><td>your figure</td></tr>
+              <tr><th scope="row">Subscriptions</th><td>your figure</td></tr>
+              <tr><th scope="row">Eating out / takeaway</th><td>your figure</td></tr>
+              <tr><th scope="row">Personal / clothing</th><td>your figure</td></tr>
+              <tr><th scope="row">Savings</th><td>your figure</td></tr>
+              <tr><th scope="row">Debt repayments</th><td>your figure</td></tr>
+              <tr><th scope="row">Emergency fund</th><td>your figure</td></tr>
+              <tr><th scope="row">Everything else</th><td>your figure</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Leave column B for your budgeted amount and column C for what you actually spend during the month.</p>
+        <h3>Step 4 — Add a Difference column</h3>
+        <p>In column D, for each row enter <code>=B-C</code>. A positive number means you are under budget. A negative number means you overspent. Conditional formatting (Format → Conditional formatting) lets you colour positive numbers green and negative numbers red automatically — the <a href="https://support.google.com/docs/answer/78413" target="_blank" rel="noopener">official Google Sheets help on conditional formatting</a> walks through the steps.</p>
+        <h3>Step 5 — Add a summary row</h3>
+        <p>At the bottom of your expenses list, add a row labelled "Total Expenses" using <code>=SUM(C:C)</code> (adjust the range to match your rows). Then add a "Remaining" row: <code>=TotalIncome - TotalExpenses</code>. That single number tells you whether you finished the month in the black.</p>
+        <h3>Step 6 — Lock in a weekly review habit</h3>
+        <p>A budget only works if you update it. Open the sheet once a week, enter what you spent, and check the difference column. Ten minutes a week is all it takes.</p>
+
+        <h2>Free template vs. building it yourself — which is better?</h2>
+        <p><strong>If you are comfortable with spreadsheets</strong>, building from scratch lets you design exactly the categories you need. The process above takes around 20 minutes the first time.</p>
+        <p><strong>If you want to start budgeting today</strong> without spending time on formatting, a ready-made template removes every setup step. You fill in your numbers and start.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col"></th><th scope="col">Build from scratch</th><th scope="col">Use a template</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Time to start</th><td>20–30 min</td><td>Under 5 min</td></tr>
+              <tr><th scope="row">Customisation</th><td>Full</td><td>Pre-set (usually editable)</td></tr>
+              <tr><th scope="row">Formulas</th><td>You write them</td><td>Pre-built</td></tr>
+              <tr><th scope="row">Visual dashboard</th><td>You build it</td><td>Included</td></tr>
+              <tr><th scope="row">Risk of formula errors</th><td>Some</td><td>None</td></tr>
+              <tr><th scope="row">Cost</th><td>Free</td><td>Free or low cost</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Where can I get a free budget template for Google Sheets?</h2>
+        <p>SheetReady offers a free Simple Monthly Money Tracker — no credit card, just your email. It is a clean, single-sheet tracker that covers income, expenses, and a running balance. Download the <a href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">free Simple Money Tracker</a> to start today.</p>
+        <p>If you want a full planner with budget-vs-actual comparisons, a savings rate calculation, and a colour-coded dashboard, you can <a href="https://supunsandeep.gumroad.com/l/kbpell" target="_blank" rel="noopener noreferrer">start with the budget planner</a> ($19) — it includes all of that in one file that works in both Google Sheets and Excel.</p>
+
+        <h2>How do I track actual spending against my budget?</h2>
+        <p>The simplest method is to update column C (actual spending) once a week as you go — not at the end of the month when you have forgotten half of it. You can pull figures from your bank's transaction history or your card statements.</p>
+        <p>If you want a faster approach, check your bank app each Sunday, categorise the week's transactions into your spreadsheet rows, and note any category where you are already close to the budget limit. Catching an overspend in week two leaves you time to adjust; catching it on the 31st does not.</p>
+
+        <!-- ============ PRODUCT CTA ============ -->
+        <div class="cta-block reveal">
+          <h2>Get started today</h2>
+          <p>Download the <a href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">free SheetReady Money Tracker</a> to capture your income and spending immediately. When you are ready for a full budget-vs-actual planner with a savings rate dashboard, the Monthly Personal Budget Planner is $19 and takes about two minutes to set up.</p>
+          <div class="cta-actions">
+            <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/kbpell" target="_blank" rel="noopener noreferrer">Get the Budget Planner — $19 <span class="arr" aria-hidden="true">→</span></a>
+            <a class="gumroad-button buy ghost" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get the free Money Tracker</a>
+          </div>
+        </div>
+
+        <h2>Frequently asked questions about budgeting in Google Sheets</h2>
+        <div class="faq">
+          <details>
+            <summary>Does this work in Excel as well as Google Sheets?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>Yes. The structure above is identical in Excel. The SheetReady Monthly Personal Budget Planner is also built to work in both applications without any changes.</p></div>
+          </details>
+          <details>
+            <summary>How many expense categories should I have?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>Between eight and fifteen is a practical range for most people. Too few and the budget is too vague to act on; too many and it becomes tedious to maintain. Start with fewer categories and split one if you find it is consistently over.</p></div>
+          </details>
+          <details>
+            <summary>Can I share the budget with my partner?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>In Google Sheets, yes — click Share and give your partner edit access. Both of you can update figures in real time. For couples who manage money together, one person updates income and fixed bills, the other updates day-to-day spending.</p></div>
+          </details>
+          <details>
+            <summary>What if my income changes from month to month?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>Use a conservative estimate — the lowest amount you reliably earn — for the income row. Any month where you earn more than that estimate is a bonus you can direct to savings or debt.</p></div>
+          </details>
+          <details>
+            <summary>I made a budget last year and gave up. What usually goes wrong?<span class="pm" aria-hidden="true">+</span></summary>
+            <div class="ans"><p>The two most common reasons are: categories that do not match how you actually spend (so the data is always in the wrong place), and no regular review habit. Fix the categories in the first week and block ten minutes every Sunday for the update. Both problems are solvable.</p></div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ AUTHOR BIO (E-E-A-T) ============ -->
+    <aside class="about reveal" aria-label="About the author">
+      <div class="who">
+        <span class="av" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 32 32">
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span>
+          <span class="nm">Supun — SheetReady</span>
+          <span class="rl">Finance background · spreadsheet template builder</span>
+        </span>
+      </div>
+      <p>Supun built SheetReady after years working in finance. Every template is hand-built and tested in both Excel and Google Sheets before it ships. He writes about practical spreadsheet techniques for small business owners, freelancers, and anyone managing money without a full accounting team.</p>
+    </aside>
+
+    <p class="article-footer-links"><a href="https://sheetready.vercel.app/#templates">Browse all SheetReady templates →</a></p>
+
+  </article>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="fbrand">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#102544"/>
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+          <span>Sheet<span class="g">Ready</span></span>
+        </div>
+        <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="https://sheetready.vercel.app/#templates">Templates</a>
+        <a href="https://sheetready.vercel.app/#how">How it works</a>
+        <a href="https://sheetready.vercel.app/#about">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://sheetready.vercel.app/#free">Free tracker</a>
+        <a href="https://sheetready.vercel.app/#faq">FAQ</a>
+        <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
+        <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
+      </nav>
+    </div>
+    <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+  </div>
+</footer>
+
+<!-- Site interactions: nav, reveal, dynamic year (vanilla, no deps) -->
+<script>
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
+        backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
+    var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+    var xHTML='<line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>';
+    var navOpen=false;
+    function focusables(){return nav.querySelectorAll('a[href],button');}
+    function openNav(){
+      navOpen=true;nav.classList.add('open');backdrop.hidden=false;
+      requestAnimationFrame(function(){nav.classList.add('in');backdrop.classList.add('in');});
+      btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Close menu');
+      navIcon.innerHTML=xHTML;
+      var f=focusables(); if(f.length){f[0].focus();}
+    }
+    function closeNav(returnFocus){
+      navOpen=false;nav.classList.remove('in');backdrop.classList.remove('in');
+      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+      navIcon.innerHTML=menuHTML;
+      var done=function(){nav.classList.remove('open');backdrop.hidden=true;};
+      if(reduce){done();}else{setTimeout(done,220);}
+      if(returnFocus){btn.focus();}
+    }
+    if(btn&&nav){
+      btn.addEventListener('click',function(){navOpen?closeNav(true):openNav();});
+      backdrop.addEventListener('click',function(){closeNav(false);});
+      nav.addEventListener('click',function(e){if(e.target.closest('a')){closeNav(false);}});
+      document.addEventListener('keydown',function(e){
+        if(!navOpen)return;
+        if(e.key==='Escape'){closeNav(true);}
+        else if(e.key==='Tab'){
+          var f=focusables();if(!f.length)return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+    var items=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver'in window)){
+      items.forEach(function(el){el.classList.add('in');});
+    }else{
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      items.forEach(function(el){io.observe(el);});
+    }
+  })();
+</script>
+
+<!-- Gumroad overlay (deferred, non-critical) -->
+<script src="https://gumroad.com/js/gumroad.js" defer></script>
+</body>
+</html>

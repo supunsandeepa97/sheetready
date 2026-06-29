@@ -4,7 +4,21 @@
   <url>
     <loc>https://sheetready.vercel.app/</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sheetready.vercel.app/blog/</loc>
+    <lastmod>2026-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://sheetready.vercel.app/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/</loc>
+    <lastmod>2026-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://sheetready.vercel.app/blog/how-much-should-freelancers-set-aside-for-taxes/</loc>
+    <lastmod>2026-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://sheetready.vercel.app/blog/how-to-make-a-monthly-budget-in-google-sheets/</loc>
+    <lastmod>2026-06-28</lastmod>
   </url>
 </urlset>
