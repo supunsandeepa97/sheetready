@@ -864,6 +864,13 @@
     :root[data-theme="dark"] .nav a:hover{color:var(--navy-ink)}
     :root[data-theme="dark"] .proof span,:root[data-theme="dark"] .badge{color:var(--muted-on-navy)}
 </style>
+<!-- Card title -> SEO landing-page links (inherit colour, no underline; gold on hover) -->
+<style>
+  .card h3 a{color:inherit;text-decoration:none}
+  .card h3 a:hover{color:var(--navy)}
+  :root[data-theme="dark"] .card h3 a:hover{color:var(--gold-text)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card h3 a:hover{color:var(--gold-text)}}
+</style>
 <!-- MailerLite Universal is loaded LAZILY (see deferred loader before </body>):
      it pulls jQuery + inputmask + universal.js + 2 web fonts, but the signup
      form is below the fold. Loading it eagerly here regressed LCP/CLS. -->
@@ -1033,7 +1040,7 @@
               <span class="feat-tag">Start here</span>
               <span class="feat-tag alt">Free forever</span>
             </div>
-            <h3>Simple Monthly Money Tracker</h3>
+            <h3><a href="/templates/free-money-tracker/">Simple Monthly Money Tracker</a></h3>
             <p class="desc">The easiest way to see where your money goes. Log income and expenses, and your balance and savings rate update on their own — the perfect first SheetReady template.</p>
             <div class="row">
               <span class="price free">FREE</span>
@@ -1063,7 +1070,7 @@
           </div>
           <div class="body">
             <span class="cat">Business</span>
-            <h3>Small Business Cash Flow &amp; Profit Dashboard</h3>
+            <h3><a href="/templates/cash-flow-profit-dashboard/">Small Business Cash Flow &amp; Profit Dashboard</a></h3>
             <p class="desc">See cash in, cash out and real profit on one dashboard, so you always know where the business stands.</p>
             <div class="row">
               <span class="price">$19</span>
@@ -1089,7 +1096,7 @@
           </div>
           <div class="body">
             <span class="cat">Business</span>
-            <h3>Invoice Tracker &amp; Generator</h3>
+            <h3><a href="/templates/invoice-tracker/">Invoice Tracker &amp; Generator</a></h3>
             <p class="desc">Create clean invoices and track which ones are paid, due or overdue — never lose sight of who owes you.</p>
             <div class="row">
               <span class="price">$24</span>
@@ -1119,7 +1126,7 @@
           </div>
           <div class="body">
             <span class="cat">Freelance</span>
-            <h3>Freelancer Income &amp; Tax Estimator</h3>
+            <h3><a href="/templates/freelancer-tax-estimator/">Freelancer Income &amp; Tax Estimator</a></h3>
             <p class="desc">For freelancers and self-employed workers — log income and set aside the right amount for tax, so the bill never catches you off guard.</p>
             <div class="row">
               <span class="price">$24</span>
@@ -1145,7 +1152,7 @@
           </div>
           <div class="body">
             <span class="cat">Business</span>
-            <h3>Business Expense &amp; Tax Deduction Tracker</h3>
+            <h3><a href="/templates/expense-tax-tracker/">Business Expense &amp; Tax Deduction Tracker</a></h3>
             <p class="desc">Categorise every business expense and capture deductions all year, ready for tax time.</p>
             <div class="row">
               <span class="price">$19</span>
@@ -1175,7 +1182,7 @@
           </div>
           <div class="body">
             <span class="cat">Business</span>
-            <h3>Inventory &amp; Reorder Manager</h3>
+            <h3><a href="/templates/inventory-reorder/">Inventory &amp; Reorder Manager</a></h3>
             <p class="desc">Track stock levels and get a clear reorder signal before your bestsellers run out.</p>
             <div class="row">
               <span class="price">$24</span>
@@ -1201,7 +1208,7 @@
           </div>
           <div class="body">
             <span class="cat">Sales</span>
-            <h3>Client CRM &amp; Sales Pipeline</h3>
+            <h3><a href="/templates/crm-sales-pipeline/">Client CRM &amp; Sales Pipeline</a></h3>
             <p class="desc">Keep every lead and client in one place and move deals through a simple visual pipeline.</p>
             <div class="row">
               <span class="price">$24</span>
@@ -1231,7 +1238,7 @@
           </div>
           <div class="body">
             <span class="cat">Creators</span>
-            <h3>Digital Product Sales Tracker</h3>
+            <h3><a href="/templates/digital-product-sales-tracker/">Digital Product Sales Tracker</a></h3>
             <p class="desc">Track sales, refunds and revenue across your digital products and see what actually sells.</p>
             <div class="row">
               <span class="price">$19</span>
@@ -1257,7 +1264,7 @@
           </div>
           <div class="body">
             <span class="cat">Business</span>
-            <h3>13-Week Cash Flow Forecast</h3>
+            <h3><a href="/templates/13-week-cash-flow/">13-Week Cash Flow Forecast</a></h3>
             <p class="desc">Project cash for the next 13 weeks so you can spot a shortfall before it becomes a problem.</p>
             <div class="row">
               <span class="price">$24</span>
@@ -1285,7 +1292,7 @@
           </div>
           <div class="body">
             <span class="cat">Personal</span>
-            <h3>Monthly Personal Budget Planner</h3>
+            <h3><a href="/templates/monthly-budget-planner/">Monthly Personal Budget Planner</a></h3>
             <p class="desc">Plan income, bills and savings each month and see exactly where your money goes.</p>
             <div class="row">
               <span class="price">$19</span>
@@ -1314,7 +1321,7 @@
           </div>
           <div class="body">
             <span class="cat">Personal</span>
-            <h3>Debt Payoff Tracker</h3>
+            <h3><a href="/templates/debt-payoff-tracker/">Debt Payoff Tracker</a></h3>
             <p class="desc">Pay off debt faster with the snowball or avalanche method — see your payoff date and interest saved automatically.</p>
             <div class="row">
               <span class="price">$19</span>
@@ -1343,7 +1350,7 @@
           </div>
           <div class="body">
             <span class="cat">Personal</span>
-            <h3>Savings Goal Tracker</h3>
+            <h3><a href="/templates/savings-goal-tracker/">Savings Goal Tracker</a></h3>
             <p class="desc">Track multiple savings goals and sinking funds in one place, and watch your net worth grow toward each target.</p>
             <div class="row">
               <span class="price">$19</span>

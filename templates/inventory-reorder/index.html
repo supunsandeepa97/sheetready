@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Inventory Reorder Manager — Etsy Shop &amp; Small Business</title>
+<meta name="description" content="Never run out of stock. Tracks inventory levels, calculates reorder points, and flags low stock — Google Sheets and Excel, built for Etsy sellers."/>
+
+<link rel="canonical" href="https://sheetready.vercel.app/templates/inventory-reorder/"/>
+<meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0E1726" media="(prefers-color-scheme: dark)"/>
+<meta name="robots" content="index,follow"/>
+
+<!-- Warm up Gumroad (buy buttons). No MailerLite on sub-pages. -->
+<link rel="preconnect" href="https://gumroad.com"/>
+<link rel="dns-prefetch" href="https://gumroad.com"/>
+<link rel="preconnect" href="https://assets.gumroad.com"/>
+<link rel="dns-prefetch" href="https://assets.gumroad.com"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="SheetReady"/>
+<meta property="og:title" content="Inventory Reorder Manager — Etsy Shop &amp; Small Business"/>
+<meta property="og:description" content="Never run out of stock. Tracks inventory levels, calculates reorder points, and flags low stock — Google Sheets and Excel, built for Etsy sellers."/>
+<meta property="og:url" content="https://sheetready.vercel.app/templates/inventory-reorder/"/>
+<meta property="og:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="SheetReady — simple Excel &amp; Google Sheets finance templates"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Inventory Reorder Manager — Etsy Shop &amp; Small Business"/>
+<meta name="twitter:description" content="Never run out of stock. Tracks inventory levels, calculates reorder points, and flags low stock — Google Sheets and Excel, built for Etsy sellers."/>
+<meta name="twitter:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
+
+<!-- JSON-LD: Product + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Inventory & Reorder Manager Spreadsheet for Etsy Shops",
+      "description": "An inventory and reorder manager that tracks stock levels, calculates reorder points, and flags low stock so product sellers never run out of bestsellers.",
+      "brand": {
+        "@type": "Brand",
+        "name": "SheetReady"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "24",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://supunsandeep.gumroad.com/l/hzcos"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sheetready.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Templates",
+          "item": "https://sheetready.vercel.app/templates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Inventory & Reorder Manager",
+          "item": "https://sheetready.vercel.app/templates/inventory-reorder/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  (function(){try{var t=localStorage.getItem('sr-theme');
+    if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
+  }catch(e){}})();
+</script>
+
+<style>
+  /* =========================================================
+     SheetReady — "Ledger Light" clean premium / SaaS theme.
+     System fonts only (zero render-blocking, zero CLS).
+     ========================================================= */
+  :root{
+    /* refined navy + gold palette */
+    --navy:#1B3A6B;
+    --navy-deep:#102544;
+    --navy-ink:#0E1A33;
+    --tile:#102544;            /* ONE consistent logo tile fill (header + footer + 404) */
+    --gold:#E0A209;            /* decorative gold FILLS only (kicker bar, button bg, skip bg) */
+    --gold-text:#8A6100;       /* gold TEXT on light bg — WCAG AA: 5.40:1 on #FBFCFE (>=4.5) */
+    --gold-on-navy:#F2B705;    /* brighter gold for dark surfaces only */
+    --gold-soft:#FFF6E1;
+    --emerald:#0F7A52;         /* AA-safe emerald text on white (>=4.5:1) */
+    --emerald-deep:#0c6e4b;
+    --emerald-soft:#E6F4EE;
+
+    --ink:#0E1A33;
+    --muted:#566480;
+    --muted-on-navy:#A9BAD8;
+    --faint-on-navy:#92A6CC;
+
+    --bg:#FBFCFE;
+    --surface:#F2F5FB;
+    --card:#FFFFFF;
+    --line:#E6EAF2;
+    --line-soft:#EFF2F8;
+
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Roboto,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",monospace;
+
+    /* ---- modular type scale (~1.2 ratio), clamp()-fluid ---- */
+    --fs-micro:clamp(11px,.7vw,12.5px);
+    --fs-small:14px;
+    --fs-body:16px;
+    --fs-lead:clamp(16px,1.6vw,19px);
+    --fs-h3:clamp(18px,1.4vw,20px);
+    --fs-h2:clamp(28px,3.4vw,40px);
+    --fs-display:clamp(40px,5.2vw,60px);
+
+    /* ---- 8px spacing tokens ---- */
+    --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+    --s7:48px; --s8:64px; --s9:96px;
+
+    --r-sm:10px; --r-md:14px; --r-lg:20px; --r-xl:28px;
+
+    /* layered ambient + key shadows */
+    --sh-1:0 1px 2px rgba(16,37,68,.05),0 4px 14px rgba(16,37,68,.05);
+    --sh-2:0 2px 6px rgba(16,37,68,.06),0 18px 40px rgba(16,37,68,.10);
+    --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
+    --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  a{color:var(--navy)}
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);
+    padding:12px 18px;font-weight:700;border-radius:0 0 12px 0;z-index:300}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+  /* standardized icon: 24x24 viewBox, stroke 2, currentColor */
+  .ic{width:24px;height:24px;flex:0 0 auto;stroke-width:2}
+
+  /* mono utility label */
+  .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold-text);display:inline-flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
+  .kicker.dark{color:var(--gold-on-navy)}
+  .kicker.dark::before{background:var(--gold-on-navy)}
+
+  /* ---------- Header ---------- */
+  .topbar{position:sticky;top:0;z-index:100;background:rgba(251,252,254,.82);
+    backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;
+    color:var(--navy-ink);text-decoration:none;letter-spacing:-.03em;white-space:nowrap}
+  .brand .mark{width:32px;height:32px;flex:0 0 auto}
+  .brand .g{color:var(--gold-text)}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+  .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
+    border-radius:9px;transition:color .15s ease,background .15s ease}
+  .nav a:hover{color:var(--navy-ink);background:var(--surface)}
+  /* scroll-spy active state: gold underline dot */
+  .nav a[aria-current="true"]{color:var(--navy-ink)}
+  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+    background:var(--gold);border-radius:2px}
+  .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
+  .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
+  .nav .cta[aria-current="true"]::after{display:none}
+  .navtoggle{display:none}
+  .nav-backdrop{display:none}
+
+  /* ---------- Theme toggle (manual light/dark, overrides the OS) ----------
+     One button holds BOTH a moon (offer dark) and a sun (offer light) icon.
+     Which icon shows is driven purely by CSS on the SAME conditions as the
+     theme itself, so the correct icon paints before JS runs (no flash). */
+  .themetoggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:40px;height:40px;margin-left:4px;padding:0;border-radius:11px;cursor:pointer;
+    background:transparent;border:1px solid var(--line);color:#3a4865;
+    transition:color .15s ease,background .15s ease,border-color .15s ease}
+  .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:#c7d2e8}
+  .themetoggle svg{width:20px;height:20px;display:block}
+  .themetoggle .ic-sun{display:none}      /* default (light): show moon, offer dark */
+  .themetoggle .ic-moon{display:block}
+  /* effective DARK (device-dark unless forced light) → show sun, offer light */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .themetoggle .ic-sun{display:block}
+    :root:not([data-theme="light"]) .themetoggle .ic-moon{display:none}
+    :root:not([data-theme="light"]) .themetoggle{border-color:var(--line);color:#C2CEE6}
+    :root:not([data-theme="light"]) .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  }
+  /* forced DARK on any device → show sun, offer light */
+  :root[data-theme="dark"] .themetoggle .ic-sun{display:block}
+  :root[data-theme="dark"] .themetoggle .ic-moon{display:none}
+  :root[data-theme="dark"] .themetoggle{border-color:var(--line);color:#C2CEE6}
+  :root[data-theme="dark"] .themetoggle:hover{color:var(--navy-ink);background:var(--surface);border-color:rgba(255,255,255,.22)}
+  /* forced LIGHT on any device → moon (already the default, but be explicit
+     so a dark device that is forced light still shows the moon) */
+  :root[data-theme="light"] .themetoggle .ic-sun{display:none}
+  :root[data-theme="light"] .themetoggle .ic-moon{display:block}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    text-decoration:none;padding:15px 26px;border-radius:13px;font-size:16px;cursor:pointer;border:0;min-height:48px;
+    font-family:var(--sans);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn .arr{transition:transform .15s ease}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 10px 26px rgba(224,162,9,.30)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36)}
+  .btn-navy{background:var(--navy-ink);color:#fff;box-shadow:var(--sh-1)}
+  .btn-navy:hover{transform:translateY(-2px);background:var(--navy);box-shadow:var(--sh-2)}
+  .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;
+    background:
+      radial-gradient(680px 420px at 82% 4%,rgba(242,183,5,.13),transparent 60%),
+      radial-gradient(720px 560px at 10% -10%,rgba(27,58,107,.09),transparent 60%),
+      radial-gradient(520px 520px at 60% 110%,rgba(15,122,82,.06),transparent 62%);}
+  /* faint masked CSS grid behind the hero dashboard side */
+  .hero::after{content:"";position:absolute;top:0;right:0;width:55%;height:100%;pointer-events:none;
+    background-image:linear-gradient(rgba(27,58,107,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(27,58,107,.05) 1px,transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(70% 70% at 70% 35%,#000,transparent 72%);
+    -webkit-mask-image:radial-gradient(70% 70% at 70% 35%,#000,transparent 72%)}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.04fr .96fr;gap:60px;
+    align-items:center;padding-top:84px;padding-bottom:92px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:7px 14px 7px 11px;font-size:13px;font-weight:600;color:#3a4865;
+    box-shadow:var(--sh-1),var(--glass-edge)}
+  .badge .d{width:7px;height:7px;border-radius:50%;background:var(--emerald)}
+  .hero h1{font-size:var(--fs-display);color:var(--navy-ink);max-width:13ch}
+  .hero h1 .hl{position:relative;color:var(--navy);white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.34em;
+    background:linear-gradient(180deg,transparent 55%,rgba(224,162,9,.42) 55%);z-index:-1;border-radius:3px}
+  .hero .sub{margin-top:22px;font-size:var(--fs-lead);color:var(--muted);max-width:48ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:var(--muted)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:9px}
+  .hero-meta .ic{color:var(--emerald);width:17px;height:17px;stroke-width:2.4}
+  .hero-meta b{color:var(--navy-ink);font-weight:700}
+
+  /* ---------- Dashboard preview (signature element) ---------- */
+  .dash{background:var(--card);border:1px solid var(--line);border-radius:var(--r-xl);
+    box-shadow:var(--sh-pop),var(--glass-edge);overflow:hidden}
+  .dash-bar{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-soft);
+    background:linear-gradient(180deg,#fff,#fafbfe)}
+  .dash-bar .dots{display:flex;gap:6px}
+  .dash-bar .dots i{width:10px;height:10px;border-radius:50%;background:#dde4f0;display:block}
+  .dash-bar .dots i:first-child{background:#f5c9c0}
+  .dash-bar .dots i:nth-child(2){background:#f6e3b6}
+  .dash-bar .dots i:nth-child(3){background:#cfe7cf}
+  .dash-bar .cellref{font-family:var(--mono);font-size:11px;color:#6c7c9c;background:var(--surface);
+    border:1px solid var(--line-soft);padding:3px 8px;border-radius:6px;font-weight:600}
+  .dash-bar .formula{font-family:var(--mono);font-size:11px;color:var(--navy);background:var(--gold-soft);
+    border:1px solid #f4e6bd;padding:3px 9px;border-radius:6px;font-weight:600}
+  .dash-bar .tag{margin-left:auto;font-family:var(--mono);font-size:11px;color:#8a99b8;
+    background:var(--surface);padding:4px 10px;border-radius:7px}
+  .dash-body{padding:20px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kpi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r-md);padding:14px 14px 13px}
+  .kpi .lab{font-size:11.5px;color:var(--muted);font-weight:600}
+  .kpi .val{font-family:var(--mono);font-weight:600;font-size:21px;color:var(--navy-ink);
+    margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .kpi .chg{font-size:11px;font-weight:700;margin-top:3px;color:var(--emerald)}
+  .kpi.accent{background:var(--gold-soft);border-color:#f4e6bd}
+  .kpi.accent .val{color:#7a5a02}
+  .panel{margin-top:16px;border:1px solid var(--line-soft);border-radius:var(--r-md);padding:15px 16px 17px;
+    background:#fff;position:relative;overflow:hidden}
+  /* faint gridlines behind the chart */
+  .panel::before{content:"";position:absolute;left:16px;right:16px;top:40px;bottom:34px;pointer-events:none;
+    background-image:linear-gradient(rgba(27,58,107,.06) 1px,transparent 1px);background-size:100% 25%}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .panel-head .t{font-size:12.5px;font-weight:700;color:var(--navy-ink)}
+  .panel-head .leg{font-family:var(--mono);font-size:10.5px;color:#8a99b8}
+  .chart{display:flex;align-items:flex-end;gap:10px;height:96px;position:relative}
+  .chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;height:100%}
+  .chart .col .b{border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#2f5b9e,var(--navy));
+    transform-origin:bottom;transform:scaleY(1)}
+  .chart .col .b.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
+  /* CLS-safe entrance: bars start collapsed, grow on reveal via transform only */
+  .dash.anim .chart .col .b{transform:scaleY(0);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+  .dash.anim.in .chart .col .b{transform:scaleY(1)}
+  .dash.anim.in .chart .col:nth-child(2) .b{transition-delay:.06s}
+  .dash.anim.in .chart .col:nth-child(3) .b{transition-delay:.12s}
+  .dash.anim.in .chart .col:nth-child(4) .b{transition-delay:.18s}
+  .dash.anim.in .chart .col:nth-child(5) .b{transition-delay:.24s}
+  .dash.anim.in .chart .col:nth-child(6) .b{transition-delay:.30s}
+  .dash-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;
+    padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .dash-foot b{color:var(--emerald)}
+  .float-chip{position:absolute;left:-18px;bottom:46px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;box-shadow:var(--sh-2),var(--glass-edge);padding:12px 15px;display:flex;align-items:center;gap:11px}
+  .float-chip .ring{width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+    background:conic-gradient(var(--emerald) 0 76%,var(--emerald-soft) 76% 100%);display:grid;place-items:center}
+  .float-chip .ring i{width:22px;height:22px;border-radius:50%;background:#fff;display:block}
+  .float-chip .m .a{font-size:11px;color:var(--muted);font-weight:600}
+  .float-chip .m .b{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--navy-ink)}
+  .dash-host{position:relative}
+
+  /* ---------- Logo / proof strip ---------- */
+  .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+  .proof .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 40px;padding:20px 24px}
+  .proof span{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#3a4865;font-weight:600}
+  .proof .ic{color:var(--gold);width:20px;height:20px}
+
+  /* ---------- Section scaffold ---------- */
+  .section{padding:var(--s9) 0}
+  .sec-head{max-width:620px;margin-bottom:44px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:var(--fs-h2);color:var(--navy-ink);margin-top:14px}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
+  .answer-capsule{max-width:680px;margin:0 0 36px;color:var(--muted);font-size:17px;line-height:1.6}
+  .faq .answer-capsule{margin-left:auto;margin-right:auto;text-align:center}
+
+  /* ---------- Filter + search toolbar ---------- */
+  .toolbar{margin-bottom:28px}
+  .searchbox{position:relative;max-width:420px;margin:0 0 18px}
+  .searchbox label{display:block;font-size:13px;font-weight:600;color:var(--navy-ink);margin-bottom:7px}
+  .searchbox .field{position:relative}
+  .searchbox .field .ic{position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    color:var(--muted);width:18px;height:18px;pointer-events:none}
+  .searchbox input{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+    padding:13px 14px 13px 40px;border:1.5px solid var(--line);border-radius:12px;background:#fff;
+    box-shadow:var(--sh-1);transition:border-color .15s ease}
+  .searchbox input:focus{outline:none;border-color:var(--gold)}
+  .searchbox input::placeholder{color:#9aa8c4}
+  .filters{display:flex;flex-wrap:wrap;gap:9px}
+  .filters .pill{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--navy-ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:12px 17px;min-height:44px;cursor:pointer;
+    transition:transform .15s ease,border-color .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}
+  .filters .pill:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:var(--sh-1)}
+  .filters .pill[aria-pressed="true"]{background:var(--navy-ink);color:#fff;border-color:var(--navy-ink)}
+  .filters .pill[aria-pressed="true"]:hover{color:#fff}
+
+  /* ---------- Templates grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:var(--sh-1),var(--glass-edge);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--sh-2),var(--glass-edge);border-color:#d3def1}
+  .card.is-hidden{display:none}
+
+  .preview{position:relative;padding:18px;background:
+      radial-gradient(420px 200px at 80% -20%,rgba(27,58,107,.06),transparent 70%),
+      linear-gradient(170deg,#f6f8fd,#eef2fb);border-bottom:1px solid var(--line-soft)}
+  .preview .mini{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:0 8px 22px rgba(16,37,68,.07);overflow:hidden}
+  .preview .mtop{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line-soft)}
+  .preview .mtop i{width:7px;height:7px;border-radius:50%;background:#dde4f0;display:block}
+  .preview .mtop .nm{margin-left:6px;font-family:var(--mono);font-size:10px;color:#8a99b8}
+  .preview .mbody{padding:13px}
+  .pv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:11px}
+  .pv-stats .s{background:var(--surface);border-radius:8px;padding:8px 8px 7px}
+  .pv-stats .s .l{font-size:9px;color:var(--muted);font-weight:600}
+  .pv-stats .s .v{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--navy-ink);
+    margin-top:2px;font-variant-numeric:tabular-nums}
+  .pv-stats .s.gold{background:var(--gold-soft)}
+  .pv-stats .s.gold .v{color:#7a5a02}
+  .pv-stats .s.em{background:var(--emerald-soft)}
+  .pv-stats .s.em .v{color:var(--emerald)}
+  .pv-bars{display:flex;align-items:flex-end;gap:6px;height:54px}
+  .pv-bars span{flex:1;border-radius:3px 3px 1px 1px;background:linear-gradient(180deg,#3a66a8,var(--navy));opacity:.92}
+  .pv-bars span.g{background:linear-gradient(180deg,var(--gold-on-navy),var(--gold))}
+  .pv-line{height:54px;width:100%;display:block}
+  .pv-rows{display:flex;flex-direction:column;gap:7px}
+  .pv-rows .r{display:flex;align-items:center;gap:9px}
+  .pv-rows .r .bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--navy),#5e83bf)}
+  .pv-rows .r .bar.g{background:linear-gradient(90deg,var(--gold),#f3cd5d)}
+  .pv-rows .r .bar.e{background:linear-gradient(90deg,var(--emerald),#4fb389)}
+  .pv-rows .r .tk{font-family:var(--mono);font-size:9px;color:#9aa8c4;width:34px;text-align:right;flex:0 0 auto}
+  .pv-donut{display:flex;align-items:center;gap:14px}
+  .pv-donut .ring{width:62px;height:62px;border-radius:50%;flex:0 0 auto}
+  .pv-donut .leg{display:flex;flex-direction:column;gap:5px}
+  .pv-donut .leg span{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted);font-weight:600}
+  .pv-donut .leg .sw{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+  .card .body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600}
+  .card h3{font-size:var(--fs-h3);line-height:1.25;letter-spacing:-.01em;margin-top:8px;color:var(--navy-ink)}
+  .card .desc{margin-top:9px;font-size:14px;color:var(--muted);flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;
+    padding-top:16px;border-top:1px solid var(--line-soft)}
+  .price{font-family:var(--mono);font-weight:700;font-size:19px;color:var(--navy-ink);font-variant-numeric:tabular-nums}
+  .price.free{color:var(--emerald)}
+  a.gumroad-button.buy{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:700;font-size:14px;
+    padding:11px 17px;border-radius:11px;background:var(--navy-ink);color:#fff;white-space:nowrap;line-height:1.2;min-height:44px;
+    transition:background .15s ease,transform .15s ease,box-shadow .15s ease}
+  a.gumroad-button.buy:hover{background:var(--navy);color:#fff;transform:translateY(-1px);box-shadow:var(--sh-1)}
+  a.gumroad-button.buy .arr{transition:transform .15s ease}
+  a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
+  a.gumroad-button.buy.free{background:var(--emerald);color:#fff}
+  a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:#fff}
+
+  /* empty state for search/filter */
+  .empty-state{display:none;text-align:center;padding:48px 24px;background:var(--surface);
+    border:1px dashed var(--line);border-radius:var(--r-lg);color:var(--muted)}
+  .empty-state.show{display:block}
+  .empty-state p{font-size:16px;margin-bottom:16px;color:var(--navy-ink);font-weight:600}
+  .empty-state button{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--navy-ink);
+    background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 20px;min-height:44px;cursor:pointer}
+  .empty-state button:hover{border-color:var(--gold)}
+
+  /* featured FREE card spans full width */
+  .card.featured{grid-column:1 / -1;flex-direction:row;border:1.5px solid #f0d99a;
+    box-shadow:0 18px 50px rgba(224,162,9,.14),var(--glass-edge);background:
+      linear-gradient(120deg,#fff 56%,#fffaef 100%)}
+  .card.featured .preview{flex:0 0 360px;border-bottom:0;border-right:1px solid var(--line-soft);
+    display:flex;align-items:center}
+  .card.featured .preview .mini{width:100%}
+  .card.featured .body{padding:36px 40px;justify-content:center}
+  .card.featured .tagrow{display:flex;gap:8px;margin-bottom:10px}
+  .feat-tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--navy-deep);background:var(--gold);padding:5px 11px;border-radius:7px}
+  .feat-tag.alt{background:var(--emerald-soft);color:#0d6445}
+  .card.featured h3{font-size:clamp(24px,3vw,33px);letter-spacing:-.02em}
+  .card.featured .desc{font-size:16px;max-width:50ch;flex:0;margin-top:12px}
+  .card.featured .row{margin-top:24px;justify-content:flex-start;gap:20px;border-top:0;padding-top:0}
+  .card.featured .price.free{font-size:25px}
+  .card.featured .buy{padding:15px 26px;font-size:16px}
+
+  /* ---------- "How it works" steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 26px;
+    box-shadow:var(--sh-1),var(--glass-edge)}
+  .step .n{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold-text);
+    width:42px;height:42px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:18px}
+  .step h3{font-size:var(--fs-h3);color:var(--navy-ink)}
+  .step p{margin-top:9px;color:var(--muted);font-size:15px}
+
+  /* ---------- "What you get" + about ---------- */
+  .valuegrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
+  .about{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px 32px 30px;box-shadow:var(--sh-1),var(--glass-edge)}
+  .about .who{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .about .who .av{width:48px;height:48px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--tile);box-shadow:var(--sh-1)}
+  .about .who .nm{font-weight:700;font-size:16px;color:var(--navy-ink)}
+  .about .who .rl{font-size:13px;color:var(--muted)}
+  .about h3{font-size:var(--fs-h3);color:var(--navy-ink);margin-bottom:12px}
+  .about p{color:var(--ink);font-size:15.5px;line-height:1.65}
+  .about p + p{margin-top:14px}
+  .about .links{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;font-weight:600}
+  .about .links a{color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+  .about .links a:hover{color:var(--gold)}
+  .wyg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .wyg li{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:16px 16px;box-shadow:var(--sh-1),var(--glass-edge)}
+  .wyg li .ic{color:var(--emerald);width:22px;height:22px;margin-top:1px}
+  .wyg li .t{font-weight:700;font-size:14.5px;color:var(--navy-ink);display:block}
+  .wyg li .d{font-size:13px;color:var(--muted);margin-top:2px;display:block}
+
+  /* ---------- Reviews placeholder ---------- */
+  .reviews-note{max-width:680px;margin:0 auto;text-align:center;background:var(--surface);
+    border:1px dashed var(--line);border-radius:var(--r-lg);padding:36px 28px;color:var(--muted)}
+  .reviews-note .star{color:var(--gold);display:inline-flex;gap:3px;margin-bottom:12px}
+  .reviews-note p{font-size:16px;color:var(--navy-ink);font-weight:600}
+  .reviews-note .sm{font-size:14px;color:var(--muted);font-weight:400;margin-top:8px}
+
+  /* ---------- Email capture ---------- */
+  .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.16),transparent 60%),
+      linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;position:relative;overflow:hidden}
+  .capture::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:46px 46px;mask-image:radial-gradient(80% 80% at 20% 10%,#000,transparent 75%);
+    -webkit-mask-image:radial-gradient(80% 80% at 20% 10%,#000,transparent 75%);pointer-events:none}
+  .capture .inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:78px 24px;
+    display:grid;grid-template-columns:1.06fr .94fr;gap:52px;align-items:center}
+  .capture h2{font-size:var(--fs-h2);color:#fff;max-width:15ch;margin-top:14px}
+  .capture h2 em{font-style:normal;color:var(--gold-on-navy)}
+  .capture p{margin-top:16px;color:var(--muted-on-navy);max-width:44ch;font-size:16.5px}
+  .capture .bullets{margin-top:22px;display:flex;flex-direction:column;gap:11px;padding:0}
+  .capture .bullets li{list-style:none;display:flex;align-items:center;gap:11px;color:#dbe4f6;font-size:15px}
+  .capture .bullets .ic{color:var(--gold-on-navy);width:19px;height:19px;stroke-width:2.4}
+  .signup-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--r-lg);padding:24px;box-shadow:0 24px 60px rgba(8,16,36,.4);backdrop-filter:blur(4px)}
+  .signup-card .sc-h{font-weight:700;font-size:18px;color:#fff;letter-spacing:-.01em}
+  .signup-card .sc-p{font-size:13.5px;color:var(--muted-on-navy);margin-top:6px;margin-bottom:18px}
+  /* Reserve space for the lazily-injected MailerLite form so injection causes no layout shift.
+     ~Email field (48px) + submit button (48px) + spacing/consent line. Tuned to the rendered form. */
+  .signup-card .ml-embedded{min-height:184px}
+  @media (max-width:560px){.signup-card .ml-embedded{min-height:208px}}
+  .signup-card .ml-embedded input[type=email],
+  .signup-card .ml-embedded input[type=text]{font-family:var(--sans)}
+  .sc-fine{margin-top:14px;font-size:12px;color:var(--faint-on-navy);text-align:center}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+    box-shadow:var(--sh-1),var(--glass-edge);overflow:hidden;transition:border-color .15s ease}
+  .faq details[open]{border-color:#cfdaef}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;font-weight:700;font-size:17px;color:var(--navy-ink);min-height:48px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--surface);
+    display:grid;place-items:center;color:var(--navy);transition:transform .2s ease,background .15s ease}
+  .faq details[open] summary .pm{transform:rotate(45deg);background:var(--gold-soft);color:var(--gold)}
+  .faq .ans{padding:0 22px 22px;color:var(--muted);font-size:15.5px}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
+  footer .top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+  footer .fbrand .g{color:var(--gold-on-navy)}
+  footer .fbrand .mark{width:32px;height:32px}
+  footer .fdesc{margin-top:14px;max-width:34ch;font-size:14px;color:var(--faint-on-navy)}
+  footer .flinks{display:flex;flex-wrap:wrap;gap:8px 26px;font-size:14.5px}
+  footer .flinks a{color:#cdd9f0;text-decoration:none;display:inline-block;padding-block:6px;min-height:24px}
+  footer .flinks a:hover{color:var(--gold-on-navy)}
+  footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;margin-top:36px;
+    font-size:13px;color:var(--faint-on-navy);font-family:var(--mono)}
+
+  /* ---------- Mobile sticky free-tracker bar ---------- */
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:120;display:none;align-items:center;gap:12px;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(16,37,68,.97);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12);
+    box-shadow:0 -8px 30px rgba(8,16,36,.3);transform:translateY(100%);transition:transform .3s ease}
+  .mbar.show{transform:translateY(0)}
+  .mbar .txt{flex:1;color:#fff;font-size:14px;font-weight:600;line-height:1.3}
+  .mbar a{flex:0 0 auto;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-weight:700;
+    font-size:14px;padding:12px 16px;border-radius:11px;min-height:44px;display:inline-flex;align-items:center}
+  .mbar .close{flex:0 0 auto;width:36px;height:36px;border-radius:9px;border:1px solid rgba(255,255,255,.2);
+    background:transparent;color:#cdd9f0;cursor:pointer;display:grid;place-items:center}
+  .mbar .close svg{width:18px;height:18px}
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:56px;padding-bottom:60px}
+    .hero::after{width:100%;mask-image:radial-gradient(80% 50% at 70% 80%,#000,transparent 72%);
+      -webkit-mask-image:radial-gradient(80% 50% at 70% 80%,#000,transparent 72%)}
+    .float-chip{left:auto;right:14px;bottom:-14px}
+    .capture .inner{grid-template-columns:1fr;gap:32px}
+    .grid,.steps{grid-template-columns:repeat(2,1fr)}
+    .valuegrid{grid-template-columns:1fr;gap:32px}
+    .card.featured{flex-direction:column}
+    .card.featured .preview{flex:0 0 auto;border-right:0;border-bottom:1px solid var(--line-soft)}
+    .section{padding:64px 0}
+  }
+  @media (max-width:760px){
+    .nav{display:none}
+    .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
+      align-items:stretch;gap:6px;background:#fff;padding:16px 18px 22px;border-bottom:1px solid var(--line);
+      box-shadow:var(--sh-2);z-index:110;
+      opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
+    .nav.open.in{opacity:1;transform:translateY(0)}
+    .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
+    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open .cta{margin-left:0;justify-content:center}
+    .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
+      opacity:0;transition:opacity .22s ease}
+    .nav-backdrop.in{opacity:1}
+    .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
+      width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
+    .navtoggle svg{width:22px;height:22px}
+    .section{padding:48px 0}
+    /* horizontally-scrollable filter pills */
+    .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+      padding-bottom:6px;scrollbar-width:none}
+    .filters::-webkit-scrollbar{display:none}
+    .filters .pill{flex:0 0 auto;white-space:nowrap}
+    .wyg{grid-template-columns:1fr}
+    .mbar{display:flex}
+  }
+  @media (max-width:560px){
+    .grid,.steps{grid-template-columns:1fr}
+    .btn{width:100%}
+    .cta-row .btn{flex:1}
+    a.gumroad-button.buy{width:100%;justify-content:center}
+    .card .row{flex-wrap:wrap}
+    .card .row .price{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
+    .reveal{opacity:1;transform:none}
+    .dash.anim .chart .col .b{transform:scaleY(1)}
+    .mbar{transition:none}
+    .nav.open{opacity:1;transform:none}
+  }
+
+  /* =========================================================
+     AUTOMATIC DARK MODE — follows the visitor's OS/browser theme.
+     Light theme above is the DEFAULT and is untouched; this block
+     only OVERRIDES the design tokens (and a few hardcoded light
+     surfaces) so the whole UI re-themes with zero markup changes.
+     On-brand deep-navy ground + brighter gold/emerald for AA contrast.
+     ========================================================= */
+  @media (prefers-color-scheme:dark){
+    /* device-dark, unless the visitor has FORCED light via the toggle */
+    :root:not([data-theme="light"]){
+      /* navy/gold brand, retuned for a dark ground */
+      --navy:#9FC0F0;            /* body links + accents — readable on dark */
+      --navy-deep:#0A1322;       /* deepest ground (footer / capture base) */
+      --navy-ink:#E8EDF5;        /* was darkest ink → now near-white headings + wordmark */
+      --tile:#0E1A33;            /* logo tile stays dark navy (glyph reads on it) */
+      --gold:#E0A209;            /* keep brand gold for FILLS (buttons, kicker bar) */
+      --gold-text:#F6C948;       /* gold TEXT on dark — AA 9.2:1+ */
+      --gold-on-navy:#F6C948;
+      --gold-soft:#2A2210;       /* dark amber tint for soft gold backgrounds */
+      --emerald:#4FD0A0;         /* emerald TEXT/price on dark — AA 7.4:1+ */
+      --emerald-deep:#37b487;
+      --emerald-soft:#15311F;    /* dark emerald tint */
+
+      --ink:#E8EDF5;
+      --muted:#9AA7BD;           /* AA 5.9:1+ on cards */
+      --muted-on-navy:#A9BAD8;
+      --faint-on-navy:#8DA0C4;
+
+      --bg:#0E1726;              /* deep navy-charcoal ground */
+      --surface:#16233A;         /* recessed surface */
+      --card:#172A45;            /* elevated card */
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+
+      /* shadows: deepen + drop the white glass edge on dark */
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+
+    /* --- surfaces that were hardcoded light → re-theme to dark --- */
+    :root:not([data-theme="light"]) .topbar{background:rgba(14,23,38,.85)}
+    :root:not([data-theme="light"]) .badge{background:var(--card)}
+    :root:not([data-theme="light"]) .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
+    :root:not([data-theme="light"]) .panel{background:var(--card)}
+    :root:not([data-theme="light"]) .float-chip{background:var(--card)}
+    :root:not([data-theme="light"]) .proof{background:var(--surface)}
+    :root:not([data-theme="light"]) .btn-ghost{background:var(--card)}
+    :root:not([data-theme="light"]) .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root:not([data-theme="light"]) .searchbox input{background:var(--card)}
+    :root:not([data-theme="light"]) .searchbox input::placeholder{color:#7d8aa6}
+    :root:not([data-theme="light"]) .filters .pill{background:var(--card)}
+    :root:not([data-theme="light"]) .empty-state button{background:var(--card)}
+    :root:not([data-theme="light"]) .preview{background:
+      radial-gradient(420px 200px at 80% -20%,rgba(159,192,240,.06),transparent 70%),
+      linear-gradient(170deg,#15233b,#101b2e)}
+    :root:not([data-theme="light"]) .preview .mini{background:var(--card)}
+    :root:not([data-theme="light"]) .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
+    :root:not([data-theme="light"]) .kpi.accent .val,:root:not([data-theme="light"]) .pv-stats .s.gold .v{color:var(--gold-text)}
+    /* formula pill keeps a dark amber bg → use gold TEXT (10:1), not navy */
+    :root:not([data-theme="light"]) .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
+    /* mobile nav panel */
+    :root:not([data-theme="light"]) .nav.open{background:var(--card)}
+    :root:not([data-theme="light"]) .navtoggle{background:var(--card)}
+    /* keep gold button/badge label legible on its gold fill */
+    :root:not([data-theme="light"]) .btn-gold,:root:not([data-theme="light"]) .feat-tag{color:var(--navy-deep)}
+    /* "Free forever" badge: dark emerald-soft bg → light emerald text (7.3:1) */
+    :root:not([data-theme="light"]) .feat-tag.alt{color:var(--emerald)}
+    /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
+    :root:not([data-theme="light"]) .dash-bar .cellref,:root:not([data-theme="light"]) .dash-bar .tag,:root:not([data-theme="light"]) .panel-head .leg,:root:not([data-theme="light"]) .preview .mtop .nm,:root:not([data-theme="light"]) .pv-rows .r .tk{color:#aab8d4}
+    :root:not([data-theme="light"]) .kpi.accent .chg[style]{color:var(--gold-text) !important}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix).
+       In light mode --navy-ink / --navy are dark and are used both as
+       TEXT and as dark button/section BACKGROUNDS. In dark mode those
+       tokens correctly flip LIGHT (for text/links), which silently
+       turned every "dark" button/section LIGHT — making white labels
+       invisible. The rules below re-skin those *surfaces* so they stay
+       dark / become the gold primary treatment, with legible labels.
+       (Text/link/accent uses of --navy & --navy-ink are left light.)
+       ------------------------------------------------------------- */
+    /* Inverted/primary buttons that were navy-ink-on-white in light mode
+       → GOLD fill + navy-deep label in dark mode (matches hero .btn-gold).
+       gold #E0A209 on #0A1322 label = 8.3:1 (AA + AAA). */
+    :root:not([data-theme="light"]) .nav .cta,
+    :root:not([data-theme="light"]) .btn-navy,
+    :root:not([data-theme="light"]) a.gumroad-button.buy,
+    :root:not([data-theme="light"]) .filters .pill[aria-pressed="true"]{
+      background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    :root:not([data-theme="light"]) .nav .cta:hover,
+    :root:not([data-theme="light"]) .btn-navy:hover,
+    :root:not([data-theme="light"]) a.gumroad-button.buy:hover,
+    :root:not([data-theme="light"]) .filters .pill[aria-pressed="true"]:hover{
+      background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* free buy button keeps its emerald identity (emerald fill + dark label) */
+    :root:not([data-theme="light"]) a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
+    :root:not([data-theme="light"]) a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
+
+    /* Hero highlight word "money": light-blue --navy → brand gold text.
+       #F6C948 on the dark hero ground = 11.4:1. Gold underline accent kept. */
+    :root:not([data-theme="light"]) .hero h1 .hl{color:var(--gold-text)}
+
+    /* Email-capture section: its gradient used --navy (now light periwinkle)
+       as the top stop, making a glowing panel around the white ML form.
+       Re-anchor both stops to dark navy so it reads as white-form-on-dark. */
+    :root:not([data-theme="light"]) .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
+    /* signup card sits clearly on the dark section (slightly lifted, not glowing) */
+    :root:not([data-theme="light"]) .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+
+    /* Hardcoded dark text (#3a4865) that was never re-themed → dark-on-dark.
+       Nav links 1.96:1, proof strip 1.72:1, hero badges ~1.6:1. Lift to a
+       light slate that reads on the dark ground/cards (>=6.8:1). */
+    :root:not([data-theme="light"]) .nav a{color:#C2CEE6}
+    :root:not([data-theme="light"]) .nav a:hover{color:var(--navy-ink)}
+    :root:not([data-theme="light"]) .proof span,:root:not([data-theme="light"]) .badge{color:var(--muted-on-navy)}
+  }
+
+  /* =========================================================
+     FORCED DARK (manual toggle) — user chose dark on ANY device.
+     Mirrors the device-dark skin above so the toggle overrides the OS.
+     ========================================================= */
+  :root[data-theme="dark"]{
+      /* navy/gold brand, retuned for a dark ground */
+      --navy:#9FC0F0;            /* body links + accents — readable on dark */
+      --navy-deep:#0A1322;       /* deepest ground (footer / capture base) */
+      --navy-ink:#E8EDF5;        /* was darkest ink → now near-white headings + wordmark */
+      --tile:#0E1A33;            /* logo tile stays dark navy (glyph reads on it) */
+      --gold:#E0A209;            /* keep brand gold for FILLS (buttons, kicker bar) */
+      --gold-text:#F6C948;       /* gold TEXT on dark — AA 9.2:1+ */
+      --gold-on-navy:#F6C948;
+      --gold-soft:#2A2210;       /* dark amber tint for soft gold backgrounds */
+      --emerald:#4FD0A0;         /* emerald TEXT/price on dark — AA 7.4:1+ */
+      --emerald-deep:#37b487;
+      --emerald-soft:#15311F;    /* dark emerald tint */
+
+      --ink:#E8EDF5;
+      --muted:#9AA7BD;           /* AA 5.9:1+ on cards */
+      --muted-on-navy:#A9BAD8;
+      --faint-on-navy:#8DA0C4;
+
+      --bg:#0E1726;              /* deep navy-charcoal ground */
+      --surface:#16233A;         /* recessed surface */
+      --card:#172A45;            /* elevated card */
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+
+      /* shadows: deepen + drop the white glass edge on dark */
+      --sh-1:0 1px 2px rgba(0,0,0,.30),0 4px 14px rgba(0,0,0,.30);
+      --sh-2:0 2px 6px rgba(0,0,0,.35),0 18px 40px rgba(0,0,0,.45);
+      --sh-pop:0 30px 70px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4);
+      --glass-edge:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    /* --- surfaces that were hardcoded light → re-theme to dark --- */
+    :root[data-theme="dark"] .topbar{background:rgba(14,23,38,.85)}
+    :root[data-theme="dark"] .badge{background:var(--card)}
+    :root[data-theme="dark"] .dash-bar{background:linear-gradient(180deg,#1c3253,#16233a)}
+    :root[data-theme="dark"] .panel{background:var(--card)}
+    :root[data-theme="dark"] .float-chip{background:var(--card)}
+    :root[data-theme="dark"] .proof{background:var(--surface)}
+    :root[data-theme="dark"] .btn-ghost{background:var(--card)}
+    :root[data-theme="dark"] .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
+    :root[data-theme="dark"] .searchbox input{background:var(--card)}
+    :root[data-theme="dark"] .searchbox input::placeholder{color:#7d8aa6}
+    :root[data-theme="dark"] .filters .pill{background:var(--card)}
+    :root[data-theme="dark"] .empty-state button{background:var(--card)}
+    :root[data-theme="dark"] .preview{background:
+      radial-gradient(420px 200px at 80% -20%,rgba(159,192,240,.06),transparent 70%),
+      linear-gradient(170deg,#15233b,#101b2e)}
+    :root[data-theme="dark"] .preview .mini{background:var(--card)}
+    :root[data-theme="dark"] .card.featured{background:linear-gradient(120deg,var(--card) 56%,#1d2f1f 100%);border-color:#3c3517}
+    :root[data-theme="dark"] .kpi.accent .val,:root[data-theme="dark"] .pv-stats .s.gold .v{color:var(--gold-text)}
+    /* formula pill keeps a dark amber bg → use gold TEXT (10:1), not navy */
+    :root[data-theme="dark"] .dash-bar .formula{color:var(--gold-text);border-color:#4a3c18}
+    /* mobile nav panel */
+    :root[data-theme="dark"] .nav.open{background:var(--card)}
+    :root[data-theme="dark"] .navtoggle{background:var(--card)}
+    /* keep gold button/badge label legible on its gold fill */
+    :root[data-theme="dark"] .btn-gold,:root[data-theme="dark"] .feat-tag{color:var(--navy-deep)}
+    /* "Free forever" badge: dark emerald-soft bg → light emerald text (7.3:1) */
+    :root[data-theme="dark"] .feat-tag.alt{color:var(--emerald)}
+    /* decorative dashboard mockup: lift dim labels so the panel reads intentional */
+    :root[data-theme="dark"] .dash-bar .cellref,:root[data-theme="dark"] .dash-bar .tag,:root[data-theme="dark"] .panel-head .leg,:root[data-theme="dark"] .preview .mtop .nm,:root[data-theme="dark"] .pv-rows .r .tk{color:#aab8d4}
+    :root[data-theme="dark"] .kpi.accent .chg[style]{color:var(--gold-text) !important}
+
+    /* -------------------------------------------------------------
+       DARK-MODE SURFACE DECOUPLING (bugfix).
+       In light mode --navy-ink / --navy are dark and are used both as
+       TEXT and as dark button/section BACKGROUNDS. In dark mode those
+       tokens correctly flip LIGHT (for text/links), which silently
+       turned every "dark" button/section LIGHT — making white labels
+       invisible. The rules below re-skin those *surfaces* so they stay
+       dark / become the gold primary treatment, with legible labels.
+       (Text/link/accent uses of --navy & --navy-ink are left light.)
+       ------------------------------------------------------------- */
+    /* Inverted/primary buttons that were navy-ink-on-white in light mode
+       → GOLD fill + navy-deep label in dark mode (matches hero .btn-gold).
+       gold #E0A209 on #0A1322 label = 8.3:1 (AA + AAA). */
+    :root[data-theme="dark"] .nav .cta,
+    :root[data-theme="dark"] .btn-navy,
+    :root[data-theme="dark"] a.gumroad-button.buy,
+    :root[data-theme="dark"] .filters .pill[aria-pressed="true"]{
+      background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+    :root[data-theme="dark"] .nav .cta:hover,
+    :root[data-theme="dark"] .btn-navy:hover,
+    :root[data-theme="dark"] a.gumroad-button.buy:hover,
+    :root[data-theme="dark"] .filters .pill[aria-pressed="true"]:hover{
+      background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* free buy button keeps its emerald identity (emerald fill + dark label) */
+    :root[data-theme="dark"] a.gumroad-button.buy.free{background:var(--emerald);color:var(--navy-deep)}
+    :root[data-theme="dark"] a.gumroad-button.buy.free:hover{background:var(--emerald-deep);color:var(--navy-deep)}
+
+    /* Hero highlight word "money": light-blue --navy → brand gold text.
+       #F6C948 on the dark hero ground = 11.4:1. Gold underline accent kept. */
+    :root[data-theme="dark"] .hero h1 .hl{color:var(--gold-text)}
+
+    /* Email-capture section: its gradient used --navy (now light periwinkle)
+       as the top stop, making a glowing panel around the white ML form.
+       Re-anchor both stops to dark navy so it reads as white-form-on-dark. */
+    :root[data-theme="dark"] .capture{background:
+      radial-gradient(700px 360px at 85% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
+    /* signup card sits clearly on the dark section (slightly lifted, not glowing) */
+    :root[data-theme="dark"] .signup-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+
+    /* Hardcoded dark text (#3a4865) that was never re-themed → dark-on-dark.
+       Nav links 1.96:1, proof strip 1.72:1, hero badges ~1.6:1. Lift to a
+       light slate that reads on the dark ground/cards (>=6.8:1). */
+    :root[data-theme="dark"] .nav a{color:#C2CEE6}
+    :root[data-theme="dark"] .nav a:hover{color:var(--navy-ink)}
+    :root[data-theme="dark"] .proof span,:root[data-theme="dark"] .badge{color:var(--muted-on-navy)}
+</style>
+<style>
+  /* landing-page-specific helpers (scoped; reuse shared CSS variables) */
+  .crumbs{font-size:14px;color:var(--muted);padding:22px 0 0;display:flex;flex-wrap:wrap;
+    align-items:center;gap:6px}
+  .crumbs a{color:var(--navy);text-decoration:none}
+  .crumbs a:hover{color:var(--gold-text);text-decoration:underline}
+  .crumbs span[aria-current]{color:var(--navy-ink);font-weight:600}
+  .crumbs .sep{color:var(--muted);opacity:.6}
+  .lp{padding:24px 0 var(--s9)}
+  .lp .head{max-width:760px;margin-bottom:18px}
+  .lp .cat-kicker{margin-bottom:14px}
+  .lp h1{font-size:var(--fs-display);color:var(--navy-ink);letter-spacing:-.022em;line-height:1.08}
+  .lp .lead{margin-top:18px;font-size:var(--fs-lead);color:var(--muted);max-width:60ch}
+  .lp .priceline{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px}
+  .lp .priceline .price{font-family:var(--mono);font-weight:700;font-size:24px;color:var(--navy-ink)}
+  .lp .priceline .price.free{color:var(--emerald)}
+  .lp .priceline .note{font-size:14px;color:var(--muted)}
+  .lp section.block{max-width:760px;margin-top:var(--s7)}
+  .lp section.block h2{font-size:var(--fs-h2);color:var(--navy-ink);margin-bottom:14px}
+  .lp section.block p{color:var(--ink);font-size:16.5px;line-height:1.7}
+  .lp .included{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .lp .included li{display:flex;align-items:flex-start;gap:11px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:14px 15px;box-shadow:var(--sh-1),var(--glass-edge);font-size:14.5px;color:var(--ink)}
+  .lp .included li .ic{color:var(--emerald);width:20px;height:20px;flex:0 0 auto;margin-top:1px;stroke-width:2.2}
+  .lp .buywrap{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  .lp .related{max-width:760px;margin-top:var(--s7);background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r-lg);padding:24px 26px}
+  .lp .related h2{font-size:var(--fs-h3);color:var(--navy-ink);margin-bottom:8px}
+  .lp .related p{color:var(--muted);font-size:15px;margin-bottom:14px}
+  .lp .related ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 14px}
+  .lp .related a{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14.5px;
+    color:var(--navy);text-decoration:none;background:var(--card);border:1px solid var(--line);
+    border-radius:999px;padding:9px 16px;min-height:40px}
+  .lp .related a:hover{border-color:var(--gold);color:var(--gold-text)}
+  .lp .home-link{margin-top:32px;font-size:15px}
+  .lp .home-link a{color:var(--navy);font-weight:600}
+  .lp .faq-wrap{max-width:760px;margin-top:var(--s7)}
+  .lp .faq-wrap h2{font-size:var(--fs-h2);color:var(--navy-ink);margin-bottom:20px}
+  /* hub grid */
+  .hub{padding:24px 0 var(--s9)}
+  .hub .head{max-width:720px;margin-bottom:8px}
+  .hub h1{font-size:var(--fs-display);color:var(--navy-ink)}
+  .hub .lead{margin-top:18px;font-size:var(--fs-lead);color:var(--muted);max-width:60ch}
+  .hub .tgrid{margin-top:var(--s7);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hub .tcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--r-lg);padding:22px 22px 20px;box-shadow:var(--sh-1),var(--glass-edge);
+    text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .hub .tcard:hover{transform:translateY(-4px);box-shadow:var(--sh-2),var(--glass-edge);border-color:#d3def1}
+  .hub .tcard .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600}
+  .hub .tcard h2{font-size:var(--fs-h3);color:var(--navy-ink);margin-top:8px;line-height:1.25}
+  .hub .tcard .d{margin-top:9px;font-size:14px;color:var(--muted);flex:1}
+  .hub .tcard .p{margin-top:16px;font-family:var(--mono);font-weight:700;font-size:18px;color:var(--navy-ink)}
+  .hub .tcard .p.free{color:var(--emerald)}
+  @media (max-width:960px){.hub .tgrid{grid-template-columns:repeat(2,1fr)}.lp .included{grid-template-columns:1fr}}
+  @media (max-width:560px){.hub .tgrid{grid-template-columns:1fr}.lp .buywrap a.gumroad-button.buy{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="SheetReady home">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#102544"/>
+        <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+        <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+        <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+        <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+      </svg>
+      <span>Sheet<span class="g">Ready</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav" id="navBtn">
+      <svg id="navIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="/templates/">Templates</a>
+      <a href="/#how">How it works</a>
+      <a href="/#about">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/pulse/">Pulse</a>
+      <a href="/#faq">FAQ</a>
+      <button type="button" class="themetoggle" id="themeToggle" aria-label="Switch to dark theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+      </button>
+      <a class="cta" href="/templates/free-money-tracker/">Get free tracker</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep" aria-hidden="true">&rsaquo;</span>
+    <a href="/templates/">Templates</a>
+    <span class="sep" aria-hidden="true">&rsaquo;</span>
+    <span aria-current="page">Inventory &amp; Reorder Manager</span>
+  </nav>
+</div>
+
+<main id="main">
+  <article class="wrap lp">
+    <div class="head">
+      <span class="kicker cat-kicker">Business template</span>
+      <h1>Inventory &amp; Reorder Manager Spreadsheet for Etsy Shops</h1>
+      <p class="lead">The Inventory &amp; Reorder Manager keeps your shop in stock without the guesswork. Track quantity on hand for every product, set a reorder point, and the spreadsheet flags items that are running low so you can restock before you sell out. It is built for Etsy sellers, crafters, and small product businesses, and works in Google Sheets and Excel.</p>
+      <div class="priceline">
+        <span class="price">$24</span>
+        <span class="note">One-time payment · instant download</span>
+      </div>
+      <div class="buywrap">
+        <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/hzcos" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost" href="/templates/">Browse all templates</a>
+      </div>
+    </div>
+
+      <section class="block">
+        <h2>Automatic Reorder Point Calculator</h2>
+        <p>For each product you enter how fast it sells and how long restocking takes, and the spreadsheet calculates the reorder point — the stock level at which you should order more. That turns restocking from a guess into a number, so you order at the right time rather than too early or too late.</p>
+      </section>
+      <section class="block">
+        <h2>Low Stock Alerts — Know Before You Run Out</h2>
+        <p>When an item's quantity on hand drops to or below its reorder point, the spreadsheet flags it clearly, so low-stock products rise to your attention instead of quietly selling out. A summary shows how many SKUs need reordering right now, so a quick glance tells you what to buy.</p>
+      </section>
+      <section class="block">
+        <h2>Built for Etsy Sellers, Crafters, and Product Businesses</h2>
+        <p>If you sell physical products — handmade goods, print-on-demand stock, resale items — this manager scales with your catalogue. Every product gets a row with its cost, price, and stock level, so you can keep tabs on dozens or hundreds of SKUs in one place without expensive inventory software.</p>
+      </section>
+
+    <section class="block" aria-labelledby="incl-h">
+      <h2 id="incl-h">What's Included</h2>
+      <ul class="included">
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>One row per product (SKU) with cost, price, and stock on hand</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Reorder-point calculation from sales speed and lead time</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Automatic low-stock flag when you hit the reorder point</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Summary of how many SKUs need reordering now</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Stock value totals for your whole catalogue</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Editable for any number of products</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Works in Google Sheets and Microsoft Excel</span></li>
+      </ul>
+      <div class="buywrap">
+        <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/hzcos" target="_blank" rel="noopener noreferrer">Get it <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+
+    <section class="faq-wrap" aria-labelledby="faq-h">
+      <h2 id="faq-h">Frequently Asked Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a reorder point?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">A reorder point is the stock level at which you should place a new order, calculated from how fast an item sells and how long restocking takes. The spreadsheet works it out for each product so you restock at the right moment.</p>
+        </details>
+        <details>
+          <summary>Is this suitable for an Etsy shop?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Yes. It is built with Etsy sellers, crafters, and small product businesses in mind, and it handles anything from a handful of items to a large catalogue of SKUs.</p>
+        </details>
+        <details>
+          <summary>How do the low-stock alerts work?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">When a product's quantity on hand falls to or below its reorder point, the sheet flags it and counts it in a reorder summary, so the items you need to buy stand out immediately.</p>
+        </details>
+        <details>
+          <summary>Does it work in Google Sheets?<span class="pm" aria-hidden="true">+</span></summary>
+          <p class="ans">Yes. It opens in Excel and imports into Google Sheets, with the reorder calculations and flags working the same in both.</p>
+        </details>
+      </div>
+    </section>
+
+    <aside class="related" aria-labelledby="rel-h">
+      <h2 id="rel-h">Related templates</h2>
+      <p>Run the rest of your shop with these templates:</p>
+      <ul>
+          <li><a href="/templates/digital-product-sales-tracker/">Digital Product Sales Tracker <span aria-hidden="true">&rarr;</span></a></li>
+          <li><a href="/templates/cash-flow-profit-dashboard/">Cash Flow &amp; Profit Dashboard <span aria-hidden="true">&rarr;</span></a></li>
+          <li><a href="/templates/crm-sales-pipeline/">CRM &amp; Sales Pipeline <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </aside>
+
+    <p class="home-link"><a href="/">&larr; Back to the SheetReady home page</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="fbrand">
+          <!-- "The Ready Cell" logo (dark surface) -->
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#102544"/>
+            <rect x="16.5" y="16.5" width="8.5" height="8.5" rx="1.5" fill="#F2B705"/>
+            <path d="M18.3 20.9l1.7 1.7 3-3.4" fill="none" stroke="#102544" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <g stroke="#F2B705" stroke-width="1.7" stroke-linecap="round"><line x1="7" y1="16" x2="25" y2="16"/><line x1="16" y1="7" x2="16" y2="25"/></g>
+            <rect x="7" y="7" width="18" height="18" rx="2.5" fill="none" stroke="#F2B705" stroke-width="1.7"/>
+            <circle cx="25" cy="25" r="2.4" fill="#F2B705" stroke="#102544" stroke-width="1.2"/>
+          </svg>
+          <span>Sheet<span class="g">Ready</span></span>
+        </div>
+        <p class="fdesc">Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="/templates/">Templates</a>
+        <a href="/#how">How it works</a>
+        <a href="/#about">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/pulse/">Pulse</a>
+        <a href="/#free">Free tracker</a>
+        <a href="/#faq">FAQ</a>
+        <a href="https://supunsandeep.gumroad.com" rel="noopener">Gumroad store</a>
+        <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
+      </nav>
+    </div>
+    <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- dynamic year ---- */
+    var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
+
+    /* ---- mobile nav: slide/fade + focus-trap + Esc ---- */
+    var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
+        backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
+    var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+    var xHTML='<line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>';
+    var navOpen=false;
+    function focusables(){return nav.querySelectorAll('a[href],button');}
+    function openNav(){
+      navOpen=true;nav.classList.add('open');backdrop.hidden=false;
+      requestAnimationFrame(function(){nav.classList.add('in');backdrop.classList.add('in');});
+      btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Close menu');
+      navIcon.innerHTML=xHTML;
+      var f=focusables(); if(f.length){f[0].focus();}
+    }
+    function closeNav(returnFocus){
+      navOpen=false;nav.classList.remove('in');backdrop.classList.remove('in');
+      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+      navIcon.innerHTML=menuHTML;
+      var done=function(){nav.classList.remove('open');backdrop.hidden=true;};
+      if(reduce){done();}else{setTimeout(done,220);}
+      if(returnFocus){btn.focus();}
+    }
+    if(btn&&nav){
+      btn.addEventListener('click',function(){navOpen?closeNav(true):openNav();});
+      backdrop.addEventListener('click',function(){closeNav(false);});
+      nav.addEventListener('click',function(e){if(e.target.closest('a')){closeNav(false);}});
+      document.addEventListener('keydown',function(e){
+        if(!navOpen)return;
+        if(e.key==='Escape'){closeNav(true);}
+        else if(e.key==='Tab'){
+          var f=focusables();if(!f.length)return;
+          var first=f[0],last=f[f.length-1];
+          if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+        }
+      });
+      window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
+    }
+
+    /* ---- manual theme toggle (light/dark, overrides the OS) ---- */
+    var themeBtn=document.getElementById('themeToggle');
+    if(themeBtn){
+      var mqDark=window.matchMedia?window.matchMedia('(prefers-color-scheme:dark)'):null;
+      function effectiveTheme(){
+        var a=document.documentElement.getAttribute('data-theme');
+        if(a==='dark'||a==='light')return a;
+        return (mqDark&&mqDark.matches)?'dark':'light';
+      }
+      function syncThemeUI(){
+        var eff=effectiveTheme();
+        themeBtn.setAttribute('aria-label',eff==='dark'?'Switch to light theme':'Switch to dark theme');
+        var color=eff==='dark'?'#0E1726':'#FBFCFE';
+        var metas=document.querySelectorAll('meta[name="theme-color"]');
+        metas.forEach(function(m){m.setAttribute('content',color);});
+      }
+      themeBtn.addEventListener('click',function(){
+        var next=effectiveTheme()==='dark'?'light':'dark';
+        document.documentElement.dataset.theme=next;
+        try{localStorage.setItem('sr-theme',next);}catch(e){}
+        syncThemeUI();
+      });
+      if(mqDark&&mqDark.addEventListener){
+        mqDark.addEventListener('change',function(){
+          if(!document.documentElement.getAttribute('data-theme')){syncThemeUI();}
+        });
+      }
+      syncThemeUI();
+    }
+
+    /* ---- guarded scroll reveal (no-op if no .reveal elements) ---- */
+    var items=document.querySelectorAll('.reveal');
+    if(items.length){
+      if(reduce||!('IntersectionObserver'in window)){
+        items.forEach(function(el){el.classList.add('in');});
+      }else{
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+        },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+        items.forEach(function(el){io.observe(el);});
+      }
+    }
+  })();
+</script>
+
+<script>
+  (function(){
+    /* ---------- Gumroad overlay (checkout) ----------
+       gumroad.js attaches its overlay handler to .gumroad-button links at load.
+       Load it on the first hover/touch/focus of ANY buy link; idle fallback
+       after window load. Links are real /l/ URLs, so a click works even before
+       JS loads (graceful fallback: opens the Gumroad product page). */
+    var grLoaded=false;
+    function loadGumroad(){
+      if(grLoaded)return; grLoaded=true;
+      var s=document.createElement('script');
+      s.src='https://gumroad.com/js/gumroad.js'; s.async=true;
+      document.body.appendChild(s);
+    }
+    var grBtns=document.querySelectorAll('.gumroad-button');
+    var grTriggers=['pointerover','touchstart','focus'];
+    function grWarm(){loadGumroad();}
+    grBtns.forEach(function(b){
+      grTriggers.forEach(function(ev){
+        b.addEventListener(ev,grWarm,{once:true,passive:true});
+      });
+    });
+    window.addEventListener('load',function(){
+      if('requestIdleCallback'in window){requestIdleCallback(loadGumroad,{timeout:4000});}
+      else{setTimeout(loadGumroad,3000);}
+    });
+  })();
+</script>
+</body>
+</html>
