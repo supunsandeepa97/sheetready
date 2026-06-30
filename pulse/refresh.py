@@ -58,7 +58,10 @@ def main():
         die(f"{TIPS} not found")
 
     tips = json.loads(TIPS.read_text(encoding="utf-8"))
-    nxt = next((t for t in tips if t.get("posted") is None), None)
+    # Post the NEWEST unposted tip. generate_tip.py appends today's AI tip to the
+    # end, so this posts that fresh one; if generation failed, it falls back to
+    # the most recent pre-written tip in the bank. Either way the deploy happens.
+    nxt = next((t for t in reversed(tips) if t.get("posted") is None), None)
     if nxt is None:
         print("pulse: no unposted tips remain - nothing to do.")
         sys.exit(0)

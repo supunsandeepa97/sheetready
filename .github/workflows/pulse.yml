@@ -1,7 +1,10 @@
 name: Pulse daily refresh
 
-# Prepend one fresh hand-written tip to /pulse/ each day, then push so Vercel
-# auto-deploys the genuine file change (the SEO freshness signal).
+# Each day: an AI writes one brand-new original tip (generate_tip.py), then the
+# bulletproof refresh.py inserts it into /pulse/ + the JSON-LD and validates,
+# then we push so Vercel auto-deploys the genuine file change (SEO freshness).
+# If the AI step fails for any reason, refresh.py posts a pre-written fallback,
+# so the daily deploy always happens.
 
 on:
   schedule:
@@ -23,6 +26,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Generate a fresh AI tip (resilient; falls back if it fails)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pulse/generate_tip.py
 
       - name: Run Pulse refresh
         run: python pulse/refresh.py
