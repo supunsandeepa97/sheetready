@@ -322,7 +322,7 @@ PRODUCTS = [
         "price": "19",
         "cat": "Business",
         "title": "Business Expense & Tax Deduction Tracker — Sheets",
-        "meta": "Capture every tax write-off automatically. Google Sheets expense tracker for the self-employed, freelancers, and small businesses — home office and mileage.",
+        "meta": "Capture every tax write-off automatically. Google Sheets expense tracker for the self-employed, freelancers, and small businesses. Home office and mileage.",
         "h1": "Business Expense & Tax Deduction Tracker for Google Sheets",
         "ld_desc": "A business expense tracker that categorises every spend, captures deductible write-offs like home office and mileage, and totals them ready for tax season.",
         "intro": "The Business Expense & Tax Deduction Tracker makes sure no write-off slips away. Log each expense once, choose a deduction category, and the tracker totals your deductibles by category and for the whole year. It is built for the self-employed, freelancers, and small businesses, and works in Google Sheets and Excel.",
