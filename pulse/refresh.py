@@ -23,6 +23,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 INDEX = HERE / "index.html"
 TIPS = HERE / "tips.json"
+SITEMAP = HERE.parent / "sitemap.xml"  # site root /sitemap.xml
+PULSE_LOC = "https://sheetready.vercel.app/pulse/"
 
 MAX_VISIBLE = 10
 FEED_START = "<!-- PULSE:FEED-START -->"
@@ -108,8 +110,10 @@ def main():
         die("JSON-LD @graph has no Blog node")
     posts = blog.get("blogPost", [])
     posts.insert(0, {"@type": "BlogPosting", "headline": headline_text,
-                     "datePublished": date_iso, "description": description})
+                     "datePublished": date_iso, "dateModified": date_iso,
+                     "description": description})
     blog["blogPost"] = posts[:MAX_VISIBLE]
+    blog["dateModified"] = date_iso  # the feed itself was freshened today
     post_count = len(blog["blogPost"])
 
     new_ld = "\n" + json.dumps(data, ensure_ascii=False, indent=2) + "\n"
@@ -129,7 +133,23 @@ def main():
     if not b2 or len(b2.get("blogPost", [])) != article_count:
         die("post-write JSON-LD blogPost count != article count")
 
-    # ---- 4) Write ----
+    # ---- 4) Bump the sitemap's <lastmod> for /pulse/ so Google sees the change
+    #         and recrawls (the freshness signal). Non-fatal if the file/entry
+    #         can't be found — the content change is what matters most.
+    try:
+        sm = SITEMAP.read_text(encoding="utf-8")
+        pat = re.compile(
+            r"(<loc>\s*" + re.escape(PULSE_LOC) + r"\s*</loc>\s*<lastmod>)([^<]*)(</lastmod>)")
+        sm2, n = pat.subn(lambda m: m.group(1) + date_iso + m.group(3), sm)
+        if n:
+            SITEMAP.write_text(sm2, encoding="utf-8")
+            print(f"pulse: sitemap lastmod for /pulse/ set to {date_iso}.")
+        else:
+            print("pulse: WARNING - /pulse/ entry not found in sitemap; skipped lastmod.")
+    except FileNotFoundError:
+        print("pulse: WARNING - sitemap.xml not found; skipped lastmod.")
+
+    # ---- 5) Write ----
     nxt["posted"] = date_iso
     INDEX.write_text(src, encoding="utf-8")
     TIPS.write_text(json.dumps(tips, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
