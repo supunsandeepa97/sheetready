@@ -1,0 +1,40 @@
+name: Pulse daily refresh
+
+# Prepend one fresh hand-written tip to /pulse/ each day, then push so Vercel
+# auto-deploys the genuine file change (the SEO freshness signal).
+
+on:
+  schedule:
+    # 08:00 UTC daily. Cron times are always UTC on GitHub Actions.
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Pulse refresh
+        run: python pulse/refresh.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "sheetready-pulse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit (no unposted tips left)."
+            exit 0
+          fi
+          git add -A
+          git commit -m "pulse: daily fresh tip (auto)"
+          git push

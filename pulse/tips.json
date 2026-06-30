@@ -1,0 +1,412 @@
+[
+  {
+    "id": "zero-based-budget",
+    "headline": "Give every dollar a job before the month starts",
+    "paragraphs": [
+      "A budget that only tracks what you already spent is a report, not a plan. The shift that changes everything is deciding where each dollar of expected income will go before the month begins — bills, savings, spending, everything — until the unassigned amount reaches zero.",
+      "It feels strict at first, but it removes the vague \"where did it all go?\" feeling, because every dollar was already promised to something. Even your savings and your fun money get a deliberate line. Start the habit with the free <a href=\"https://supunsandeep.gumroad.com/l/jvtmti\" target=\"_blank\" rel=\"noopener noreferrer\">money tracker</a>."
+    ],
+    "description": "Assign every expected dollar a job before the month begins until nothing is left unplanned — the core of zero-based budgeting.",
+    "posted": "2026-06-30"
+  },
+  {
+    "id": "pay-yourself-first",
+    "headline": "Move money to savings the day you get paid, not what's left over",
+    "paragraphs": [
+      "If you save whatever survives to the end of the month, the answer is usually nothing. Reversing the order — moving a set amount to savings the moment income arrives — turns saving from a leftover into a fixed bill you pay yourself first.",
+      "Automate the transfer so it happens without a decision. The amount matters less than the consistency; a small automatic transfer beats a large one you keep meaning to make."
+    ],
+    "description": "Pay your savings first the day income lands, then live on the rest — the most reliable way to actually save.",
+    "posted": null
+  },
+  {
+    "id": "profit-vs-cash",
+    "headline": "Profit is an opinion, cash is a fact",
+    "paragraphs": [
+      "You can post a profitable month on paper and still be unable to pay a bill, because profit counts income you have invoiced but not yet collected. Cash is the money actually sitting in the account today.",
+      "Track the two separately: one view for profit (what you earned), one for cash (what you hold). When they disagree, the gap is usually unpaid invoices or stock you have already bought. The <a href=\"/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/\">cash flow spreadsheet guide</a> shows how to lay both out side by side."
+    ],
+    "description": "A profitable month can still leave your account empty. Track cash in and cash out separately from profit to see what is really happening.",
+    "posted": null
+  },
+  {
+    "id": "tax-set-aside-percentage",
+    "headline": "Set aside a fixed percentage of every freelance payment for tax",
+    "paragraphs": [
+      "As a freelancer, no employer withholds tax for you — the full invoice lands in your account, and part of it is never really yours. The fix is to move a set percentage of every payment to a separate account the day it arrives.",
+      "A percentage scales with your income automatically: more in a busy month, less in a quiet one. Our <a href=\"/blog/how-much-should-freelancers-set-aside-for-taxes/\">guide on how much freelancers should set aside</a> covers common starting ranges, but always confirm your own rate with a local professional."
+    ],
+    "description": "Move a fixed percentage of every freelance payment to a separate tax account the day it lands, so the bill never surprises you.",
+    "posted": null
+  },
+  {
+    "id": "separate-tax-account",
+    "headline": "Keep your tax money in an account you never touch",
+    "paragraphs": [
+      "Money sitting in your main account always feels spendable, even when part of it is earmarked for tax. The simplest defence is a separate account — ideally one without a card attached — that you only ever pay into and draw from at tax time.",
+      "When the bill arrives, the money is already there and the panic never starts. The account does not need to be anything special; it just needs to be out of easy reach."
+    ],
+    "description": "Hold your tax set-aside in a separate account with no card, so it never feels spendable and the bill is covered when it lands.",
+    "posted": null
+  },
+  {
+    "id": "same-day-invoicing",
+    "headline": "Send the invoice the same day you finish the work",
+    "paragraphs": [
+      "The clock on getting paid does not start when you deliver the work — it starts when the invoice lands. Every day you delay sending it is a day added to how long your money sits in someone else's account.",
+      "Make same-day invoicing a habit, or set a recurring reminder to send all invoices on a fixed weekday. It is the cheapest cash-flow improvement available to any small business, and it costs nothing but a few minutes."
+    ],
+    "description": "The payment clock starts when the invoice goes out, not when the work is done. Same-day invoicing is the cheapest cash-flow win.",
+    "posted": null
+  },
+  {
+    "id": "invoice-payment-terms",
+    "headline": "Put clear payment terms and a due date on every invoice",
+    "paragraphs": [
+      "\"Payment on receipt\" means different things to different clients. Stating an explicit due date — a real calendar date, not just \"net 30\" — removes the ambiguity and gives you a clean reference point if you ever need to chase.",
+      "Add accepted payment methods and any late-payment terms while you are at it. A few clear lines on the invoice prevent most of the awkward follow-up conversations before they start."
+    ],
+    "description": "State an explicit calendar due date and accepted payment methods on every invoice to remove ambiguity and make chasing easier.",
+    "posted": null
+  },
+  {
+    "id": "follow-up-overdue",
+    "headline": "Have a fixed follow-up schedule for overdue invoices",
+    "paragraphs": [
+      "Most late payments are not refusals — they are oversights. A polite, predictable follow-up sequence (a reminder the day after the due date, another a week later) recovers far more than waiting and hoping.",
+      "Decide the schedule once and apply it to everyone, so chasing stops feeling personal or confrontational. Tracking which invoices are paid, due, and overdue in one place makes it obvious who needs a nudge today."
+    ],
+    "description": "A fixed, polite follow-up schedule recovers most late payments, since they are usually oversights rather than refusals.",
+    "posted": null
+  },
+  {
+    "id": "categorise-on-entry",
+    "headline": "Give every expense a category the moment you log it",
+    "paragraphs": [
+      "An uncategorised list of expenses tells you only one thing: how much you spent. Categorising each one as it happens — software, travel, supplies, fees — turns that same list into a map of where the money actually goes.",
+      "It also makes tax time painless: deductions are already grouped, and you can spot a creeping subscription bill long before it becomes a problem. The hard part is doing it consistently, so attach the category at the moment of entry, never \"later.\""
+    ],
+    "description": "Categorise each expense as you log it, not at tax time, to turn a flat list into a usable map of where money goes.",
+    "posted": null
+  },
+  {
+    "id": "track-small-deductions",
+    "headline": "Small deductible expenses add up to a real tax saving",
+    "paragraphs": [
+      "It is easy to log the big purchases and ignore the small ones — a software renewal here, postage there, a work book, a coffee with a client. Individually they feel too minor to bother with, but across a year they often total more than a single large expense.",
+      "If an expense is genuinely for the business and your tax rules allow it, record it. The discipline of capturing the small ones is what separates a rough estimate from an accurate, defensible set of books. Confirm what is deductible in your country with a professional."
+    ],
+    "description": "Logging small deductible expenses consistently often saves more at tax time than a single large purchase — capture them all.",
+    "posted": null
+  },
+  {
+    "id": "reorder-point",
+    "headline": "Set a reorder point before you run out of stock",
+    "paragraphs": [
+      "Running out of a bestseller costs you sales you will never recover; over-ordering a slow mover freezes cash you cannot use. A reorder point — the stock level that triggers a new order — keeps you between those two failures.",
+      "Estimate how many units you sell in the time it takes a supplier to restock, add a small safety buffer, and reorder when you hit that number. A spreadsheet can flag it automatically so you are not eyeballing the shelf."
+    ],
+    "description": "A per-product reorder point stops bestsellers selling out and keeps cash from freezing in slow-moving stock.",
+    "posted": null
+  },
+  {
+    "id": "dead-stock",
+    "headline": "Spot your dead stock before it ties up all your cash",
+    "paragraphs": [
+      "Inventory that has not moved in months is cash sitting on a shelf. The longer it stays, the more it costs you in storage and in opportunities you could not fund because the money was locked up.",
+      "Review your slowest-selling items regularly and decide deliberately: discount to clear, bundle with a fast mover, or stop reordering. A simple \"days since last sale\" column makes the dead stock impossible to ignore."
+    ],
+    "description": "Review slow-moving inventory regularly and clear it deliberately — dead stock is cash frozen on a shelf.",
+    "posted": null
+  },
+  {
+    "id": "crm-one-place",
+    "headline": "Keep every lead and client in one place, not in your inbox",
+    "paragraphs": [
+      "When client details and conversations live scattered across email threads, notes, and memory, follow-ups slip and good leads go cold. A single list — who they are, where the conversation stands, what is next — is enough to fix most of it.",
+      "You do not need expensive software to start; a well-structured sheet with a status column and a next-action column already beats relying on your inbox. The point is one source of truth you actually check."
+    ],
+    "description": "One simple list of leads and clients with a status and next-action column beats scattered inbox threads for following up.",
+    "posted": null
+  },
+  {
+    "id": "pipeline-stages",
+    "headline": "Give your sales pipeline clear stages you can count",
+    "paragraphs": [
+      "\"I have a few things in the works\" is not a pipeline you can plan around. Defining a handful of stages — say, new lead, in conversation, proposal sent, won or lost — lets you see at a glance how many deals sit where.",
+      "Stages turn a vague hope into a forecast: if half your proposals usually close, the proposals-sent column tells you roughly what is coming. Move each deal forward deliberately and note why anything is lost."
+    ],
+    "description": "Define countable pipeline stages so you can forecast revenue and see exactly where each deal is stuck.",
+    "posted": null
+  },
+  {
+    "id": "net-worth-tracking",
+    "headline": "Track your net worth once a month, not your balance daily",
+    "paragraphs": [
+      "Checking your bank balance every day tells you almost nothing — it swings with each bill and paycheck. Net worth (everything you own minus everything you owe) measured once a month shows the trend that actually matters.",
+      "The number itself is less important than its direction over time. A steady monthly rise, even a small one, is the clearest sign your finances are moving the right way."
+    ],
+    "description": "Measure net worth (assets minus debts) monthly instead of watching your balance daily — the trend is what matters.",
+    "posted": null
+  },
+  {
+    "id": "emergency-fund",
+    "headline": "Build a starter emergency fund before you chase anything else",
+    "paragraphs": [
+      "Without a cash buffer, every unexpected expense becomes debt and every financial plan stays fragile. A small starter fund — enough to cover one ordinary emergency — breaks that cycle and buys you breathing room.",
+      "Begin with a modest, specific target rather than a daunting \"several months of expenses.\" Once the starter buffer exists, you can build it toward a fuller cushion while putting money toward other goals."
+    ],
+    "description": "A small starter emergency fund stops unexpected costs becoming debt — build it before chasing other money goals.",
+    "posted": null
+  },
+  {
+    "id": "debt-snowball",
+    "headline": "Pay off your smallest debt first to build momentum",
+    "paragraphs": [
+      "When you are facing several debts, clearing the smallest balance first — while paying minimums on the rest — gives you a quick, visible win. That momentum keeps many people going where the maths-optimal route stalls.",
+      "Once the smallest is gone, roll its payment into the next-smallest, and so on. The payments snowball into ever-larger chunks. If staying motivated is your real obstacle, this beats a perfectly optimised plan you abandon."
+    ],
+    "description": "Clear your smallest debt first for a quick win, then roll each freed-up payment into the next — the snowball method.",
+    "posted": null
+  },
+  {
+    "id": "debt-avalanche",
+    "headline": "Attack your highest-interest debt to pay the least overall",
+    "paragraphs": [
+      "If your goal is to pay as little total interest as possible, target the debt with the highest interest rate first while paying minimums on the others. Mathematically, nothing clears debt cheaper.",
+      "It can feel slower at the start if your highest-rate debt also has a large balance, so it suits people motivated by the numbers rather than quick wins. List every debt with its rate and balance so the order is obvious."
+    ],
+    "description": "Target your highest-interest debt first to minimise total interest paid — the avalanche method, cheapest over time.",
+    "posted": null
+  },
+  {
+    "id": "biweekly-budget",
+    "headline": "Budget by paycheck if your bills don't line up with the month",
+    "paragraphs": [
+      "Monthly budgets assume your money arrives in one monthly lump. If you are paid every two weeks, that mismatch causes a scramble in the weeks rent or big bills fall due.",
+      "Instead, budget each paycheck as it arrives: assign that specific paycheck to the specific bills due before the next one comes in. Two extra \"third paychecks\" appear most years — plan those for savings or debt in advance so they are not just absorbed."
+    ],
+    "description": "Paid biweekly? Budget each paycheck to the bills due before the next one, and earmark the extra paychecks in advance.",
+    "posted": null
+  },
+  {
+    "id": "sinking-funds",
+    "headline": "Save a little each month for the bills you know are coming",
+    "paragraphs": [
+      "Annual costs — insurance, renewals, holidays, a tax bill — are not surprises, yet they wreck budgets because they land all at once. A sinking fund spreads them out: divide the known cost by the months until it is due and set that aside each month.",
+      "By the time the bill arrives, you have already saved for it, and it never derails the rest of your budget. Keep a line per upcoming expense so you always know how much is reserved for what."
+    ],
+    "description": "Divide known annual bills by the months until due and save that each month — a sinking fund so big costs never shock you.",
+    "posted": null
+  },
+  {
+    "id": "weekly-reconcile",
+    "headline": "Reconcile your accounts weekly, not yearly",
+    "paragraphs": [
+      "Waiting until tax season to match your records against your bank statement turns a small job into a dreaded one — and old mistakes are far harder to explain months later.",
+      "Block fifteen minutes once a week to confirm every transaction in your tracker matches what actually cleared the bank. Catching a duplicate or a missing entry while you still remember the purchase is the difference between a tidy book and a guessing game."
+    ],
+    "description": "A 15-minute weekly check that every transaction matches your bank keeps small bookkeeping errors from compounding.",
+    "posted": null
+  },
+  {
+    "id": "separate-business-account",
+    "headline": "Open a separate bank account for the business on day one",
+    "paragraphs": [
+      "Mixing business and personal money in one account makes bookkeeping a forensic exercise and clouds whether the business is actually making money. A dedicated business account draws a clean line from the start.",
+      "Every business payment in and out flows through one place, so your records practically write themselves and your personal spending stays out of the picture. It is the single most useful structural habit a new business can adopt."
+    ],
+    "description": "A dedicated business bank account keeps records clean and makes it obvious whether the business is truly making money.",
+    "posted": null
+  },
+  {
+    "id": "owner-salary",
+    "headline": "Pay yourself a fixed amount from the business each month",
+    "paragraphs": [
+      "When business income and personal spending share one flow, neither budget is readable. Decide on a fixed amount you will move from the business to your personal account on the same day each month, and treat it like a wage you owe yourself.",
+      "This keeps the business's real cash position honest and gives your household budget a steady, predictable number to plan around. Our <a href=\"/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/\">cash flow guide</a> shows how to separate the two cleanly."
+    ],
+    "description": "Move a fixed amount from business to personal on the same day each month — a steady owner's salary keeps both budgets readable.",
+    "posted": null
+  },
+  {
+    "id": "spreadsheet-vs-app",
+    "headline": "Start with a spreadsheet before you pay for finance software",
+    "paragraphs": [
+      "Finance apps are powerful, but a subscription you barely use is just another expense. A spreadsheet costs nothing, forces you to understand your own numbers, and is usually enough until your volume genuinely outgrows it.",
+      "Begin simple. When you find yourself fighting the spreadsheet — too many transactions, multiple users, integrations you need — that is the signal to consider software. Until then, the sheet keeps you closer to your money."
+    ],
+    "description": "A spreadsheet costs nothing and keeps you close to your numbers — start there and only move to software when you outgrow it.",
+    "posted": null
+  },
+  {
+    "id": "one-number-daily",
+    "headline": "Pick the one number to check every day",
+    "paragraphs": [
+      "Dashboards full of metrics are easy to ignore. Choosing a single number that best reflects your situation — cash on hand for a business, money left to spend this week for a household — makes a daily glance meaningful.",
+      "One clear number you actually look at beats ten you never do. Build the rest of your tracking around surfacing that number quickly, and let everything else stay one click deeper."
+    ],
+    "description": "Choose one number that best reflects your finances and check it daily — one glance you act on beats a dashboard you ignore.",
+    "posted": null
+  },
+  {
+    "id": "review-subscriptions",
+    "headline": "List every subscription once a quarter and cut what you forgot",
+    "paragraphs": [
+      "Subscriptions are designed to be invisible — small, automatic, easy to forget. The forgetting is the cost. Once a quarter, list every recurring charge against your statement and ask of each one whether you actually used it.",
+      "Cancel anything you cannot justify, and note the renewal dates of the ones you keep so the next price rise does not slip past you. This single review often pays for itself many times over."
+    ],
+    "description": "Audit every recurring charge against your statement quarterly and cancel what you forgot — subscriptions hide in plain sight.",
+    "posted": null
+  },
+  {
+    "id": "track-mileage",
+    "headline": "Log work travel as you go, not from memory at year-end",
+    "paragraphs": [
+      "Work-related travel is often deductible, but reconstructing months of trips from memory is both painful and unreliable. A quick note at the time — date, distance, purpose — turns a guess into a record you can stand behind.",
+      "Whatever method your tax rules allow, the principle is the same: capture it when it happens. A running log beats a frantic estimate, and it protects you if anyone ever asks for the detail. Confirm the rules for your country."
+    ],
+    "description": "Record work travel at the time — date, distance, purpose — rather than reconstructing it later for a deduction you can defend.",
+    "posted": null
+  },
+  {
+    "id": "price-for-profit",
+    "headline": "Price from your costs and target margin, not from a guess",
+    "paragraphs": [
+      "Setting a price by gut feel or by matching a competitor ignores the only question that keeps you in business: does this price cover all your costs and leave the margin you need? Start from the cost to deliver, add your target margin, and check the result against the market.",
+      "Include the costs that are easy to forget — your own time, fees, overhead — not just materials. A price that feels fine but quietly loses money is the slowest way to fail."
+    ],
+    "description": "Build prices up from true costs plus a target margin — including your time and overhead — rather than guessing or copying rivals.",
+    "posted": null
+  },
+  {
+    "id": "13-week-forecast",
+    "headline": "Forecast your cash 13 weeks ahead to see trouble early",
+    "paragraphs": [
+      "An empty account is a surprise only if you are not looking ahead. A rolling 13-week cash forecast — expected money in and out, week by week — shows a shortfall while you still have time to act on it.",
+      "Thirteen weeks is long enough to spot the problem and short enough to estimate with confidence. Update it weekly so it always reflects reality, and a looming squeeze becomes a manageable plan instead of a crisis."
+    ],
+    "description": "A rolling 13-week cash forecast surfaces a shortfall while you still have time to act — update it weekly to stay ahead.",
+    "posted": null
+  },
+  {
+    "id": "round-up-estimates",
+    "headline": "When estimating, round costs up and income down",
+    "paragraphs": [
+      "Optimistic estimates feel good and cause cash crunches. Building a small margin of caution into your numbers — rounding expected costs up and expected income down — means reality usually lands better than your plan, not worse.",
+      "The surplus from conservative estimates is a buffer you can redeploy; the gap from optimistic ones is a problem you have to scramble to cover. Plan for the version of the month that asks more of you."
+    ],
+    "description": "Round expected costs up and expected income down so reality beats your plan — conservative estimates build a buffer.",
+    "posted": null
+  },
+  {
+    "id": "save-windfalls",
+    "headline": "Decide what happens to windfalls before they arrive",
+    "paragraphs": [
+      "A tax refund, a bonus, an unexpectedly good month — windfalls vanish fastest because no plan governs them. Deciding in advance how you will split any windfall (some to savings, some to debt, some to enjoy) keeps it from evaporating.",
+      "A simple rule made ahead of time removes the in-the-moment temptation to treat the whole sum as free spending. The money does far more work when its job was assigned before it landed."
+    ],
+    "description": "Set a rule for splitting any windfall — savings, debt, spending — before it arrives, so it does not just evaporate.",
+    "posted": null
+  },
+  {
+    "id": "monthly-money-date",
+    "headline": "Book a recurring 30 minutes to review your money",
+    "paragraphs": [
+      "Finances drift when no one is watching. A standing appointment with yourself — same time each week or month — to update your tracker, check upcoming bills, and confirm the plan still fits keeps small issues from growing.",
+      "Treat it like any other commitment you keep. Half an hour on the calendar, repeated, does more for your finances than an occasional heroic overhaul you never sustain."
+    ],
+    "description": "A standing 30-minute appointment to update your tracker and check upcoming bills keeps finances from quietly drifting.",
+    "posted": null
+  },
+  {
+    "id": "separate-fixed-variable",
+    "headline": "Split your spending into fixed and variable to find the give",
+    "paragraphs": [
+      "Not all expenses respond to effort. Fixed costs — rent, insurance, loan payments — barely move month to month, while variable ones — groceries, eating out, shopping — are where your choices actually change the total.",
+      "Separating the two shows you where cutting back is even possible, so you stop trying to economise on bills you cannot change and focus on the spending you can. It also makes a lean month far easier to plan."
+    ],
+    "description": "Separate fixed from variable expenses to see where cutting back is actually possible and stop fighting bills you can't change.",
+    "posted": null
+  },
+  {
+    "id": "label-savings-goals",
+    "headline": "Name your savings goals instead of saving into one pile",
+    "paragraphs": [
+      "A single undifferentiated savings balance is easy to raid, because no part of it is spoken for. Splitting savings into named goals — emergency, new laptop, holiday — makes each one feel earmarked and harder to spend by accident.",
+      "Whether you use separate accounts or just labelled lines in a sheet, the psychology is the same: money with a name attached resists being borrowed against. Watching each goal fill is its own motivation."
+    ],
+    "description": "Split savings into named goals rather than one pile — earmarked money resists being spent and keeps you motivated.",
+    "posted": null
+  },
+  {
+    "id": "track-time-to-paid",
+    "headline": "Measure how long your invoices actually take to get paid",
+    "paragraphs": [
+      "If you do not measure it, you cannot manage it. Tracking the average days between sending an invoice and getting paid reveals whether your cash-flow problem is sales or simply slow collection.",
+      "Once you know the number, you can act: tighten terms, follow up sooner, or flag the clients who consistently drag. A falling average is direct, measurable proof that your invoicing process is improving."
+    ],
+    "description": "Track the average days from invoice sent to paid — it shows whether your cash problem is sales or slow collection.",
+    "posted": null
+  },
+  {
+    "id": "expense-receipts-now",
+    "headline": "Capture the receipt before you capture the coffee",
+    "paragraphs": [
+      "Paper receipts fade and digital ones get buried; either way, the proof of a deductible expense disappears fast. Photographing or filing a receipt the moment you get it is a five-second habit that saves hours of reconstruction.",
+      "Attach it to the transaction in your records, or keep a single dated folder. When you can match every expense to its receipt, your books are not just tidy — they are defensible if anyone ever asks."
+    ],
+    "description": "File or photograph each receipt the moment you get it — a five-second habit that keeps your deductions defensible.",
+    "posted": null
+  },
+  {
+    "id": "break-even",
+    "headline": "Know the exact sales you need just to break even",
+    "paragraphs": [
+      "Your break-even point is the level of sales where you cover all your costs and make neither profit nor loss. Knowing it turns a vague \"I hope this month works out\" into a clear target you can track toward.",
+      "Add up your fixed costs, work out the profit on each sale after variable costs, and divide. Everything above that line is profit; everything below it, you are funding from reserves. It is one of the most clarifying numbers a business can know."
+    ],
+    "description": "Calculate the sales level that covers all your costs — your break-even point turns vague hope into a clear monthly target.",
+    "posted": null
+  },
+  {
+    "id": "back-up-spreadsheet",
+    "headline": "Keep your financial spreadsheet somewhere that backs itself up",
+    "paragraphs": [
+      "A single file on one laptop is one spilled drink away from a lost year of records. Storing your tracker in a service that keeps version history means a mistake or a dead device never costs you your data.",
+      "Cloud-based spreadsheets save automatically and let you roll back to an earlier version if a formula gets clobbered. Whatever you use, the rule is simple: your money records should never live in only one place."
+    ],
+    "description": "Keep your finance spreadsheet in a service with auto-save and version history so a dead device never costs you a year of records.",
+    "posted": null
+  },
+  {
+    "id": "quarterly-pl-review",
+    "headline": "Read your own profit and loss every quarter",
+    "paragraphs": [
+      "A profit-and-loss summary is not just for the accountant. Reading your own — total income, total costs by category, what is left — every quarter shows trends a single month hides: a creeping cost, a softening revenue line, a category quietly growing.",
+      "You do not need formal statements to start; even a simple categorised summary surfaces the story. The owners who look regularly are the ones who catch problems while they are still small."
+    ],
+    "description": "Review your own income and categorised costs every quarter — trends a single month hides become obvious across three.",
+    "posted": null
+  },
+  {
+    "id": "buffer-in-checking",
+    "headline": "Keep a small buffer in your checking account and forget it's there",
+    "paragraphs": [
+      "Living at a zero balance means every mistimed bill risks an overdraft fee. Keeping a small fixed buffer in your everyday account — and mentally treating zero as that buffer amount — absorbs the normal timing wobbles of real life.",
+      "It is not savings and not for spending; it is padding that quietly prevents fees and stress. Set the amount once, top it back up if it dips, and let it do its unglamorous job."
+    ],
+    "description": "Hold a small fixed buffer in your checking account and treat it as the new zero — it absorbs timing wobbles and prevents fees.",
+    "posted": null
+  },
+  {
+    "id": "annual-to-monthly",
+    "headline": "Convert every cost to a monthly number to compare fairly",
+    "paragraphs": [
+      "An annual fee and a monthly subscription are hard to weigh against each other in your head. Converting everything to a monthly figure — yearly costs divided by twelve — puts every expense on the same footing so you can see what truly costs the most.",
+      "It also makes annual bills feel real month to month, which pairs perfectly with setting money aside for them in advance. A consistent unit is the quiet trick behind a budget that actually adds up."
+    ],
+    "description": "Convert annual and monthly costs to one monthly figure so you can compare expenses fairly and plan for big bills in advance.",
+    "posted": null
+  }
+]

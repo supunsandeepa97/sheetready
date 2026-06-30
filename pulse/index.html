@@ -4,10 +4,18 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Spreadsheet Finance Tips &amp; Guides — SheetReady Blog</title>
-<meta name="description" content="Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets. Free tips from SheetReady's finance template builder."/>
+<!-- ============================================================
+     SheetReady Pulse — daily-fresh hand-written money/small-business tips.
+     A scheduled job (see /pulse/refresh.py + .github/workflows/pulse.yml)
+     prepends one new entry per day, keeping the page genuinely fresh.
+     IMPORTANT: update every "https://sheetready.vercel.app" to the custom
+     domain once purchased (also in index.html, robots.txt, sitemap.xml).
+     ============================================================ -->
 
-<link rel="canonical" href="https://sheetready.vercel.app/blog/"/>
+<title>Money &amp; Small-Business Pulse — SheetReady</title>
+<meta name="description" content="A fresh, practical money and small-business tip every day — budgeting, cash flow, invoicing, freelancer tax and bookkeeping, in plain English from SheetReady."/>
+
+<link rel="canonical" href="https://sheetready.vercel.app/pulse/"/>
 <meta name="theme-color" content="#FBFCFE" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#0E1726" media="(prefers-color-scheme: dark)"/>
 <meta name="robots" content="index,follow"/>
@@ -15,9 +23,9 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="SheetReady"/>
-<meta property="og:title" content="Spreadsheet Finance Tips & Guides — SheetReady Blog"/>
-<meta property="og:description" content="Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets."/>
-<meta property="og:url" content="https://sheetready.vercel.app/blog/"/>
+<meta property="og:title" content="Money &amp; Small-Business Pulse — SheetReady"/>
+<meta property="og:description" content="A fresh, practical money and small-business tip every day — budgeting, cash flow, invoicing, freelancer tax and bookkeeping, in plain English."/>
+<meta property="og:url" content="https://sheetready.vercel.app/pulse/"/>
 <meta property="og:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -25,34 +33,49 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Spreadsheet Finance Tips & Guides — SheetReady Blog"/>
-<meta name="twitter:description" content="Practical guides on cash flow, budgeting and tax with Excel & Google Sheets."/>
+<meta name="twitter:title" content="Money &amp; Small-Business Pulse — SheetReady"/>
+<meta name="twitter:description" content="A fresh, practical money and small-business tip every day, in plain English from SheetReady."/>
 <meta name="twitter:image" content="https://sheetready.vercel.app/webpins/og-cover.png"/>
 
 <!-- Favicon: "The Ready Cell" glyph -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102544'/%3E%3Crect x='16.5' y='16.5' width='8.5' height='8.5' rx='1.5' fill='%23F2B705'/%3E%3Cpath d='M18.3 20.9l1.7 1.7 3-3.4' fill='none' stroke='%23102544' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cg stroke='%23F2B705' stroke-width='1.7' stroke-linecap='round'%3E%3Cline x1='7' y1='16' x2='25' y2='16'/%3E%3Cline x1='16' y1='7' x2='16' y2='25'/%3E%3C/g%3E%3Crect x='7' y='7' width='18' height='18' rx='2.5' fill='none' stroke='%23F2B705' stroke-width='1.7'/%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23F2B705' stroke='%23102544' stroke-width='1.2'/%3E%3C/svg%3E"/>
 
-<!-- JSON-LD: CollectionPage + BreadcrumbList -->
+<!-- JSON-LD: Blog (one BlogPosting per visible entry) + BreadcrumbList.
+     INVARIANT: exactly one BlogPosting object per visible <article class="entry">,
+     headline + datePublished must match. refresh.py maintains this 1:1. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "CollectionPage",
-      "@id": "https://sheetready.vercel.app/blog/#page",
-      "name": "SheetReady Blog — Spreadsheet Finance Guides",
-      "url": "https://sheetready.vercel.app/blog/",
-      "description": "Practical guides on tracking cash flow, budgeting, invoicing and tax with Excel and Google Sheets.",
+      "@type": "Blog",
+      "@id": "https://sheetready.vercel.app/pulse/#blog",
+      "name": "SheetReady Pulse",
+      "description": "A fresh, practical money and small-business tip every day from SheetReady.",
+      "url": "https://sheetready.vercel.app/pulse/",
       "publisher": {
         "@type": "Organization",
-        "@id": "https://sheetready.vercel.app/#org"
-      }
+        "@id": "https://sheetready.vercel.app/#org",
+        "name": "SheetReady",
+        "logo": "https://sheetready.vercel.app/webpins/og-cover.png"
+      },
+      "blogPost": [
+        <!-- PULSE:JSONLD-START -->
+        {"@type": "BlogPosting", "headline": "Give every dollar a job before the month starts", "datePublished": "2026-06-30", "description": "Assign every expected dollar a job before the month begins until nothing is left unplanned — the core of zero-based budgeting."},
+        {"@type":"BlogPosting","headline":"Pay yourself a fixed \"salary\" from your business account","datePublished":"2026-06-29","description":"Moving a set amount from your business account to your personal account on the same day each month makes both budgets readable."},
+        {"@type":"BlogPosting","headline":"Reconcile your accounts weekly, not yearly","datePublished":"2026-06-28","description":"A 15-minute weekly check that every transaction in your spreadsheet matches your bank keeps small errors from compounding."},
+        {"@type":"BlogPosting","headline":"Profit is an opinion, cash is a fact","datePublished":"2026-06-27","description":"A profitable month can still leave your account empty. Track cash in and cash out separately from profit to see what is really happening."},
+        {"@type":"BlogPosting","headline":"Send the invoice the same day you finish the work","datePublished":"2026-06-26","description":"The clock on getting paid only starts when the invoice goes out. Same-day invoicing is the cheapest cash-flow improvement there is."},
+        {"@type":"BlogPosting","headline":"Give every expense a category the moment you log it","datePublished":"2026-06-25","description":"Categorising spending as it happens, not at tax time, turns a year of guesswork into a one-click summary."},
+        {"@type":"BlogPosting","headline":"Set a reorder point before you run out of stock","datePublished":"2026-06-24","description":"A simple reorder threshold per product stops bestsellers selling out and cash freezing in slow-moving inventory."}
+        <!-- PULSE:JSONLD-END -->
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sheetready.vercel.app/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sheetready.vercel.app/blog/" }
+        { "@type": "ListItem", "position": 2, "name": "Pulse", "item": "https://sheetready.vercel.app/pulse/" }
       ]
     }
   ]
@@ -71,7 +94,7 @@
 
 <style>
   /* =========================================================
-     SheetReady — "Ledger Light" theme (shared with storefront).
+     SheetReady — "Ledger Light" theme (shared with storefront + blog).
      System fonts only (zero render-blocking, zero CLS).
      ========================================================= */
   :root{
@@ -106,8 +129,8 @@
     --fs-body:16px;
     --fs-lead:clamp(16px,1.6vw,19px);
     --fs-h3:clamp(18px,1.4vw,20px);
-    --fs-h2:clamp(28px,3.4vw,40px);
-    --fs-display:clamp(40px,5.2vw,60px);
+    --fs-h2:clamp(24px,2.6vw,32px);
+    --fs-display:clamp(32px,4.4vw,46px);
 
     --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
     --s7:48px; --s8:64px; --s9:96px;
@@ -119,6 +142,7 @@
     --sh-pop:0 30px 70px rgba(16,37,68,.20),0 6px 16px rgba(16,37,68,.08);
     --glass-edge:inset 0 1px 0 rgba(255,255,255,.6);
     --maxw:1180px;
+    --readw:720px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
@@ -137,8 +161,6 @@
   .skip:focus{left:0}
   :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
 
-  .ic{width:24px;height:24px;flex:0 0 auto;stroke-width:2}
-
   .kicker{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;
     text-transform:uppercase;color:var(--gold-text);display:inline-flex;align-items:center;gap:9px}
   .kicker::before{content:"";width:18px;height:2px;background:var(--gold);border-radius:2px}
@@ -156,19 +178,16 @@
   .nav a{position:relative;color:#3a4865;text-decoration:none;font-size:14.5px;font-weight:600;padding:12px 13px;
     border-radius:9px;transition:color .15s ease,background .15s ease}
   .nav a:hover{color:var(--navy-ink);background:var(--surface)}
-  .nav a[aria-current="true"]{color:var(--navy-ink)}
-  .nav a[aria-current="true"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
+  .nav a[aria-current="page"]{color:var(--navy-ink)}
+  .nav a[aria-current="page"]::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2.5px;
     background:var(--gold);border-radius:2px}
   .nav .cta{background:var(--navy-ink);color:#fff;padding:12px 18px;margin-left:6px}
   .nav .cta:hover{background:var(--navy);color:#fff;box-shadow:var(--sh-1)}
-  .nav .cta[aria-current="true"]::after{display:none}
+  .nav .cta[aria-current="page"]::after{display:none}
   .navtoggle{display:none}
   .nav-backdrop{display:none}
 
-  /* ---------- Theme toggle (manual light/dark, overrides the OS) ----------
-     One button holds BOTH a moon (offer dark) and a sun (offer light) icon.
-     Which icon shows is driven purely by CSS on the SAME conditions as the
-     theme itself, so the correct icon paints before JS runs (no flash). */
+  /* ---------- Theme toggle (manual light/dark, overrides the OS) ---------- */
   .themetoggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
     width:40px;height:40px;margin-left:4px;padding:0;border-radius:11px;cursor:pointer;
     background:transparent;border:1px solid var(--line);color:#3a4865;
@@ -203,44 +222,59 @@
   .btn-ghost{background:#fff;color:var(--navy-ink);border:1.5px solid var(--line)}
   .btn-ghost:hover{border-color:#c7d2e8;background:var(--surface)}
 
-  /* ---------- Section scaffold ---------- */
-  .section{padding:var(--s9) 0}
-  .sec-head{max-width:680px;margin-bottom:44px}
-  .sec-head h1{font-size:var(--fs-display);color:var(--navy-ink);margin-top:14px}
-  .sec-head p{margin-top:16px;color:var(--muted);font-size:var(--fs-lead)}
-
-  /* ---------- Blog hub hero ---------- */
-  .blog-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
-    background:
-      radial-gradient(680px 420px at 82% 4%,rgba(242,183,5,.13),transparent 60%),
-      radial-gradient(720px 560px at 10% -10%,rgba(27,58,107,.09),transparent 60%);}
-  .blog-hero .wrap{padding-top:72px;padding-bottom:56px;position:relative;z-index:1}
+  /* ---------- Pulse head ---------- */
+  .pulse-head{border-bottom:1px solid var(--line);background:
+      radial-gradient(620px 360px at 88% 0%,rgba(242,183,5,.10),transparent 62%),
+      radial-gradient(620px 460px at 6% -12%,rgba(27,58,107,.07),transparent 60%)}
+  .pulse-head .wrap{max-width:var(--readw);padding-top:48px;padding-bottom:40px}
   .crumb{font-size:13.5px;color:var(--muted);margin-bottom:18px}
   .crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0}
   .crumb a{color:var(--navy);text-decoration:none;font-weight:600}
   .crumb a:hover{color:var(--gold)}
   .crumb .sep{color:#aab6cf}
   .crumb [aria-current]{color:var(--navy-ink);font-weight:600}
-  .blog-hero h1{font-size:var(--fs-display);color:var(--navy-ink);max-width:16ch}
-  .blog-hero .sub{margin-top:18px;font-size:var(--fs-lead);color:var(--muted);max-width:54ch}
-  .blog-hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .pulse-head .live{display:inline-flex;align-items:center;gap:9px;margin-bottom:14px}
+  .pulse-head .live .dot{width:9px;height:9px;border-radius:50%;background:var(--emerald);
+    box-shadow:0 0 0 4px rgba(15,122,82,.16)}
+  .pulse-head h1{font-size:var(--fs-display);color:var(--navy-ink);line-height:1.1}
+  .pulse-head .lede{margin-top:16px;font-size:var(--fs-lead);color:var(--muted);max-width:54ch}
 
-  /* ---------- Article card grid ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .post-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
-    display:flex;flex-direction:column;box-shadow:var(--sh-1),var(--glass-edge);text-decoration:none;color:inherit;
-    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-  .post-card:hover{transform:translateY(-5px);box-shadow:var(--sh-2),var(--glass-edge);border-color:#d3def1}
-  .post-card .pc-top{padding:20px 22px 0;display:flex;align-items:center;gap:9px}
-  .post-card .cat{font-family:var(--mono);font-size:10.5px;color:var(--navy);letter-spacing:.1em;
-    text-transform:uppercase;font-weight:600}
-  .post-card .body{padding:14px 22px 24px;display:flex;flex-direction:column;flex:1}
-  .post-card h2{font-size:var(--fs-h3);line-height:1.25;letter-spacing:-.01em;color:var(--navy-ink)}
-  .post-card .desc{margin-top:10px;font-size:14.5px;color:var(--muted);flex:1;line-height:1.55}
-  .post-card .more{margin-top:18px;font-weight:700;font-size:14.5px;color:var(--navy);display:inline-flex;
-    align-items:center;gap:7px}
-  .post-card .more .arr{transition:transform .15s ease}
-  .post-card:hover .more .arr{transform:translateX(4px)}
+  /* ---------- Feed ---------- */
+  .feed-wrap{max-width:var(--readw);margin:0 auto;padding:40px var(--s5) 8px}
+  .feed{display:flex;flex-direction:column;gap:0}
+  .entry{padding:28px 0;border-bottom:1px solid var(--line)}
+  .entry:first-child{padding-top:8px}
+  .entry:last-child{border-bottom:0}
+  .entry .date{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--gold-text);margin-bottom:10px}
+  .entry h2{font-size:var(--fs-h2);color:var(--navy-ink);line-height:1.18}
+  .entry .body{margin-top:12px;line-height:1.7;font-size:17px;color:var(--ink)}
+  .entry .body p{margin:0 0 14px}
+  .entry .body p:last-child{margin-bottom:0}
+  .entry .body a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+  .entry .body a:hover{color:var(--gold)}
+
+  /* ---------- CTA block (matches blog) ---------- */
+  .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,var(--navy),var(--navy-deep));color:#fff;border-radius:var(--r-lg);
+    padding:32px 30px;margin:44px 0 8px;box-shadow:var(--sh-2)}
+  .cta-block h2{color:#fff;font-size:var(--fs-h3);margin:0 0 10px}
+  .cta-block p{color:var(--muted-on-navy);font-size:15.5px;margin:0 0 20px;max-width:54ch}
+  .cta-block p a{color:var(--gold-on-navy)}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+  a.gumroad-button.buy{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;
+    padding:14px 22px;border-radius:12px;background:var(--gold);color:var(--navy-deep);white-space:nowrap;line-height:1.2;min-height:48px;
+    box-shadow:0 10px 26px rgba(224,162,9,.30);transition:transform .15s ease,box-shadow .15s ease}
+  a.gumroad-button.buy:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(224,162,9,.36);color:var(--navy-deep)}
+  a.gumroad-button.buy.ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.28);
+    box-shadow:none}
+  a.gumroad-button.buy.ghost:hover{background:rgba(255,255,255,.18);color:#fff}
+  a.gumroad-button.buy .arr{transition:transform .15s ease}
+  a.gumroad-button.buy:hover .arr{transform:translateX(3px)}
+
+  .feed-footer-links{max-width:var(--readw);margin:0 auto 8px;padding:24px var(--s5) 16px;font-size:15.5px}
+  .feed-footer-links a{font-weight:700}
 
   /* ---------- Footer ---------- */
   footer{background:var(--navy-deep);color:var(--muted-on-navy);padding:56px 0 40px}
@@ -260,10 +294,6 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ---------- Responsive ---------- */
-  @media (max-width:960px){
-    .grid{grid-template-columns:repeat(2,1fr)}
-    .section{padding:64px 0}
-  }
   @media (max-width:760px){
     .nav{display:none}
     .nav.open{display:flex;position:fixed;top:68px;left:0;right:0;flex-direction:column;
@@ -272,7 +302,7 @@
       opacity:0;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease}
     .nav.open.in{opacity:1;transform:translateY(0)}
     .nav.open a{padding:14px;min-height:48px;display:flex;align-items:center}
-    .nav.open a[aria-current="true"]::after{display:none}
+    .nav.open a[aria-current="page"]::after{display:none}
     .nav.open .cta{margin-left:0;justify-content:center}
     .nav-backdrop{display:block;position:fixed;inset:68px 0 0;background:rgba(14,26,51,.35);z-index:105;
       opacity:0;transition:opacity .22s ease}
@@ -280,12 +310,7 @@
     .navtoggle{display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
       width:48px;height:48px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--navy-ink);cursor:pointer}
     .navtoggle svg{width:22px;height:22px}
-    .section{padding:48px 0}
-    .grid{grid-template-columns:1fr}
-  }
-  @media (max-width:560px){
-    .btn{width:100%}
-    .blog-hero .cta-row .btn{flex:1}
+    .cta-actions .gumroad-button.buy{width:100%;justify-content:center}
   }
   @media (prefers-reduced-motion:reduce){
     *{scroll-behavior:auto !important;transition:none !important;animation:none !important}
@@ -296,10 +321,9 @@
   /* =========================================================
      AUTOMATIC DARK MODE — follows the visitor's OS/browser theme.
      Light theme above is the untouched DEFAULT; this only overrides
-     the design tokens + a few hardcoded light surfaces.
+     the design tokens + the few hardcoded light surfaces.
      ========================================================= */
   @media (prefers-color-scheme:dark){
-    /* device-dark, unless the visitor has FORCED light via the toggle */
     :root:not([data-theme="light"]){
       --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--tile:#0E1A33;
       --gold:#E0A209;--gold-text:#F6C948;--gold-on-navy:#F6C948;--gold-soft:#2A2210;
@@ -318,19 +342,20 @@
     :root:not([data-theme="light"]) .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
     :root:not([data-theme="light"]) .nav.open{background:var(--card)}
     :root:not([data-theme="light"]) .navtoggle{background:var(--card)}
-    :root:not([data-theme="light"]) .btn-gold{color:var(--navy-deep)}
+    :root:not([data-theme="light"]) .btn-gold,:root:not([data-theme="light"]) a.gumroad-button.buy{color:var(--navy-deep)}
+    :root:not([data-theme="light"]) a.gumroad-button.buy.ghost{color:#fff}
 
-    /* -------------------------------------------------------------
-       DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html.
-       --navy-ink / --navy flip light in dark mode (correct for text)
-       but were also used as dark button backgrounds, making white
-       labels invisible. nav CTA + primary navy button → gold fill +
-       navy-deep label (8.3:1, matches .btn-gold). Text/link uses stay light.
-       ------------------------------------------------------------- */
+    /* DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html. --navy-ink /
+       --navy flip light in dark mode (correct for text), but are also used as
+       dark button/section backgrounds; re-skin those surfaces. */
     :root:not([data-theme="light"]) .nav .cta,
     :root:not([data-theme="light"]) .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
     :root:not([data-theme="light"]) .nav .cta:hover,
     :root:not([data-theme="light"]) .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
+    /* CTA block gradient top stop was --navy → re-anchor to dark navy */
+    :root:not([data-theme="light"]) .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
     /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
     :root:not([data-theme="light"]) .nav a{color:#C2CEE6}
     :root:not([data-theme="light"]) .nav a:hover{color:var(--navy-ink)}
@@ -338,7 +363,6 @@
 
   /* =========================================================
      FORCED DARK (manual toggle) — user chose dark on ANY device.
-     Mirrors the device-dark skin above so the toggle overrides the OS.
      ========================================================= */
   :root[data-theme="dark"]{
       --navy:#9FC0F0;--navy-deep:#0A1322;--navy-ink:#E8EDF5;--tile:#0E1A33;
@@ -357,27 +381,21 @@
     :root[data-theme="dark"] .btn-ghost:hover{border-color:rgba(255,255,255,.22);background:var(--surface)}
     :root[data-theme="dark"] .nav.open{background:var(--card)}
     :root[data-theme="dark"] .navtoggle{background:var(--card)}
-    :root[data-theme="dark"] .btn-gold{color:var(--navy-deep)}
-
-    /* -------------------------------------------------------------
-       DARK-MODE SURFACE DECOUPLING (bugfix) — see index.html.
-       --navy-ink / --navy flip light in dark mode (correct for text)
-       but were also used as dark button backgrounds, making white
-       labels invisible. nav CTA + primary navy button → gold fill +
-       navy-deep label (8.3:1, matches .btn-gold). Text/link uses stay light.
-       ------------------------------------------------------------- */
+    :root[data-theme="dark"] .btn-gold,:root[data-theme="dark"] a.gumroad-button.buy{color:var(--navy-deep)}
+    :root[data-theme="dark"] a.gumroad-button.buy.ghost{color:#fff}
     :root[data-theme="dark"] .nav .cta,
     :root[data-theme="dark"] .btn-navy{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
     :root[data-theme="dark"] .nav .cta:hover,
     :root[data-theme="dark"] .btn-navy:hover{background:var(--gold-on-navy);color:var(--navy-deep);border-color:var(--gold-on-navy)}
-    /* nav links were hardcoded #3a4865 (1.96:1 on dark) → light slate */
+    :root[data-theme="dark"] .cta-block{background:
+      radial-gradient(520px 300px at 88% 0%,rgba(242,183,5,.14),transparent 60%),
+      linear-gradient(165deg,#16294a,var(--navy-deep))}
     :root[data-theme="dark"] .nav a{color:#C2CEE6}
     :root[data-theme="dark"] .nav a:hover{color:var(--navy-ink)}
-
 </style>
 </head>
 <body>
-<a class="skip" href="#blog-content">Skip to articles</a>
+<a class="skip" href="#pulse-content">Skip to content</a>
 
 <!-- ============ HEADER / NAV ============ -->
 <header class="topbar">
@@ -401,8 +419,8 @@
       <a href="https://sheetready.vercel.app/#templates">Templates</a>
       <a href="https://sheetready.vercel.app/#how">How it works</a>
       <a href="https://sheetready.vercel.app/#about">About</a>
-      <a href="/blog/" aria-current="true">Blog</a>
-      <a href="/pulse/">Pulse</a>
+      <a href="/blog/">Blog</a>
+      <a href="/pulse/" aria-current="page">Pulse</a>
       <a href="https://sheetready.vercel.app/#faq">FAQ</a>
       <button type="button" class="themetoggle" id="themeToggle" aria-label="Switch to dark theme">
         <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -413,70 +431,99 @@
   </div>
 </header>
 
-<main id="blog-content">
+<main id="pulse-content">
 
-  <!-- ============ HUB HERO ============ -->
-  <section class="blog-hero" aria-labelledby="blog-h1">
+  <!-- ============ PULSE HEAD ============ -->
+  <header class="pulse-head">
     <div class="wrap">
       <nav class="crumb" aria-label="Breadcrumb">
         <ol>
           <li><a href="https://sheetready.vercel.app/">Home</a></li>
           <li class="sep" aria-hidden="true">/</li>
-          <li><span aria-current="page">Blog</span></li>
+          <li><span aria-current="page">Pulse</span></li>
         </ol>
       </nav>
-      <span class="kicker">The SheetReady blog</span>
-      <h1 id="blog-h1">Spreadsheet finance tips &amp; guides</h1>
-      <p class="sub">Practical, no-jargon guides on tracking cash flow, budgeting and tax with Excel and Google Sheets — written by the person who builds the templates. Start free, upgrade when you need more.</p>
-      <div class="cta-row">
-        <a class="btn btn-gold" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get the free money tracker <span class="arr" aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="https://sheetready.vercel.app/#templates">Browse all templates</a>
+      <span class="kicker live"><span class="dot" aria-hidden="true"></span>Updated daily</span>
+      <h1>The SheetReady Pulse</h1>
+      <p class="lede">One short, practical money or small-business tip every day — budgeting, cash flow, invoicing, freelancer tax and bookkeeping, in plain English. No fluff, no jargon, newest at the top.</p>
+    </div>
+  </header>
+
+  <!-- ============ FEED ============ -->
+  <div class="feed-wrap">
+    <section class="feed" aria-label="Daily tips">
+      <!-- PULSE:FEED-START -->
+      <article class="entry">
+        <p class="date">30 June 2026</p>
+        <h2>Give every dollar a job before the month starts</h2>
+        <div class="body">
+          <p>A budget that only tracks what you already spent is a report, not a plan. The shift that changes everything is deciding where each dollar of expected income will go before the month begins — bills, savings, spending, everything — until the unassigned amount reaches zero.</p>
+          <p>It feels strict at first, but it removes the vague "where did it all go?" feeling, because every dollar was already promised to something. Even your savings and your fun money get a deliberate line. Start the habit with the free <a href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">money tracker</a>.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">29 June 2026</p>
+        <h2>Pay yourself a fixed &ldquo;salary&rdquo; from your business account</h2>
+        <div class="body">
+          <p>When business income and personal spending share one account, neither budget is readable. Decide on a fixed amount you will move from the business to your personal account on the same day each month, and treat it like a wage you owe yourself.</p>
+          <p>This keeps the business&rsquo;s real cash position honest and gives your household budget a steady, predictable number to plan around. Our <a href="/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/">guide to tracking cash flow in a spreadsheet</a> walks through separating the two cleanly.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">28 June 2026</p>
+        <h2>Reconcile your accounts weekly, not yearly</h2>
+        <div class="body">
+          <p>Waiting until tax season to match your records against your bank statement turns a small job into a dreaded one — and old mistakes are far harder to explain months later.</p>
+          <p>Block fifteen minutes once a week to confirm every transaction in your tracker matches what actually cleared the bank. Catching a duplicate or a missing entry while you still remember the purchase is the difference between a tidy book and a guessing game. Start from the free <a href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">money tracker</a> if you do not have a system yet.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">27 June 2026</p>
+        <h2>Profit is an opinion, cash is a fact</h2>
+        <div class="body">
+          <p>You can post a profitable month on paper and still be unable to pay a bill, because profit counts income you have invoiced but not yet collected. Cash is the money actually sitting in the account today.</p>
+          <p>Track the two separately: one view for profit (what you earned), one for cash (what you hold). When they disagree, the gap is usually unpaid invoices or stock you have already bought. The <a href="/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/">cash flow spreadsheet guide</a> shows how to lay both out side by side.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">26 June 2026</p>
+        <h2>Send the invoice the same day you finish the work</h2>
+        <div class="body">
+          <p>The clock on getting paid does not start when you deliver the work — it starts when the invoice lands. Every day you delay sending it is a day added to how long your money sits in someone else&rsquo;s account.</p>
+          <p>Make same-day invoicing a habit, or set a recurring reminder to send all invoices on a fixed weekday. It is the cheapest cash-flow improvement available to any small business, and it costs nothing but a few minutes. Read more in our <a href="/blog/">guides</a>.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">25 June 2026</p>
+        <h2>Give every expense a category the moment you log it</h2>
+        <div class="body">
+          <p>An uncategorised list of expenses tells you only one thing: how much you spent. Categorising each one as it happens — software, travel, supplies, fees — turns that same list into a map of where the money actually goes.</p>
+          <p>It also makes tax time painless: deductions are already grouped, and you can spot a creeping subscription bill long before it becomes a problem. The hard part is doing it consistently, so attach the category at the moment of entry, never &ldquo;later.&rdquo;</p>
+        </div>
+      </article>
+      <article class="entry">
+        <p class="date">24 June 2026</p>
+        <h2>Set a reorder point before you run out of stock</h2>
+        <div class="body">
+          <p>Running out of a bestseller costs you sales you will never recover; over-ordering a slow mover freezes cash you cannot use. A reorder point — the stock level that triggers a new order — keeps you between those two failures.</p>
+          <p>Estimate how many units you sell in the time it takes a supplier to restock, add a small safety buffer, and reorder when you hit that number. A spreadsheet can flag it automatically so you are not eyeballing the shelf. Browse our <a href="https://sheetready.vercel.app/#templates">templates</a> for a starting point.</p>
+        </div>
+      </article>
+      <!-- PULSE:FEED-END -->
+    </section>
+
+    <!-- ============ PRODUCT CTA ============ -->
+    <div class="cta-block reveal">
+      <h2>Start with the free Money Tracker</h2>
+      <p>Most of these tips are easier to keep up with a simple system behind them. The <a href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">free Simple Money Tracker</a> gives you a place to log income and expenses from day one — no formulas to build, works in Google Sheets and Excel.</p>
+      <div class="cta-actions">
+        <a class="gumroad-button buy" href="https://supunsandeep.gumroad.com/l/jvtmti" target="_blank" rel="noopener noreferrer">Get the free Money Tracker <span class="arr" aria-hidden="true">&rarr;</span></a>
+        <a class="gumroad-button buy ghost" href="https://sheetready.vercel.app/#templates">Browse all templates</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============ ARTICLE GRID ============ -->
-  <section class="section" aria-labelledby="posts-h">
-    <div class="wrap">
-      <h2 id="posts-h" style="font-size:var(--fs-h2);color:var(--navy-ink);margin-bottom:8px">Latest guides</h2>
-      <p style="color:var(--muted);font-size:17px;margin-bottom:36px;max-width:60ch">Step-by-step walkthroughs you can follow today, each paired with a ready-made template that does the maths for you.</p>
-
-      <div class="grid">
-
-        <a class="post-card reveal" href="/blog/small-business-cash-flow-how-to-track-it-in-a-spreadsheet/">
-          <div class="pc-top"><span class="cat">Cash flow</span></div>
-          <div class="body">
-            <h2>Small Business Cash Flow: How to Track It in a Simple Spreadsheet</h2>
-            <p class="desc">What to record, how to spot a shortfall weeks before it hits, and how a 13-week forecast keeps profitable businesses from running out of cash.</p>
-            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-        <a class="post-card reveal" href="/blog/how-much-should-freelancers-set-aside-for-taxes/">
-          <div class="pc-top"><span class="cat">Freelance · Tax</span></div>
-          <div class="body">
-            <h2>How Much Should Freelancers Set Aside for Taxes?</h2>
-            <p class="desc">A practical method for estimating your freelance tax bill and setting aside the right percentage — with a free spreadsheet approach and country-by-country notes.</p>
-            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-        <a class="post-card reveal" href="/blog/how-to-make-a-monthly-budget-in-google-sheets/">
-          <div class="pc-top"><span class="cat">Budgeting</span></div>
-          <div class="body">
-            <h2>How to Make a Monthly Budget in Google Sheets (Step by Step)</h2>
-            <p class="desc">Build a working monthly budget from scratch in about 20 minutes — or skip the setup with a free template — plus how to track actual spending against your plan.</p>
-            <span class="more">Read guide <span class="arr" aria-hidden="true">→</span></span>
-          </div>
-        </a>
-
-      </div>
-
-      <p style="margin-top:40px;font-size:15.5px">
-        Looking for the spreadsheets themselves? <a href="https://sheetready.vercel.app/#templates" style="font-weight:700">Browse all SheetReady templates →</a>
-      </p>
-    </div>
-  </section>
+  <p class="feed-footer-links"><a href="/blog/">Read the in-depth SheetReady guides &rarr;</a></p>
 
 </main>
 
@@ -510,17 +557,15 @@
         <a href="https://www.pinterest.com/sumbatheai/" rel="noopener">Pinterest</a>
       </nav>
     </div>
-    <p class="copy">© <span id="yr">2026</span> SheetReady · Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
+    <p class="copy">&copy; <span id="yr">2026</span> SheetReady &middot; Simple Excel &amp; Google Sheets templates for small business &amp; personal finance.</p>
   </div>
 </footer>
 
-<!-- Site interactions: nav, reveal, dynamic year (vanilla, no deps) -->
+<!-- Site interactions: nav, reveal, dynamic year, manual theme toggle (vanilla, no deps) -->
 <script>
   (function(){
     var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     var y=document.getElementById('yr'); if(y){y.textContent=new Date().getFullYear();}
-
     var btn=document.getElementById('navBtn'),nav=document.getElementById('primary-nav'),
         backdrop=document.getElementById('navBackdrop'),navIcon=document.getElementById('navIcon');
     var menuHTML='<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
@@ -558,11 +603,7 @@
       });
       window.addEventListener('resize',function(){if(window.innerWidth>760&&navOpen){closeNav(false);}});
     }
-
-    /* ---- manual theme toggle (light/dark, overrides the OS) ----
-       Effective theme = data-theme attr if set, else the OS preference.
-       Click flips it, persists to localStorage 'sr-theme', updates the
-       button's aria-label and the active theme-color meta. Icon swap is CSS. */
+    /* ---- manual theme toggle (light/dark, overrides the OS) ---- */
     var themeBtn=document.getElementById('themeToggle');
     if(themeBtn){
       var mqDark=window.matchMedia?window.matchMedia('(prefers-color-scheme:dark)'):null;
@@ -603,5 +644,8 @@
     }
   })();
 </script>
+
+<!-- Gumroad overlay (deferred, non-critical) -->
+<script src="https://gumroad.com/js/gumroad.js" defer></script>
 </body>
 </html>
