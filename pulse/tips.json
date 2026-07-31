@@ -107,7 +107,7 @@
       "Estimate how many units you sell in the time it takes a supplier to restock, add a small safety buffer, and reorder when you hit that number. A spreadsheet can flag it automatically so you are not eyeballing the shelf."
     ],
     "description": "A per-product reorder point stops bestsellers selling out and keeps cash from freezing in slow-moving stock.",
-    "posted": null
+    "posted": "2026-07-31"
   },
   {
     "id": "dead-stock",
